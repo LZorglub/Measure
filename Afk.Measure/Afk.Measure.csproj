@@ -149,6 +149,7 @@
     <Compile Include="Units\UnitException.cs" />
     <Compile Include="Units\Unit_From.cs" />
     <Compile Include="Units\Unit_Pfx.cs" />
+    <Compile Include="Units\US\Volume.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Units\Metric\CGS\ReadMe.txt" />
@@ -157,9 +158,7 @@
     <None Include="Diagram\DiagramUnit.cd" />
     <None Include="Units\ClassDiagram1.cd" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Units\US\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
       <Visible>False</Visible>

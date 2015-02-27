@@ -22,6 +22,12 @@ namespace ConsoleTest {
 			try {
 				Unit[] units = Unit.WellKnownUnits;
 
+                Unit.Parse("pt");
+
+                UKVolume();
+                Console.ReadLine();
+                return;
+
 				Temperature<double> klv = 5;
 				Temperature<long> klv2 = 15;
 
@@ -95,5 +101,14 @@ namespace ConsoleTest {
 			Console.WriteLine("Press a key to quit");
 			Console.ReadLine();
 		}
+
+        static void UKVolume()
+        {
+            var litre = Quantity.None<Litre>(1);
+            Console.WriteLine(litre.ConvertTo(Unit.Parse("m3")));
+
+            var pint = Quantity.None<Afk.Measure.Units.US.Pint>(1);
+            Console.WriteLine(pint.ConvertTo(Unit.Parse("ml")));
+        }
 	}
 }
