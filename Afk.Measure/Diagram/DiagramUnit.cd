@@ -1,0 +1,75 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="Afk.Measure.Units.BaseUnit" Collapsed="true">
+    <Position X="1.5" Y="2" Width="1.5" />
+    <NestedTypes>
+      <Class Name="Afk.Measure.Units.BaseUnit.UnitOne" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>Units\BaseUnit.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Class>
+    </NestedTypes>
+    <TypeIdentifier>
+      <HashCode>AAgAAAAAAAAAAAAAIAQAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Units\BaseUnit.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Afk.Measure.Units.UnitPrefix">
+    <Position X="8" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>CAAAAAAAAFAAAAAAAAIAAIAAAAAAAAAJABAAAAAAKAA=</HashCode>
+      <FileName>Units\UnitPrefix.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="BaseUnit" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="Afk.Measure.Units.MetricBaseUnit" Collapsed="true">
+    <Position X="3.75" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Units\MetricBaseUnit.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Afk.Measure.Units.ProductUnit" Collapsed="true">
+    <Position X="1.5" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAQAAAAIAAAAAAEAAAAAJAAAAAAAACgA=</HashCode>
+      <FileName>Units\ProductUnit.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Afk.Measure.Units.ProductMetricBaseUnit" Collapsed="true">
+    <Position X="3.75" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAQAAAAIAAAgAAEAAAAAJQBAAAAAAKgA=</HashCode>
+      <FileName>Units\ProductMetricBaseUnit.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Afk.Measure.Units.Unit" Collapsed="true">
+    <Position X="4.25" Y="0.5" Width="1.5" />
+    <Compartments>
+      <Compartment Name="Nested Types" Collapsed="false" />
+    </Compartments>
+    <NestedTypes>
+      <Struct Name="Afk.Measure.Units.Unit.HashUnit" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>Units\Unit_From.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Struct>
+    </NestedTypes>
+    <TypeIdentifier>
+      <HashCode>MoAiogACACAYFQAGAAJAAQMAgIAASJDPlpEhAQEACBA=</HashCode>
+      <FileName>Units\Unit.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Interface Name="Afk.Measure.Units.IMetricUnitOffset" Collapsed="true">
+    <Position X="6" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQBAAAAAAAAA=</HashCode>
+      <FileName>Units\UnitPrefix.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Font Name="Tahoma" Size="8.25" />
+</ClassDiagram>

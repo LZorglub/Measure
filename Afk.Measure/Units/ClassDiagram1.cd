@@ -1,0 +1,60 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="Afk.Measure.Units.Unit" Collapsed="true">
+    <Position X="3.75" Y="0.5" Width="1.5" />
+    <Compartments>
+      <Compartment Name="Fields" Collapsed="true" />
+      <Compartment Name="Properties" Collapsed="true" />
+      <Compartment Name="Methods" Collapsed="true" />
+    </Compartments>
+    <NestedTypes>
+      <Struct Name="Afk.Measure.Units.Unit.HashUnit" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>Units\Unit_From.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Struct>
+    </NestedTypes>
+    <TypeIdentifier>
+      <HashCode>MoAiogACACAYFQAGAAJAAQMAgIAASJDPlpEhAQEACBA=</HashCode>
+      <FileName>Units\Unit.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Afk.Measure.Units.BaseUnit" Collapsed="true">
+    <Position X="1.75" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAgAAAAAAAAAAAAAIAQAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Units\BaseUnit.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Afk.Measure.Units.MetricBaseUnit" Collapsed="true">
+    <Position X="0.5" Y="2.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Units\MetricBaseUnit.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Afk.Measure.Units.ProductMetricBaseUnit" Collapsed="true">
+    <Position X="1.25" Y="4.25" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAQAAAAIAAAgAAEAAAAAJQBAAAAAAKgA=</HashCode>
+      <FileName>Units\ProductMetricBaseUnit.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Afk.Measure.Units.ProductUnit" Collapsed="true">
+    <Position X="2.75" Y="2.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAQAAAAIAAAAAAEAAAAAJAAAAAAAACgA=</HashCode>
+      <FileName>Units\ProductUnit.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Afk.Measure.Units.PrefixUnit" Collapsed="true">
+    <Position X="5.5" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>CAAAAAAAAFAAAAAAAAIAAIAAAAAAAAAJABAAAAAAKAA=</HashCode>
+      <FileName>Units\PrefixUnit.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>
