@@ -513,54 +513,7 @@ namespace Afk.Measure.Quantity {
 
 			return value.Value;
 		}
-
-        /// <summary>
-        /// Conversion implicit d'une valeur T en <see cref="BaseQuantity"/> d'unité <see cref="BaseUnit.UNITONE"/>
-        /// </summary>
-        /// <param name="value">Valeur de la quantité</param>
-        /// <returns><see cref="BaseQuantity"/> représentant la valeur spécifiée.</returns>
-        public static implicit operator BaseQuantity<T>(T value) {
-			Quantity<T> qty = new Quantity<T>();
-			qty._value = value;
-			qty._unit = BaseUnit.UNITONE;
-			return qty;
-		}
-
-        /// <summary>
-        /// Conversion implicite d'une quantité <see cref="BaseQuantity<T>"/> en <see cref="BaseQuantity<double>"/>
-        /// </summary>
-        /// <param name="value"><see cref="BaseQuantity<T>"/> à convertir</param>
-        /// <returns><see cref="BaseQuantity<double>"/> représentant la valeur spécifiée.</returns>
-        public static implicit operator BaseQuantity<double>(BaseQuantity<T> value) {
-			//Activator.CreateInstance(qvar0.GetType().GetGenericTypeDefinition().MakeGenericType(typeof(int)));
-
-			Quantity<double> qty = new Quantity<double>();
-			qty._value = Convert.ToDouble(value.Value);
-			qty._unit = value.Unit;
-			return qty;
-		}
-
-		public static implicit operator BaseQuantity<decimal>(BaseQuantity<T> value) {
-			Quantity<decimal> qty = new Quantity<decimal>();
-			qty._value = Convert.ToDecimal(value.Value);
-			qty._unit = value.Unit;
-			return qty;
-		}
-
-		public static implicit operator BaseQuantity<long>(BaseQuantity<T> value) {
-			Quantity<long> qty = new Quantity<long>();
-			qty._value = Convert.ToInt64(value.Value);
-			qty._unit = value.Unit;
-			return qty;
-		}
-
-		public static implicit operator BaseQuantity<float>(BaseQuantity<T> value) {
-			Quantity<float> qty = new Quantity<float>();
-			qty._value = Convert.ToSingle(value.Value);
-			qty._unit = value.Unit;
-			return qty;
-		}
-
+        
         /// <summary>
         /// Converts the value of the current <see cref="BaseQuantity"/> object to its equivalent string representation
         /// </summary>

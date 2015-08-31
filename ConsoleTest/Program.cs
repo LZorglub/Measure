@@ -29,7 +29,12 @@ namespace ConsoleTest {
                 //return;
 
 				Temperature<double> klv = 5;
-				Temperature<long> klv2 = 15;
+				Temperature<int> klv2 = 15;
+                var result = klv * klv2;
+
+                Length<double> metre = 1;
+
+                var metreKelvin = metre * klv;
 
                 var litre = BaseQuantity.None<Litre>(1);
                 Console.WriteLine(litre.ConvertTo(Unit.Parse("ml")));
@@ -83,6 +88,7 @@ namespace ConsoleTest {
 				v2 = BaseQuantity.Deci<Volume>(4.59);
 				Console.WriteLine(v2.ConvertTo(Unit.Parse("dl")));
 
+                Quantity<double> q1 = 15d;
                 /*
 				var m2 = Quantity.Kilo<Meter>(5);
 				var c = Quantity.None<double, Celsius>(6);
@@ -92,7 +98,7 @@ namespace ConsoleTest {
 
 				var item = (m2 * c) / (second * k);
 				*/
-                BaseQuantity<double> doubleHour = 5d;
+                //BaseQuantity<double> doubleHour = 5d;
 
                 //Console.WriteLine(item.ToString());
             }
