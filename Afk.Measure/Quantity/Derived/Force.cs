@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 
 namespace Afk.Measure.Quantity.Derived {
-	public class Force<T> : Quantity<T> {
+	public class Force<T> : BaseQuantity<T> {
 		public Force() {
 			this._unit = new Afk.Measure.Units.Metric.Derived.Newton();
 		}

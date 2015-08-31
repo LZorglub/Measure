@@ -9,7 +9,7 @@ namespace Afk.Measure.Quantity.Base {
 	/// </summary>
 	/// <typeparam name="T"></typeparam>
 	/// <remarks>The base unit of this quantity is the mole.</remarks>
-	public class AmountOfSubstance<T> : Quantity<T> {
+	public class AmountOfSubstance<T> : BaseQuantity<T> {
 
 		public AmountOfSubstance() {
 			this._unit = Units.System.SI.MOLE;

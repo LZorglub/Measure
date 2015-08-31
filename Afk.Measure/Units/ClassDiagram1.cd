@@ -1,5 +1,14 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Comment CommentText="Sample of unit with prefix allowed">
+    <Position X="3.104" Y="5.521" Height="0.448" Width="3.096" />
+  </Comment>
+  <Comment CommentText="Sample of unit with prefix not allowed">
+    <Position X="5.021" Y="3.531" Height="0.521" Width="1.888" />
+  </Comment>
+  <Comment CommentText="PrefixUnit can not be multiply/divide, the result of prefix would be inconsistent. To multiply/divide PrefixUnit we multiply/divide BasedUnit">
+    <Position X="6" Y="0.76" Height="0.49" Width="4.44" />
+  </Comment>
   <Class Name="Afk.Measure.Units.Unit" Collapsed="true">
     <Position X="3.75" Y="0.5" Width="1.5" />
     <Compartments>
@@ -28,7 +37,7 @@
     </TypeIdentifier>
   </Class>
   <Class Name="Afk.Measure.Units.ProductMetricBaseUnit" Collapsed="true">
-    <Position X="1.25" Y="4.25" Width="2" />
+    <Position X="0.5" Y="4.75" Width="2" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAQAAAAIAAAgAAEAAAAAJQBAAAAAAKgA=</HashCode>
       <FileName>Units\ProductMetricBaseUnit.cs</FileName>
@@ -47,6 +56,28 @@
     <TypeIdentifier>
       <HashCode>CAAAAAAAAFAAAAAAAAIAAIAAAAAAAAAJABAAAAAAKAA=</HashCode>
       <FileName>Units\PrefixUnit.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Afk.Measure.Units.Imperial.Pint" Collapsed="true">
+    <Position X="5" Y="2.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Units\Imperial\Volume.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Afk.Measure.Units.Metric.SI.Gram" Collapsed="true">
+    <Position X="3" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQBAAAAAAAAA=</HashCode>
+      <FileName>Units\Metric\SI\Gram.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Afk.Measure.Units.Metric.SI.Kelvin" Collapsed="true">
+    <Position X="4.75" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Units\Metric\SI\Kelvin.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Font Name="Segoe UI" Size="9" />

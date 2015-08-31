@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 
 namespace Afk.Measure.Quantity.Derived {
-	public class Energy<T> : Quantity<T> {
+	public class Energy<T> : BaseQuantity<T> {
 		public Energy() {
 			this._unit = new Afk.Measure.Units.Metric.Derived.Joule();
 		}

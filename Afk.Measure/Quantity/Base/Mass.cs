@@ -9,7 +9,7 @@ namespace Afk.Measure.Quantity.Base {
 	/// </summary>
 	/// <typeparam name="T"></typeparam>
 	/// <remarks>The base unit of this quantity is the gram (kg).</remarks>
-	public class Mass<T> : Quantity<T> {
+	public class Mass<T> : BaseQuantity<T> {
 
 		public Mass() {
 			this._unit = Units.System.SI.GRAM;

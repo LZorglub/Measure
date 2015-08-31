@@ -9,7 +9,7 @@ namespace Afk.Measure.Quantity.Base {
 	/// </summary>
 	/// <typeparam name="T"></typeparam>
 	/// <remarks>The base unit of this quantity is the kelvin.</remarks>
-	public class Temperature<T> : Quantity<T> {
+	public class Temperature<T> : BaseQuantity<T> {
 
 		public Temperature() {
 			this._unit = Units.System.SI.KELVIN;

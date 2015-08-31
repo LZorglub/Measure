@@ -157,7 +157,7 @@ namespace Afk.Measure.Units {
 		}
 		#endregion
 
-        public static Afk.Measure.Quantity.Quantity<double> operator *(double value, Unit unit)
+        public static Afk.Measure.Quantity.BaseQuantity<double> operator *(double value, Unit unit)
         {
             var qty = Dimension.QuantityFrom<double>(unit.Dimension);
             qty.Value = value;

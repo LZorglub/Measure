@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 
 namespace Afk.Measure.Quantity.Derived {
-	public class Power<T> : Quantity<T> {
+	public class Power<T> : BaseQuantity<T> {
 		public Power() {
 			this._unit = new Afk.Measure.Units.Metric.Derived.Watt();
 		}

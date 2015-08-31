@@ -26,12 +26,12 @@ namespace ConsoleTest {
 
                 UKVolume();
                 Console.ReadLine();
-                return;
+                //return;
 
 				Temperature<double> klv = 5;
 				Temperature<long> klv2 = 15;
 
-                var litre = Quantity.None<Litre>(1);
+                var litre = BaseQuantity.None<Litre>(1);
                 Console.WriteLine(litre.ConvertTo(Unit.Parse("ml")));
                 Console.WriteLine(litre.ConvertTo(Unit.Parse("pt")));
 
@@ -39,16 +39,16 @@ namespace ConsoleTest {
 
                 // Unit path : si on effectue W * h et après / h, il est bien de se souvenir qu'on est
                 // venu de W pour retomber sur cette unité
-                var watt = Quantity.None<Watt>(1);
-                var wh = watt * Quantity.None<Hour>(1);
-                var wt = wh / Quantity.None<Hour>(1);
+                var watt = BaseQuantity.None<Watt>(1);
+                var wh = watt * BaseQuantity.None<Hour>(1);
+                var wt = wh / BaseQuantity.None<Hour>(1);
 
                 // m.C * C doit être possible même si pas de converter vers unité de base
                 var lg = 10 * SI.METER;
-                var mc = lg * (Quantity.None<double, Celsius>(6));
-                var mcc = mc * Quantity.None<double, Celsius>(5);
+                var mc = lg * (BaseQuantity.None<double, Celsius>(6));
+                var mcc = mc * BaseQuantity.None<double, Celsius>(5);
 
-				var qd = new DerivedQuantity<double>(5, "m3");
+				var qd = new Quantity<double>(5, "m3");
 
 			//	var qfi = klv * klv2;
 				var qc = (klv).ConvertTo(Unit.Parse("°C"));
@@ -56,34 +56,34 @@ namespace ConsoleTest {
 				Afk.Measure.Quantity.Derived.Volume<double> v = 12;
 				Console.WriteLine(v.ConvertTo(Unit.Parse("kl")));
 
-				var v2 = Quantity.Deci<Litre>(764.1);
+				var v2 = BaseQuantity.Deci<Litre>(764.1);
 				Console.WriteLine(v2.ConvertTo(Unit.Parse("mm3")));
 
-				v2 = Quantity.Hecto<Volume>(4);
+				v2 = BaseQuantity.Hecto<Volume>(4);
 				Console.WriteLine(v2.ConvertTo(Unit.Parse("hl")));
 
-				v2 = Quantity.Deka<Litre>(1257);
+				v2 = BaseQuantity.Deka<Litre>(1257);
 				Console.WriteLine(v2.ConvertTo(Unit.Parse("m3")));
 
-				v2 = Quantity.Centi<Volume>(1729.743);
+				v2 = BaseQuantity.Centi<Volume>(1729.743);
 				Console.WriteLine(v2.ConvertTo(Unit.Parse("dl")));
 
-				v2 = Quantity.Milli<Volume>(128.173);
+				v2 = BaseQuantity.Milli<Volume>(128.173);
 				Console.WriteLine(v2.ConvertTo(Unit.Parse("ml")));
 
-				v2 = Quantity.Deka<Volume>(3);
+				v2 = BaseQuantity.Deka<Volume>(3);
 				Console.WriteLine(v2.ConvertTo(Unit.Parse("hl")));
 
-				v2 = Quantity.None<Litre>(79.47);
+				v2 = BaseQuantity.None<Litre>(79.47);
 				Console.WriteLine(v2.ConvertTo(Unit.Parse("cm3")));
 
-				v2 = Quantity.Centi<Litre>(73475);
+				v2 = BaseQuantity.Centi<Litre>(73475);
 				Console.WriteLine(v2.ConvertTo(Unit.Parse("m3")));
 
-				v2 = Quantity.Deci<Volume>(4.59);
+				v2 = BaseQuantity.Deci<Volume>(4.59);
 				Console.WriteLine(v2.ConvertTo(Unit.Parse("dl")));
 
-				/*
+                /*
 				var m2 = Quantity.Kilo<Meter>(5);
 				var c = Quantity.None<double, Celsius>(6);
 				var k = Quantity.None<double, Kelvin>(8);
@@ -92,9 +92,10 @@ namespace ConsoleTest {
 
 				var item = (m2 * c) / (second * k);
 				*/
+                BaseQuantity<double> doubleHour = 5d;
 
-				//Console.WriteLine(item.ToString());
-			}
+                //Console.WriteLine(item.ToString());
+            }
 			catch (Exception e) {
 				Console.WriteLine(e.ToString());
 			}
@@ -104,10 +105,10 @@ namespace ConsoleTest {
 
         static void UKVolume()
         {
-            var litre = Quantity.None<Litre>(1);
+            var litre = BaseQuantity.None<Litre>(1);
             Console.WriteLine(litre.ConvertTo(Unit.Parse("m3")));
 
-            var pint = Quantity.None<Afk.Measure.Units.US.Pint>(1);
+            var pint = BaseQuantity.None<Afk.Measure.Units.US.Pint>(1);
             Console.WriteLine(pint.ConvertTo(Unit.Parse("ml")));
         }
 	}

@@ -6,34 +6,33 @@ using Afk.Measure.Units;
 
 namespace Afk.Measure.Quantity {
 	/// <summary>
-	/// Represents a derived quantity
+	/// Represents a quantity
 	/// </summary>
 	/// <typeparam name="T"></typeparam>
-	public class DerivedQuantity<T> : Quantity<T> {
+	public class Quantity<T> : BaseQuantity<T> {
 
-		/// <summary>
-		/// Initialize a new instance of <see cref="DerivedQuantity"/>
-		/// </summary>
-		public DerivedQuantity() : base() {
+        /// <summary>
+        /// Initialize a new instance of <see cref="Quantity"/>
+        /// </summary>
+        public Quantity() : base() {
 		}
 
-		/// <summary>
-		/// Initialize a new instance of <see cref="DerivedQuantity"/>
-		/// </summary>
-		/// <param name="value"></param>
-		/// <param name="unit"></param>
-		public DerivedQuantity(T value, Unit unit) : this() {
+        /// <summary>
+        /// Initialize a new instance of <see cref="Quantity"/>
+        /// </summary>
+        /// <param name="value"></param>
+        /// <param name="unit"></param>
+        public Quantity(T value, Unit unit) : this() {
 			this._value = value;
 			this._unit = unit;
 		}
 
-		/// <summary>
-		/// Initialize a new instance of <see cref="DerivedQuantity"/>
-		/// </summary>
-		/// <param name="value"></param>
-		/// <param name="unit"></param>
-		public DerivedQuantity(T value, string unit) : this(value, Unit.Parse(unit)) {
+        /// <summary>
+        /// Initialize a new instance of <see cref="Quantity"/>
+        /// </summary>
+        /// <param name="value"></param>
+        /// <param name="unit"></param>
+        public Quantity(T value, string unit) : this(value, Unit.Parse(unit)) {
 		}
-
-	}
+    }
 }

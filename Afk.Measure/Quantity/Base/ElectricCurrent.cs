@@ -9,7 +9,7 @@ namespace Afk.Measure.Quantity.Base {
 	/// </summary>
 	/// <typeparam name="T"></typeparam>
 	/// <remarks>The base unit of this quantity is the ampere.</remarks>
-	public class ElectricCurrent<T> : Quantity<T> {
+	public class ElectricCurrent<T> : BaseQuantity<T> {
 
 		public ElectricCurrent() {
 			this._unit = Units.System.SI.AMPERE;

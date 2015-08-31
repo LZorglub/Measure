@@ -285,15 +285,15 @@ namespace Afk.Measure {
 				if (dimensionToQuantity == null) {
 					dimensionToQuantity = new Dictionary<Dimension, Type>();
 
-					// Search all quantity in current assembly, not DerivedQuantity
+					// Search all quantity in current assembly, not Quantity class
 					IEnumerable<Type> types = Assembly.GetExecutingAssembly().GetTypes().
-						Where(e => IsSubclassOfRawGeneric(typeof(Measure.Quantity.Quantity<>), e) && e != typeof(DerivedQuantity<>));
+						Where(e => IsSubclassOfRawGeneric(typeof(Measure.Quantity.BaseQuantity<>), e) && e != typeof(Quantity<>));
 					foreach (Type tp in types) {
 						if (!tp.IsAbstract) {
 							// Create a quantity reference to obtain the unit and dimension
 							if (tp.IsGenericType) {
 								try {
-									Quantity<object> qty = (Quantity<object>)Activator.CreateInstance(tp.MakeGenericType(typeof(object)));
+									BaseQuantity<object> qty = (BaseQuantity<object>)Activator.CreateInstance(tp.MakeGenericType(typeof(object)));
 
 									if (qty.Unit != null) {
 										dimensionToQuantity.Add(qty.Unit.Dimension, tp);
@@ -314,20 +314,20 @@ namespace Afk.Measure {
 			return null;
 		}
 
-		/// <summary>
-		/// Gets the default quantity of specified quantity
-		/// </summary>
-		/// <typeparam name="T"></typeparam>
-		/// <param name="dimension"><see cref="Dimension"/> of quantity</param>
-		/// <returns>A <see cref="Quantity"/> equivalent to the <b>dimension</b></returns>
-		public static Quantity<T> QuantityFrom<T>(Dimension dimension) {
+        /// <summary>
+        /// Gets the default quantity of specified quantity
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="dimension"><see cref="Dimension"/> of quantity</param>
+        /// <returns>A <see cref="BaseQuantity"/> equivalent to the <b>dimension</b></returns>
+        public static BaseQuantity<T> QuantityFrom<T>(Dimension dimension) {
 			Type tp = QuantityTypeFrom(dimension);
 
 			if (tp == null) return null;
 
 			tp = tp.MakeGenericType(typeof(T));
 			object qty = Activator.CreateInstance(tp);
-			return (Quantity<T>)qty;
+			return (BaseQuantity<T>)qty;
 		}
     }
 }

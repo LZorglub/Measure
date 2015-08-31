@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 
 namespace Afk.Measure.Quantity.Derived {
-	public class Acceleration<T> : Quantity<T> {
+	public class Acceleration<T> : BaseQuantity<T> {
 		public Acceleration() {
 			this._unit = new Afk.Measure.Units.Metric.Derived.Velocity() / new Units.Metric.SI.Second();
 		}

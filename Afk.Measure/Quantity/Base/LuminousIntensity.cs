@@ -9,7 +9,7 @@ namespace Afk.Measure.Quantity.Base {
 	/// </summary>
 	/// <typeparam name="T"></typeparam>
 	/// <remarks>The base unit of this quantity is the candela.</remarks>
-	public class LuminousIntensity<T> : Quantity<T> {
+	public class LuminousIntensity<T> : BaseQuantity<T> {
 
 		public LuminousIntensity() {
 			this._unit = Units.System.SI.CANDELA;

@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 
 namespace Afk.Measure.Quantity.Derived {
-	public class Volume<T> : Quantity<T> {
+	public class Volume<T> : BaseQuantity<T> {
 		public Volume() {
 			this._unit = new Afk.Measure.Units.Metric.Derived.Volume();
 		}

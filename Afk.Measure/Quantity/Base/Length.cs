@@ -9,7 +9,7 @@ namespace Afk.Measure.Quantity.Base {
 	/// </summary>
 	/// <typeparam name="T"></typeparam>
 	/// <remarks>The base unit of this quantity is the meter.</remarks>
-	public class Length<T> : Quantity<T> {
+	public class Length<T> : BaseQuantity<T> {
 
 		public Length() {
 			this._unit = Units.System.SI.METER;
