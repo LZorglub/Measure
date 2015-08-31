@@ -30,7 +30,8 @@ namespace ConsoleTest {
 
 				Temperature<double> klv = 5;
 				Temperature<int> klv2 = 15;
-                var result = klv * klv2;
+                Quantity<double> cinq = 5;
+                var result = klv * cinq;
 
                 Length<double> metre = 1;
 

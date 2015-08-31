@@ -29,7 +29,7 @@ namespace Afk.Measure.Quantity {
 		}
 
         /// <summary>
-        /// Gets a quantity specified <see cref="Unit"/> and <b>value</b>
+        /// Gets a quantity specified by <see cref="Unit"/> and <b>value</b>
         /// </summary>
         /// <typeparam name="T">Type of value</typeparam>
         /// <param name="unit"><see cref="Unit"/> of quantity</param>
