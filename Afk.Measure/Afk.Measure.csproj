@@ -85,7 +85,7 @@
     <Compile Include="Quantity\Base\Temperature.cs" />
     <Compile Include="Quantity\Base\Time.cs" />
     <Compile Include="Quantity\Base\Currency.cs" />
-    <Compile Include="Quantity\DerivedQuantity.cs" />
+    <Compile Include="Quantity\Quantity.cs" />
     <Compile Include="Quantity\Derived\Energy.cs" />
     <Compile Include="Quantity\Derived\Force.cs" />
     <Compile Include="Quantity\Derived\Power.cs" />
