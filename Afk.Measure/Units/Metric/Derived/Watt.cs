@@ -13,8 +13,10 @@ namespace Afk.Measure.Units.Metric.Derived {
 	/// W = J·s-1 = N·m·s-1 = kg·m2·s-3
 	/// </remarks>
 	public class Watt : ProductMetricBaseUnit {
-
-		public Watt()
+        /// <summary>
+        /// Initialize a new instance of <see cref="Watt"/>
+        /// </summary>
+        public Watt()
 			: base(new Joule(), (Measure.Units.MetricBaseUnit)Afk.Measure.Units.System.SI.SECOND.Inverse()) {
 			_exponent = 1;
 			_symbol = "W";

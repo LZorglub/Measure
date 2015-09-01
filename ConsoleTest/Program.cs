@@ -11,6 +11,7 @@ using Afk.Measure.Units.Metric;
 using Afk.Measure.Units.Metric.Derived;
 using Afk.Measure.Quantity.Base;
 using Afk.Measure.Units.Imperial;
+using Afk.Measure.Quantity.Derived;
 
 namespace ConsoleTest {
 	class Program {
@@ -32,6 +33,11 @@ namespace ConsoleTest {
 				Temperature<int> klv2 = 15;
                 Quantity<double> cinq = 5;
                 var result = klv * cinq;
+                klv = klv2;
+
+                Energy<double> energy = 15;
+                Energy<int> energyInt = 8;
+                energy = energyInt;
 
                 Length<double> metre = 1;
 

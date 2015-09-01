@@ -4,7 +4,11 @@ using System.Linq;
 using System.Text;
 
 namespace Afk.Measure.Units.Imperial {
-	public class Inch : Foot {
+	public class Inch : Foot
+    {
+        /// <summary>
+        /// Initialize a new instance of <see cref="Inch"/>
+        /// </summary>
 		public Inch()
 			: base() {
 			_symbol = "in";
@@ -13,14 +17,20 @@ namespace Afk.Measure.Units.Imperial {
 	}
 
 	public class Foot : BaseUnit {
-		public Foot() : base(new Dimension(1, 0, 0, 0, 0, 0, 0)) {
+        /// <summary>
+        /// Initialize a new instance of <see cref="Foot"/>
+        /// </summary>
+        public Foot() : base(new Dimension(1, 0, 0, 0, 0, 0, 0)) {
 			_symbol = "ft";
 			_baseConverter = new Afk.Measure.Converter.MultiplyConverter(0.3048);
 		}
 	}
 
 	public class Yard : Foot {
-		public Yard()
+        /// <summary>
+        /// Initialize a new instance of <see cref="Yard"/>
+        /// </summary>
+        public Yard()
 			: base() {
 			_symbol = "yd";
 			_baseConverter = _baseConverter.Concat(new Afk.Measure.Converter.MultiplyConverter(3));
@@ -28,7 +38,10 @@ namespace Afk.Measure.Units.Imperial {
 	}
 
 	public class Mile : Foot {
-		public Mile()
+        /// <summary>
+        /// Initialize a new instance of <see cref="Mile"/>
+        /// </summary>
+        public Mile()
 			: base() {
 			_symbol = "mi";
 			_baseConverter = _baseConverter.Concat(new Afk.Measure.Converter.MultiplyConverter(5280));

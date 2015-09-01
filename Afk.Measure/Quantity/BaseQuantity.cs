@@ -270,7 +270,7 @@ namespace Afk.Measure.Quantity {
 				if (qty.Unit != null && qty.Unit != BaseUnit.UNITONE) {
 					if (left.Unit is PrefixUnit && qty.Unit is Measure.Units.MetricBaseUnit) {
 						Measure.Units.Metric.Prefixes.SIPrefixe p = ((PrefixUnit)left.Unit).Prefixe;
-						if (p.Exponent != Measure.Units.Metric.Prefixes.ePrefixes.None ||
+						if (p.Exponent != Measure.Units.Metric.Prefixes.ExponentPrefixes.None ||
 							(qty.Unit is IMetricUnitOffset && ((IMetricUnitOffset)qty.Unit).Prefixe.Exponent != p.Exponent)) {
 							return qty.ConvertTo(new PrefixUnit(p, (Measure.Units.MetricBaseUnit)qty.Unit));
 						}

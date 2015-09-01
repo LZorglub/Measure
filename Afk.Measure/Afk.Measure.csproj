@@ -130,7 +130,7 @@
     <Compile Include="Units\Metric\Derived\Weber.cs" />
     <Compile Include="Units\MetricBaseUnit.cs" />
     <Compile Include="Units\PrefixUnit.cs" />
-    <Compile Include="Units\Metric\Prefixes\ePrefixes.cs" />
+    <Compile Include="Units\Metric\Prefixes\ExponentPrefixes.cs" />
     <Compile Include="Units\Metric\Prefixes\SIPrefixe.cs" />
     <Compile Include="Units\ProductMetricBaseUnit.cs" />
     <Compile Include="Units\Metric\SI\Ampere.cs" />

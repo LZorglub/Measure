@@ -12,8 +12,10 @@ namespace Afk.Measure.Units.Metric.Derived {
 	/// 1 W·h = J·s-1·h = N·m·s-1·h = kg·m2·s-3·h = 3600 kg·m2·s-2
 	/// </remarks>
 	public class WattHour : ProductMetricBaseUnit {
-
-		public WattHour() :  base (new Watt(), new Hour()) {
+        /// <summary>
+        /// Initialize a new instance of <see cref="WattHour"/>
+        /// </summary>
+        public WattHour() :  base (new Watt(), new Hour()) {
 			_exponent = 1;
 			_symbol = "Wh";
 		}

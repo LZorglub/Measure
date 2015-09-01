@@ -6,8 +6,14 @@ using Afk.Measure.Units;
 using Afk.Measure.Units.System;
 
 namespace Afk.Measure.Units.Metric.Derived {
+    /// <summary>
+    /// Represents the Fahrenheit unit (°F)
+    /// </summary>
 	public class Fahrenheit : MetricBaseUnit {
-		public Fahrenheit()
+        /// <summary>
+        /// Initialize a new instance of <see cref="Fahrenheit"/>
+        /// </summary>
+        public Fahrenheit()
 			: base(new Dimension(0, 0, 1, 0, 0, 0, 0)) {
 			_symbol = "°F";
 			// K = (°F + 459.67) * 5/9

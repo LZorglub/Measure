@@ -183,7 +183,7 @@ namespace Afk.Measure.Units.Metric.Prefixes {
 		/// <summary>
 		/// Gets the exponent prefixe
 		/// </summary>
-		public ePrefixes Exponent {
+		public ExponentPrefixes Exponent {
             get;
             private set;
         }
@@ -192,33 +192,33 @@ namespace Afk.Measure.Units.Metric.Prefixes {
 		/// Initialize the static members of <see cref="SIPrefixe"/>
 		/// </summary>
 		static SIPrefixe() {
-			_Yotta = new SIPrefixe("yotta", "Y", ePrefixes.Yotta);
-			_Zetta = new SIPrefixe("zetta", "Z", ePrefixes.Zetta);
-			_Exbi = new SIPrefixe("exbi", "Ei", ePrefixes.Exbi, 2);
-			_Exa = new SIPrefixe("exa", "E", ePrefixes.Exa);
-			_Pebi = new SIPrefixe("pebi", "Pi", ePrefixes.Pebi, 2);
-			_Peta = new SIPrefixe("peta", "P", ePrefixes.Peta);
-			_Tebi = new SIPrefixe("tebi", "Ti", ePrefixes.Tebi, 2);
-			_Tera = new SIPrefixe("tera", "T", ePrefixes.Tera);
-			_Gibi = new SIPrefixe("gibi", "Gi", ePrefixes.Gibi, 2);
-			_Giga = new SIPrefixe("giga", "G", ePrefixes.Giga);
-			_Mebi = new SIPrefixe("mebi", "Mi", ePrefixes.Mebi, 2);
-			_Mega = new SIPrefixe("mega", "M", ePrefixes.Mega);
-			_Kibi = new SIPrefixe("kibi", "Ki", ePrefixes.Kibi, 2);
-			_Kilo = new SIPrefixe("kilo", "k", ePrefixes.Kilo);
-			_Hecto = new SIPrefixe("hecto", "h", ePrefixes.Hecto);
-			_Deka = new SIPrefixe("deka", "da", ePrefixes.Deka);
-			_None = new SIPrefixe("", "", ePrefixes.None);
-			_Deci = new SIPrefixe("deci", "d", ePrefixes.Deci);
-			_Centi = new SIPrefixe("centi", "c", ePrefixes.Centi);
-			_Milli = new SIPrefixe("milli", "m", ePrefixes.Milli);
-			_Micro = new SIPrefixe("micro", "µ", ePrefixes.Micro);
-			_Nano = new SIPrefixe("nano", "n", ePrefixes.Nano);
-			_Pico = new SIPrefixe("pico", "p", ePrefixes.Pico);
-			_Femto = new SIPrefixe("femto", "f", ePrefixes.Femto);
-			_Atto = new SIPrefixe("atto", "a", ePrefixes.Atto);
-			_Zepto = new SIPrefixe("zepto", "z", ePrefixes.Zepto);
-			_Yocto = new SIPrefixe("yocto", "y", ePrefixes.Yocto);
+			_Yotta = new SIPrefixe("yotta", "Y", ExponentPrefixes.Yotta);
+			_Zetta = new SIPrefixe("zetta", "Z", ExponentPrefixes.Zetta);
+			_Exbi = new SIPrefixe("exbi", "Ei", ExponentPrefixes.Exbi, 2);
+			_Exa = new SIPrefixe("exa", "E", ExponentPrefixes.Exa);
+			_Pebi = new SIPrefixe("pebi", "Pi", ExponentPrefixes.Pebi, 2);
+			_Peta = new SIPrefixe("peta", "P", ExponentPrefixes.Peta);
+			_Tebi = new SIPrefixe("tebi", "Ti", ExponentPrefixes.Tebi, 2);
+			_Tera = new SIPrefixe("tera", "T", ExponentPrefixes.Tera);
+			_Gibi = new SIPrefixe("gibi", "Gi", ExponentPrefixes.Gibi, 2);
+			_Giga = new SIPrefixe("giga", "G", ExponentPrefixes.Giga);
+			_Mebi = new SIPrefixe("mebi", "Mi", ExponentPrefixes.Mebi, 2);
+			_Mega = new SIPrefixe("mega", "M", ExponentPrefixes.Mega);
+			_Kibi = new SIPrefixe("kibi", "Ki", ExponentPrefixes.Kibi, 2);
+			_Kilo = new SIPrefixe("kilo", "k", ExponentPrefixes.Kilo);
+			_Hecto = new SIPrefixe("hecto", "h", ExponentPrefixes.Hecto);
+			_Deka = new SIPrefixe("deka", "da", ExponentPrefixes.Deka);
+			_None = new SIPrefixe("", "", ExponentPrefixes.None);
+			_Deci = new SIPrefixe("deci", "d", ExponentPrefixes.Deci);
+			_Centi = new SIPrefixe("centi", "c", ExponentPrefixes.Centi);
+			_Milli = new SIPrefixe("milli", "m", ExponentPrefixes.Milli);
+			_Micro = new SIPrefixe("micro", "µ", ExponentPrefixes.Micro);
+			_Nano = new SIPrefixe("nano", "n", ExponentPrefixes.Nano);
+			_Pico = new SIPrefixe("pico", "p", ExponentPrefixes.Pico);
+			_Femto = new SIPrefixe("femto", "f", ExponentPrefixes.Femto);
+			_Atto = new SIPrefixe("atto", "a", ExponentPrefixes.Atto);
+			_Zepto = new SIPrefixe("zepto", "z", ExponentPrefixes.Zepto);
+			_Yocto = new SIPrefixe("yocto", "y", ExponentPrefixes.Yocto);
 		}
 
 		/// <summary>
@@ -232,9 +232,9 @@ namespace Afk.Measure.Units.Metric.Prefixes {
 		/// </summary>
 		/// <param name="name">Prefixe name</param>
 		/// <param name="symbol">Prefixe symbol</param>
-		/// <param name="prefixe"><see cref="ePrefixes"/> enum.</param>
+		/// <param name="prefixe"><see cref="ExponentPrefixes"/> enum.</param>
 		/// <remarks>Default base is 10</remarks>
-		private SIPrefixe(string name, string symbol, ePrefixes prefixe)
+		private SIPrefixe(string name, string symbol, ExponentPrefixes prefixe)
 			: this(name, symbol, prefixe, 10) {
 		}
 
@@ -243,9 +243,9 @@ namespace Afk.Measure.Units.Metric.Prefixes {
 		/// </summary>
 		/// <param name="name">Prefixe name</param>
 		/// <param name="symbol">Prefixe symbol</param>
-		/// <param name="prefixe"><see cref="ePrefixes"/> enum.</param>
+		/// <param name="prefixe"><see cref="ExponentPrefixes"/> enum.</param>
 		/// <param name="power">Prefixe base</param>
-		private SIPrefixe(string name, string symbol, ePrefixes prefixe, long power) {
+		private SIPrefixe(string name, string symbol, ExponentPrefixes prefixe, long power) {
 			Name = name;
 			Symbol = symbol;
 			Exponent = prefixe;

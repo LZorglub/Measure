@@ -6,23 +6,32 @@ using Afk.Measure.Units;
 using Afk.Measure.Units.System;
 
 namespace Afk.Measure.Units.Metric.Derived {
+    /// <summary>
+    /// Represents the volume unit (m3)
+    /// </summary>
 	public class Volume : ProductMetricBaseUnit{
-		public Volume()
+        /// <summary>
+        /// Initialize a new instance of <see cref="Volume"/>
+        /// </summary>
+        public Volume()
 			: base(new Area(), Afk.Measure.Units.System.SI.METER) {
 		}
 	}
 
 	/// <summary>
-	/// Représente l'unité litre.
+	/// Represents the liter unit (l)
 	/// </summary>
 	/// <remarks>
-	/// La classe Litre ne peut pas hériter de <see cref="Volume"/>.
-	/// Un volume est égal à dm * dm * dm. Si Litre hérite de volume ses unités étendues seront le mètre
-	/// ce qui provoque une erreur de conversion lorsque celles ci devront être utilisé.
-	/// Cas : l * (m.°C) = m4.°C on préfére l * (m.°C) = l.m.°C
+	/// This class can not inherited from <see cref="Volume"/>.
+	/// A volume is equal to dm * dm * dm. If Liter inherited from Volume, the extended units will be the meter
+	/// which cause a unit conversion issue when they will be used..
+	/// Case : l * (m.°C) = m4.°C we prefer l * (m.°C) = l.m.°C
 	/// </remarks>
 	public class Litre : MetricBaseUnit {
-		public Litre()
+        /// <summary>
+        /// Initialize a new instance of <see cref="Litre"/>
+        /// </summary>
+        public Litre()
 			: base(new Dimension(3, 0, 0, 0, 0, 0, 0)) {
 			_exponent = 1;
 			_symbol = "l";
