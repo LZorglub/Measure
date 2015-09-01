@@ -129,7 +129,7 @@ namespace Afk.Measure.Units {
 					Measure.Units.Metric.Prefixes.SIPrefixe p = null;
 
 					// L'espace n'est pas considéré comme un séparateur valable, certaines unités sont composées d'espace
-					// luid ounce = fl oz
+					// fluid ounce = fl oz
 					string[] unites = symbol.Split(new char[] { ProductUnitBuilder.SEPARATOR, '.' });
 
 					for (int index = 0; index < unites.Length; index++) {
@@ -155,7 +155,7 @@ namespace Afk.Measure.Units {
 								p = Measure.Units.Metric.Prefixes.SIPrefixe.None;
 							}
 							else {
-								Unit knownUnit = WellKnownUnits.FirstOrDefault(e => string.Compare(e.Symbol, baseUnit, ignoreCase) == 0);
+								Unit knownUnit = WellKnownUnits.FirstOrDefault(e => string.Compare(e.LocalizableSymbol, baseUnit, ignoreCase) == 0);
 								if (knownUnit != null) {
 									if (exponent < 0) knownUnit = knownUnit.Inverse();
 

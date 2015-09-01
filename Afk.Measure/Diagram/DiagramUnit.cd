@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <ClassDiagram MajorVersion="1" MinorVersion="1">
-  <Class Name="Afk.Measure.Units.BaseUnit" Collapsed="true">
+  <Class Name="Afk.Measure.Units.BaseUnit">
     <Position X="1.5" Y="2" Width="1.5" />
     <NestedTypes>
       <Class Name="Afk.Measure.Units.BaseUnit.UnitOne" Collapsed="true">
@@ -14,11 +14,11 @@
       <FileName>Units\BaseUnit.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="Afk.Measure.Units.UnitPrefix">
+  <Class Name="Afk.Measure.Units.PrefixUnit">
     <Position X="8" Y="2" Width="1.5" />
     <TypeIdentifier>
       <HashCode>CAAAAAAAAFAAAAAAAAIAAIAAAAAAAAAJABAAAAAAKAA=</HashCode>
-      <FileName>Units\UnitPrefix.cs</FileName>
+      <FileName>Units\PrefixUnit.cs</FileName>
     </TypeIdentifier>
     <ShowAsAssociation>
       <Property Name="BaseUnit" />
@@ -38,7 +38,7 @@
       <FileName>Units\ProductUnit.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="Afk.Measure.Units.ProductMetricBaseUnit" Collapsed="true">
+  <Class Name="Afk.Measure.Units.ProductMetricBaseUnit">
     <Position X="3.75" Y="4.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAQAAAAIAAAgAAEAAAAAJQBAAAAAAKgA=</HashCode>
@@ -59,7 +59,7 @@
       </Struct>
     </NestedTypes>
     <TypeIdentifier>
-      <HashCode>MoAiogACACAYFQAGAAJAAQMAgIAASJDPlpEhAQEACBA=</HashCode>
+      <HashCode>MoAiogACACAYFQAGIAJAAQMAgIAASpDPlpEhAQEACBA=</HashCode>
       <FileName>Units\Unit.cs</FileName>
     </TypeIdentifier>
     <Lollipop Position="0.2" />
@@ -68,7 +68,7 @@
     <Position X="6" Y="4.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQBAAAAAAAAA=</HashCode>
-      <FileName>Units\UnitPrefix.cs</FileName>
+      <FileName>Units\PrefixUnit.cs</FileName>
     </TypeIdentifier>
   </Interface>
   <Font Name="Tahoma" Size="8.25" />

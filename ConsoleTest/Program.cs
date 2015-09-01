@@ -12,16 +12,36 @@ using Afk.Measure.Units.Metric.Derived;
 using Afk.Measure.Quantity.Base;
 using Afk.Measure.Units.Imperial;
 using Afk.Measure.Quantity.Derived;
+using System.Globalization;
 
 namespace ConsoleTest {
 	class Program {
 
-		class A<T> {
-		}
+        static void GetRegion(CultureInfo cu = null)
+        {
+            var culture = cu ?? System.Globalization.CultureInfo.CurrentCulture;
+
+            if (culture.IsNeutralCulture)
+            {
+                RegionInfo r = new RegionInfo(culture.LCID);
+
+                Console.WriteLine(r.TwoLetterISORegionName);
+            }
+        }
 
 		static void Main(string[] args) {
 			try {
+
+                GetRegion();
+                GetRegion(new CultureInfo("en-GB"));
+                GetRegion(CultureInfo.InvariantCulture);
+
+
 				Unit[] units = Unit.WellKnownUnits;
+
+                foreach (var item in
+                units.GroupBy(e => e.LocalizableSymbol).Where(grp => grp.Count() > 1).Select(e => e.Key))
+                    Console.WriteLine(item);
 
                 Unit.Parse("pt");
 

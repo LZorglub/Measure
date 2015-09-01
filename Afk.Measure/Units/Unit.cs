@@ -34,6 +34,13 @@ namespace Afk.Measure.Units {
 			}
 		}
 
+        /// <summary>
+        /// Gets the localizable symbol (sample : gal US or gal GB)
+        /// </summary>
+        public virtual string LocalizableSymbol
+        {
+            get { return Symbol; }
+        }
 		/// <summary>
 		/// Gets the unit symbol without exponent
 		/// </summary>
