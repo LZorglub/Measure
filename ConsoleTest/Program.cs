@@ -36,6 +36,10 @@ namespace ConsoleTest {
                 GetRegion(new CultureInfo("en-GB"));
                 GetRegion(CultureInfo.InvariantCulture);
 
+                // Fail m°C * K
+                var qty1 = 5 * (SI.METER * SI.KELVIN);
+                var qty2 = 15 * Unit.Parse("°C");
+                var result0 = qty1 * qty2;
 
 				Unit[] units = Unit.WellKnownUnits;
 

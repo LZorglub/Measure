@@ -130,7 +130,7 @@ namespace Afk.Measure.Units {
 
 					// L'espace n'est pas considéré comme un séparateur valable, certaines unités sont composées d'espace
 					// fluid ounce = fl oz
-					string[] unites = symbol.Split(new char[] { ProductUnitBuilder.SEPARATOR, '.' });
+					string[] unites = symbol.Split(ProductUnitBuilder.SEPARATORS);
 
 					for (int index = 0; index < unites.Length; index++) {
 						Match match = regUnit.Match(unites[index]);

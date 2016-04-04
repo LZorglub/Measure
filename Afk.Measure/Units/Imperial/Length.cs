@@ -1,10 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
-namespace Afk.Measure.Units.Imperial {
-	public class Inch : Foot
+﻿namespace Afk.Measure.Units.Imperial
+{
+    /// <summary>
+    /// Represents the inch unit
+    /// </summary>
+    public class Inch : Foot
     {
         /// <summary>
         /// Initialize a new instance of <see cref="Inch"/>
@@ -16,7 +15,10 @@ namespace Afk.Measure.Units.Imperial {
 		}
 	}
 
-	public class Foot : BaseUnit {
+    /// <summary>
+    /// Represents the foot unit
+    /// </summary>
+    public class Foot : BaseUnit {
         /// <summary>
         /// Initialize a new instance of <see cref="Foot"/>
         /// </summary>
@@ -26,7 +28,10 @@ namespace Afk.Measure.Units.Imperial {
 		}
 	}
 
-	public class Yard : Foot {
+    /// <summary>
+    /// Represents the yard unit
+    /// </summary>
+    public class Yard : Foot {
         /// <summary>
         /// Initialize a new instance of <see cref="Yard"/>
         /// </summary>
@@ -36,7 +41,10 @@ namespace Afk.Measure.Units.Imperial {
 			_baseConverter = _baseConverter.Concat(new Afk.Measure.Converter.MultiplyConverter(3));
 		}
 	}
-
+    
+    /// <summary>
+    /// Represents the mile unit
+    /// </summary>
 	public class Mile : Foot {
         /// <summary>
         /// Initialize a new instance of <see cref="Mile"/>

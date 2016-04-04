@@ -1,11 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿namespace Afk.Measure.Units.Metric.CGS
+{
 
-namespace Afk.Measure.Units.Metric.CGS {
-	public class Centimetre : MetricBaseUnit, IMetricUnitOffset {
+    /// <summary>
+    /// Represents the Cm, a centimetre-gram-second (CGS) unit of length
+    /// </summary>
+    public class Centimetre : MetricBaseUnit, IMetricUnitOffset {
 
+        /// <summary>
+        /// Initiliaze a new instance of <see cref="Centimetre"/>
+        /// </summary>
 		public Centimetre()
 			: base(new Dimension(1, 0, 0, 0, 0, 0, 0)) {
 			_symbol = "cm";
@@ -13,11 +16,16 @@ namespace Afk.Measure.Units.Metric.CGS {
 		}
 
 		#region IMetricUnitOffset Membres
-
+        /// <summary>
+        /// Gets the prefix of the unit
+        /// </summary>
 		public Measure.Units.Metric.Prefixes.SIPrefixe Prefixe {
 			get { return Measure.Units.Metric.Prefixes.SIPrefixe.Centi; }
 		}
 
+        /// <summary>
+        /// Gets the metric symbol
+        /// </summary>
 		public string MetricSymbol {
 			get { return "m"; }
 		}

@@ -167,10 +167,17 @@ namespace Afk.Measure.Units {
         public static Afk.Measure.Quantity.BaseQuantity<double> operator *(double value, Unit unit)
         {
             var qty = Dimension.QuantityFrom<double>(unit.Dimension);
-            qty.Value = value;
-            qty.Unit = unit;
+            if (qty != null)
+            {
+                qty.Value = value;
+                qty.Unit = unit;
+            } else
+            {
+                qty = new Afk.Measure.Quantity.Quantity<double>(value, unit);
+            }
             return qty;
         }
 
 	}
 }
+ 

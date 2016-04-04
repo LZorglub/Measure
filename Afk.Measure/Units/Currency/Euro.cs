@@ -1,11 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
-namespace Afk.Measure.Units.Currency {
+﻿namespace Afk.Measure.Units.Currency
+{
     /// <summary>
-    /// Represents th euro
+    /// Represents the euro unit
     /// </summary>
     public class Euro : BaseUnit {
         /// <summary>

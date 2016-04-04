@@ -22,7 +22,7 @@ namespace Afk.Measure.Units {
 	/// </remarks>
 	class ProductUnitBuilder {
 
-		public const char SEPARATOR = (char)183;
+		public static readonly char[] SEPARATORS = new char[]{ (char)183, '.' };
 
 		/// <summary>
 		/// Get the product of two <see cref="BaseUnit"/>

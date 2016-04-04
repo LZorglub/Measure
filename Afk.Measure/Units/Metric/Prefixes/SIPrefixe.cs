@@ -1,20 +1,16 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
-namespace Afk.Measure.Units.Metric.Prefixes {
-	/// <summary>
-	/// Represents a decimal or a binary prefixe 
-	/// </summary>
-	/// <remarks>
-	/// It is important to note that the kilogram is the only SI unit with a prefix as part of 
-	/// its name and symbol. Because multiple prefixes may not be used, in the case of the 
-	/// kilogram the prefix names are used with the unit name "gram" and the prefix symbols 
-	/// are used with the unit symbol "g." 
-	/// With this exception, any SI prefix may be used with any SI unit
-	/// </remarks>
-	public sealed class SIPrefixe {
+﻿namespace Afk.Measure.Units.Metric.Prefixes
+{
+    /// <summary>
+    /// Represents a decimal or a binary prefixe 
+    /// </summary>
+    /// <remarks>
+    /// It is important to note that the kilogram is the only SI unit with a prefix as part of 
+    /// its name and symbol. Because multiple prefixes may not be used, in the case of the 
+    /// kilogram the prefix names are used with the unit name "gram" and the prefix symbols 
+    /// are used with the unit symbol "g." 
+    /// With this exception, any SI prefix may be used with any SI unit
+    /// </remarks>
+    public sealed class SIPrefixe {
 
 		#region SI Prefixe
 		private static SIPrefixe _Yotta;

@@ -1,9 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
-namespace Afk.Measure.Units.Imperial {
+﻿namespace Afk.Measure.Units.Imperial
+{
     /// <summary>
     /// Represents the fluid once unit (fl oz)
     /// </summary>

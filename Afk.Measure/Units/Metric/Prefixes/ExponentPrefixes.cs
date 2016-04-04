@@ -1,13 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
-namespace Afk.Measure.Units.Metric.Prefixes {
-	/// <summary>
-	/// Specifies the exponent for prefixes
-	/// </summary>
-	public enum ExponentPrefixes {
+﻿namespace Afk.Measure.Units.Metric.Prefixes
+{
+    /// <summary>
+    /// Specifies the exponent for prefixes
+    /// </summary>
+    public enum ExponentPrefixes {
 		Yotta = 24, // Y
 		Zetta = 21, // Z
 		Exbi = 60,  // Ei
