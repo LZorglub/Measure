@@ -329,5 +329,16 @@
 
 			return null;
 		}
+
+        /// <summary>
+        /// Gets the unit with the specified prefix
+        /// </summary>
+        /// <param name="prefix"></param>
+        /// <param name="unit"></param>
+        /// <returns></returns>
+        public static Unit operator *(SIPrefixe prefix, MetricBaseUnit unit)
+        {
+            return new PrefixUnit(prefix, unit);
+        }
 	}
 }

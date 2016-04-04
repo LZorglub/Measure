@@ -513,7 +513,59 @@ namespace Afk.Measure.Quantity {
 
 			return value.Value;
 		}
-        
+
+        /// <summary>
+        /// Explicit conversion from <see cref="BaseQuantity<T>"/> to <see cref="Quantity<double>"/>
+        /// </summary>
+        /// <param name="value"><see cref="BaseQuantity<T>"/> to convert</param>
+        /// <returns><see cref="Quantity<double>"/></returns>
+        public static explicit operator Quantity<double>(BaseQuantity<T> value)
+        {
+            Quantity<double> qty = new Quantity<double>();
+            qty._value = Convert.ToDouble(value.Value);
+            qty._unit = value.Unit;
+            return qty;
+        }
+
+        /// <summary>
+        /// Explicit conversion from <see cref="BaseQuantity<T>"/> to <see cref="Quantity<decimal>"/>
+        /// </summary>
+        /// <param name="value"><see cref="BaseQuantity<T>"/> to convert</param>
+        /// <returns><see cref="Quantity<decimal>"/></returns>
+        public static explicit operator Quantity<decimal>(BaseQuantity<T> value)
+        {
+            Quantity<decimal> qty = new Quantity<decimal>();
+            qty._value = Convert.ToDecimal(value.Value);
+            qty._unit = value.Unit;
+            return qty;
+        }
+
+        /// <summary>
+        /// Explicit conversion from <see cref="BaseQuantity<T>"/> to <see cref="Quantity<long>"/>
+        /// </summary>
+        /// <param name="value"><see cref="BaseQuantity<T>"/> to convert</param>
+        /// <returns><see cref="Quantity<long>"/></returns>
+		public static explicit operator Quantity<long>(BaseQuantity<T> value)
+        {
+            Quantity<long> qty = new Quantity<long>();
+            qty._value = Convert.ToInt64(value.Value);
+            qty._unit = value.Unit;
+            return qty;
+        }
+
+        /// <summary>
+        /// Explicit conversion from <see cref="BaseQuantity<T>"/> to <see cref="Quantity<float>"/>
+        /// </summary>
+        /// <param name="value"><see cref="BaseQuantity<T>"/> to convert</param>
+        /// <returns><see cref="Quantity<float>"/></returns>
+		public static explicit operator Quantity<float>(BaseQuantity<T> value)
+        {
+            Quantity<float> qty = new Quantity<float>();
+            qty._value = Convert.ToSingle(value.Value);
+            qty._unit = value.Unit;
+            return qty;
+        }
+
         /// <summary>
         /// Converts the value of the current <see cref="BaseQuantity"/> object to its equivalent string representation
         /// </summary>

@@ -11,7 +11,6 @@
 			: base(new Dimension(0, 0, 0, 0, 0, 0, 0, 1)) {
 			_symbol = "EUR";
 		}
-
 	}
 
 	#region Old currency

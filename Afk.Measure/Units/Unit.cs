@@ -70,7 +70,7 @@ namespace Afk.Measure.Units {
 		/// <summary>
 		/// Gets the converter unit
 		/// </summary>
-		public Converter.UnitConverter BaseConverter {
+		public virtual Converter.UnitConverter BaseConverter {
 			get { return _baseConverter; }
 		}
 		#endregion

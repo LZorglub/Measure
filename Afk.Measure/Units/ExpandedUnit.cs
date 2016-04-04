@@ -57,7 +57,7 @@ namespace Afk.Measure.Units {
 			get {
 				lock (_synchronizedObject) {
 					if (_symbol == null) {
-						#region Composition du symbol du produit
+						#region Build product symbol
 						StringBuilder builderSymbol = new StringBuilder();
 
 						for (int index = 0; index < _units.Length; index++) {
@@ -139,53 +139,53 @@ namespace Afk.Measure.Units {
 		/// <summary>
 		/// Get the sum of two <see cref="ExpandedUnit"/>
 		/// </summary>
-		/// <param name="eUnitA">First <see cref="ExpandedUnit"/></param>
-		/// <param name="eUnitB">Second <see cref="ExpandedUnit"/></param>
+		/// <param name="unitA">First <see cref="ExpandedUnit"/></param>
+		/// <param name="unitB">Second <see cref="ExpandedUnit"/></param>
 		/// <returns><see cref="ExpandedUnit"/> equivalent to the sum of <b>eUnitA</b> and <b>eUnitB</b></returns>
 		/// <remarks>We keep each elementary unit to build the final <see cref="ExpandedUnit"/>
 		/// s*h != s2 but s*h = s1*h1
 		/// The negate unit are lost, for sample m.s/h = m1
 		/// </remarks>
-		public static ExpandedUnit operator +(ExpandedUnit eUnitA, ExpandedUnit eUnitB) {
-			if (eUnitA == null) throw new ArgumentNullException("eUnitA");
-			if (eUnitB == null) throw new ArgumentNullException("eUnitB");
+		public static ExpandedUnit operator +(ExpandedUnit unitA, ExpandedUnit unitB) {
+			if (unitA == null) throw new ArgumentNullException(nameof(unitA));
+			if (unitB == null) throw new ArgumentNullException(nameof(unitB));
 
 			List<Unit> eResult = new List<Unit>();
 			List<int> ePower = new List<int>();
 
 			// We keep the order of unit A
-			for(int i=0; i < eUnitA._units.Length; i++) {
-				int uiCode = eUnitA._units[i].GetUICode();
-				int power = eUnitA._power[i];
+			for(int i=0; i < unitA._units.Length; i++) {
+				int uiCode = unitA._units[i].GetUICode();
+				int power = unitA._power[i];
 
 				// The same unit are merge
-				for(int j=0; j < eUnitB._units.Length; j++) {
-					if (eUnitB._units[j].GetUICode() == uiCode)
-						power += eUnitB._power[j];
+				for(int j=0; j < unitB._units.Length; j++) {
+					if (unitB._units[j].GetUICode() == uiCode)
+						power += unitB._power[j];
 				}
 
 				if (power != 0) {
-					eResult.Add(eUnitA._units[i]); ePower.Add(power);
+					eResult.Add(unitA._units[i]); ePower.Add(power);
 				}
 			}
 
 			// We add unit of B not present in unit A
-			for (int i = 0; i < eUnitB._units.Length; i++) {
-				int uiCode = eUnitB._units[i].GetUICode();
+			for (int i = 0; i < unitB._units.Length; i++) {
+				int uiCode = unitB._units[i].GetUICode();
 
-				if (eUnitA._units.Where(e => e.GetUICode() == uiCode).Count() == 0) {
+				if (unitA._units.Where(e => e.GetUICode() == uiCode).Count() == 0) {
 					bool append = false;
 					// We keep the order of unit by dimension 
 					// For sample m.s * kg.h = m.s.h.kg
 					for (int k = 0; !append && k < eResult.Count - 1; k++) {
-						if (eResult[k].Dimension.Equals(eUnitB._units[i].Dimension)) {
-							eResult.Insert(k + 1, eUnitB._units[i]);
-							ePower.Insert(k + 1, eUnitB._power[i]);
+						if (eResult[k].Dimension.Equals(unitB._units[i].Dimension)) {
+							eResult.Insert(k + 1, unitB._units[i]);
+							ePower.Insert(k + 1, unitB._power[i]);
 							append = true;
 						}
 					}
 					if (!append) {
-						eResult.Add(eUnitB._units[i]); ePower.Add(eUnitB._power[i]);
+						eResult.Add(unitB._units[i]); ePower.Add(unitB._power[i]);
 					}
 				}
 			}
@@ -196,7 +196,7 @@ namespace Afk.Measure.Units {
 				dimension = dimension + (eResult[index].Dimension * ePower[index]);
 			}
 
-			// Remove the units which not cross the final dimension
+			// Remove the units which not cross the final dimension (for sample h.s-1 is not present in final dimension)
 			List<Unit> unites = new List<Unit>();
 			List<int> exponents = new List<int>();
 			for (int index = 0; index < eResult.Count; index++) {
@@ -315,6 +315,7 @@ namespace Afk.Measure.Units {
 		/// <param name="y">The second object to compare.</param>
 		/// <returns>true if the specified objects are equal; otherwise, false.</returns>
 		public bool Equals(KeyValuePair<Unit, int> x, KeyValuePair<Unit, int> y) {
+            // Becarefull to test the UI code and not the Hash code
 			return (x.Value == y.Value && x.Key.GetUICode() == y.Key.GetUICode());
 		}
 

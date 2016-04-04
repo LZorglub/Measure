@@ -72,6 +72,7 @@
     <Compile Include="Converter\NullConverter.cs" />
     <Compile Include="Converter\RationalConverter.cs" />
     <Compile Include="Converter\UnitConverter.cs" />
+    <Compile Include="CurrencyContext.cs" />
     <Compile Include="Dimension.cs" />
     <Compile Include="DimensionException.cs" />
     <Compile Include="Operation\Number.cs" />
@@ -94,7 +95,9 @@
     <Compile Include="Quantity\Derived\Speed.cs" />
     <Compile Include="Quantity\Derived\Volume.cs" />
     <Compile Include="Units\BaseUnit.cs" />
+    <Compile Include="Units\Currency\Dollar.cs" />
     <Compile Include="Units\Currency\Euro.cs" />
+    <Compile Include="Units\Currency\Yen.cs" />
     <Compile Include="Units\ExpandedUnit.cs" />
     <Compile Include="Units\Imperial\Length.cs" />
     <Compile Include="Units\Imperial\Mass.cs" />

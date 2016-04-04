@@ -17,7 +17,7 @@ namespace Afk.Measure.Units {
 		private static List<Unit> _wellKnownUnits;
 
 		private static object _synchronizedObject = new object();
-		private static Regex regUnit = new Regex(@"^(?<Unit>([a-zA-Z]{0,2}°)?[a-zA-Z ]*)(\^?(?<Exponent>[-+]?\d+))?$", RegexOptions.Compiled);
+		private static Regex regUnit = new Regex(@"^(?<Unit>([a-zA-Z]{0,2}°)?[a-zA-Z$¥ ]*)(\^?(?<Exponent>[-+]?\d+))?$", RegexOptions.Compiled);
 
 		internal struct HashUnit {
 			public int Id;
@@ -259,5 +259,14 @@ namespace Afk.Measure.Units {
 				return false;
 			}
 		}
+
+        /// <summary>
+        /// Explicit conversion from string to unit
+        /// </summary>
+        /// <param name="symbol"></param>
+        public static explicit operator Unit(string symbol)
+        {
+            return Unit.Parse(symbol);
+        }
 	}
 }

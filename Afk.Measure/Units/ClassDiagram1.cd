@@ -16,8 +16,15 @@
       <Compartment Name="Properties" Collapsed="true" />
       <Compartment Name="Methods" Collapsed="true" />
     </Compartments>
+    <NestedTypes>
+      <Struct Name="Afk.Measure.Units.Unit.HashUnit" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>Units\Unit_From.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Struct>
+    </NestedTypes>
     <TypeIdentifier>
-      <HashCode>MoAiogACACAYFQAGIAJAAQMAgIAASJDPlpEhAQEACBA=</HashCode>
+      <HashCode>MoAiogACACAYFQAGIAJAAQMAgIAASpDPlpEhAQEACBA=</HashCode>
       <FileName>Units\Unit.cs</FileName>
     </TypeIdentifier>
     <Lollipop Position="0.2" />

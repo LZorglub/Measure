@@ -100,5 +100,5 @@ namespace Afk.Measure.Converter {
 		public virtual bool IsLinear {
 			get { return true; }
 		}
-	}
+    }
 }

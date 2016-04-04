@@ -13,41 +13,31 @@ using Afk.Measure.Quantity.Base;
 using Afk.Measure.Units.Imperial;
 using Afk.Measure.Quantity.Derived;
 using System.Globalization;
+using Afk.Measure;
+using Afk.Measure.Units.Currency;
 
 namespace ConsoleTest {
 	class Program {
 
-        static void GetRegion(CultureInfo cu = null)
-        {
-            var culture = cu ?? System.Globalization.CultureInfo.CurrentCulture;
-
-            if (culture.IsNeutralCulture)
-            {
-                RegionInfo r = new RegionInfo(culture.LCID);
-
-                Console.WriteLine(r.TwoLetterISORegionName);
-            }
-        }
-
 		static void Main(string[] args) {
 			try {
 
-                GetRegion();
-                GetRegion(new CultureInfo("en-GB"));
-                GetRegion(CultureInfo.InvariantCulture);
+                // Currency exchange (ThreadLocalStorage)
+                using (var context = new CurrencyContext())
+                {
+                    context.AddOrReplaceConverter("$", 0.87745);
+                    context.AddOrReplaceConverter("¥", 0.00785);
 
-                // Fail m°C * K
-                var qty1 = 5 * (SI.METER * SI.KELVIN);
-                var qty2 = 15 * Unit.Parse("°C");
-                var result0 = qty1 * qty2;
+                    var dollar = 1 * Unit.Parse("$");
+                    Console.WriteLine("{0} Dollar to Yen : {1}", dollar.Value, dollar.ConvertTo((Unit)"¥").Value);
+                }
 
+                // Units
 				Unit[] units = Unit.WellKnownUnits;
 
                 foreach (var item in
                 units.GroupBy(e => e.LocalizableSymbol).Where(grp => grp.Count() > 1).Select(e => e.Key))
                     Console.WriteLine(item);
-
-                Unit.Parse("pt");
 
                 UKVolume();
                 Console.ReadLine();
