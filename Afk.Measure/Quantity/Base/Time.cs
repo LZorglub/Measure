@@ -10,7 +10,7 @@ namespace Afk.Measure.Quantity.Base {
 	/// <typeparam name="T"></typeparam>
 	/// <typeparam name="V"></typeparam>
 	/// <remarks>The base unit of this quantity is the <b>V</b> unit.</remarks>
-	public class Time<T, V> : BaseQuantity<T> where V : Measure.Units.Metric.SI.Second, new() {
+	public class Time<T, V> : Quantity<T> where V : Measure.Units.Metric.SI.Second, new() {
 
         /// <summary>
         /// Initialize a new instance of <see cref="Time"/>

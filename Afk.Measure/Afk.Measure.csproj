@@ -86,12 +86,11 @@
     <Compile Include="Quantity\Base\Temperature.cs" />
     <Compile Include="Quantity\Base\Time.cs" />
     <Compile Include="Quantity\Base\Currency.cs" />
-    <Compile Include="Quantity\Quantity.cs" />
     <Compile Include="Quantity\Derived\Energy.cs" />
     <Compile Include="Quantity\Derived\Force.cs" />
     <Compile Include="Quantity\Derived\Power.cs" />
-    <Compile Include="Quantity\BaseQuantity.cs" />
-    <Compile Include="Quantity\BaseQuantity_From.cs" />
+    <Compile Include="Quantity\Quantity.cs" />
+    <Compile Include="Quantity\Quantity_From.cs" />
     <Compile Include="Quantity\Derived\Speed.cs" />
     <Compile Include="Quantity\Derived\Volume.cs" />
     <Compile Include="Units\BaseUnit.cs" />

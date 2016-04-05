@@ -8,7 +8,7 @@ namespace Afk.Measure.Quantity.Derived {
     /// Represents a quantity of Power (Watt)
     /// </summary>
     /// <typeparam name="T"></typeparam>
-	public class Power<T> : BaseQuantity<T> {
+	public class Power<T> : Quantity<T> {
         /// <summary>
         /// Initialize a new instance of <see cref="Power"/>
         /// </summary>

@@ -8,7 +8,7 @@ namespace Afk.Measure.Quantity.Derived {
     /// Represents a quantity of energy (Joule)
     /// </summary>
     /// <typeparam name="T"></typeparam>
-	public class Energy<T> : BaseQuantity<T> {
+	public class Energy<T> : Quantity<T> {
         /// <summary>
         /// Initialize a new isntance of <see cref="Energy"/>
         /// </summary>

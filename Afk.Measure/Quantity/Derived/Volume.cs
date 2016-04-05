@@ -8,7 +8,7 @@ namespace Afk.Measure.Quantity.Derived {
     /// Represents a quantity of volume (m3)
     /// </summary>
     /// <typeparam name="T"></typeparam>
-	public class Volume<T> : BaseQuantity<T> {
+	public class Volume<T> : Quantity<T> {
         /// <summary>
         /// Initialize a new instance of <see cref="Volume"/>
         /// </summary>

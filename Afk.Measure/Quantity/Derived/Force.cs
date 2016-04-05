@@ -8,7 +8,7 @@ namespace Afk.Measure.Quantity.Derived {
     /// Represents a quantity of Force (Newton)
     /// </summary>
     /// <typeparam name="T"></typeparam>
-	public class Force<T> : BaseQuantity<T> {
+	public class Force<T> : Quantity<T> {
         /// <summary>
         /// Initialize a new instance of <see cref="Force"/>
         /// </summary>

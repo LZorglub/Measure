@@ -10,7 +10,7 @@ namespace Afk.Measure.Quantity {
 	/// <summary>
 	/// Represents a quantity
 	/// </summary>
-	public partial class BaseQuantity
+	public partial class Quantity
     {
         /// <summary>
         /// Gets a quantity from specified <see cref="Unit"/> and <b>value</b>
@@ -18,9 +18,9 @@ namespace Afk.Measure.Quantity {
         /// <typeparam name="T">Type of value</typeparam>
         /// <param name="unit"><see cref="Unit"/> of quantity</param>
         /// <param name="value"><b>value</b> of quantity</param>
-        /// <returns><see cref="BaseQuantity"/> equivalent to specified <b>unit</b> and <b>value</b></returns>
-        private static BaseQuantity<T> CreateQuantity<T>(Unit unit, T value) {
-			BaseQuantity<T> qty = Dimension.QuantityFrom<T>(unit.Dimension);
+        /// <returns><see cref="Quantity"/> equivalent to specified <b>unit</b> and <b>value</b></returns>
+        private static Quantity<T> CreateQuantity<T>(Unit unit, T value) {
+			Quantity<T> qty = Dimension.QuantityFrom<T>(unit.Dimension);
 			if (qty == null) qty = new Quantity<T>();
 			qty.Unit = unit;
 			qty.Value = value;
@@ -34,8 +34,8 @@ namespace Afk.Measure.Quantity {
         /// <typeparam name="T">Type of value</typeparam>
         /// <param name="unit"><see cref="Unit"/> of quantity</param>
         /// <param name="value"><b>value</b> of quantity</param>
-        /// <returns><see cref="BaseQuantity"/> equivalent to specified <b>unit</b> and <b>value</b></returns>
-        public static BaseQuantity<T> From<T>(Unit unit, T value) {
+        /// <returns><see cref="Quantity"/> equivalent to specified <b>unit</b> and <b>value</b></returns>
+        public static Quantity<T> From<T>(Unit unit, T value) {
 			return CreateQuantity<T>(unit, value);
 		}
 
@@ -46,8 +46,8 @@ namespace Afk.Measure.Quantity {
         /// <typeparam name="T">Type of <b>value</b></typeparam>
         /// <typeparam name="TUnit"><see cref="MetricBaseUnit"/></typeparam>
         /// <param name="value">The amount of quantity</param>
-        /// <returns>A <see cref="BaseQuantity"/> equivalent to the specified <b>value</b></returns>
-        public static BaseQuantity<T> Yotta<T, TUnit>(T value) where TUnit : MetricBaseUnit, new() {
+        /// <returns>A <see cref="Quantity"/> equivalent to the specified <b>value</b></returns>
+        public static Quantity<T> Yotta<T, TUnit>(T value) where TUnit : MetricBaseUnit, new() {
 			return CreateQuantity<T>(PrefixUnit.Yotta<TUnit>(), value);
 		}
 
@@ -57,8 +57,8 @@ namespace Afk.Measure.Quantity {
         /// <typeparam name="T">Type of <b>value</b></typeparam>
         /// <typeparam name="TUnit"><see cref="MetricBaseUnit"/></typeparam>
         /// <param name="value">The amount of quantity</param>
-        /// <returns>A <see cref="BaseQuantity"/> equivalent to the specified <b>value</b></returns>
-        public static BaseQuantity<T> Zetta<T, TUnit>(T value) where TUnit : MetricBaseUnit, new() {
+        /// <returns>A <see cref="Quantity"/> equivalent to the specified <b>value</b></returns>
+        public static Quantity<T> Zetta<T, TUnit>(T value) where TUnit : MetricBaseUnit, new() {
 			return CreateQuantity<T>(PrefixUnit.Zetta<TUnit>(), value);
 		}
 
@@ -68,8 +68,8 @@ namespace Afk.Measure.Quantity {
         /// <typeparam name="T">Type of <b>value</b></typeparam>
         /// <typeparam name="TUnit"><see cref="MetricBaseUnit"/></typeparam>
         /// <param name="value">The amount of quantity</param>
-        /// <returns>A <see cref="BaseQuantity"/> equivalent to the specified <b>value</b></returns>
-        public static BaseQuantity<T> Exbi<T, TUnit>(T value) where TUnit : MetricBaseUnit, new() {
+        /// <returns>A <see cref="Quantity"/> equivalent to the specified <b>value</b></returns>
+        public static Quantity<T> Exbi<T, TUnit>(T value) where TUnit : MetricBaseUnit, new() {
 			return CreateQuantity<T>(PrefixUnit.Exbi<TUnit>(), value);
 		}
 
@@ -79,8 +79,8 @@ namespace Afk.Measure.Quantity {
         /// <typeparam name="T">Type of <b>value</b></typeparam>
         /// <typeparam name="TUnit"><see cref="MetricBaseUnit"/></typeparam>
         /// <param name="value">The amount of quantity</param>
-        /// <returns>A <see cref="BaseQuantity"/> equivalent to the specified <b>value</b></returns>
-        public static BaseQuantity<T> Exa<T, TUnit>(T value) where TUnit : MetricBaseUnit, new() {
+        /// <returns>A <see cref="Quantity"/> equivalent to the specified <b>value</b></returns>
+        public static Quantity<T> Exa<T, TUnit>(T value) where TUnit : MetricBaseUnit, new() {
 			return CreateQuantity<T>(PrefixUnit.Exa<TUnit>(), value);
 		}
 
@@ -90,8 +90,8 @@ namespace Afk.Measure.Quantity {
         /// <typeparam name="T">Type of <b>value</b></typeparam>
         /// <typeparam name="TUnit"><see cref="MetricBaseUnit"/></typeparam>
         /// <param name="value">The amount of quantity</param>
-        /// <returns>A <see cref="BaseQuantity"/> equivalent to the specified <b>value</b></returns>
-        public static BaseQuantity<T> Pebi<T, TUnit>(T value) where TUnit : MetricBaseUnit, new() {
+        /// <returns>A <see cref="Quantity"/> equivalent to the specified <b>value</b></returns>
+        public static Quantity<T> Pebi<T, TUnit>(T value) where TUnit : MetricBaseUnit, new() {
 			return CreateQuantity<T>(PrefixUnit.Pebi<TUnit>(), value);
 		}
 
@@ -101,8 +101,8 @@ namespace Afk.Measure.Quantity {
         /// <typeparam name="T">Type of <b>value</b></typeparam>
         /// <typeparam name="TUnit"><see cref="MetricBaseUnit"/></typeparam>
         /// <param name="value">The amount of quantity</param>
-        /// <returns>A <see cref="BaseQuantity"/> equivalent to the specified <b>value</b></returns>
-        public static BaseQuantity<T> Peta<T, TUnit>(T value) where TUnit : MetricBaseUnit, new() {
+        /// <returns>A <see cref="Quantity"/> equivalent to the specified <b>value</b></returns>
+        public static Quantity<T> Peta<T, TUnit>(T value) where TUnit : MetricBaseUnit, new() {
 			return CreateQuantity<T>(PrefixUnit.Peta<TUnit>(), value);
 		}
 
@@ -112,8 +112,8 @@ namespace Afk.Measure.Quantity {
         /// <typeparam name="T">Type of <b>value</b></typeparam>
         /// <typeparam name="TUnit"><see cref="MetricBaseUnit"/></typeparam>
         /// <param name="value">The amount of quantity</param>
-        /// <returns>A <see cref="BaseQuantity"/> equivalent to the specified <b>value</b></returns>
-        public static BaseQuantity<T> Tebi<T, TUnit>(T value) where TUnit : MetricBaseUnit, new() {
+        /// <returns>A <see cref="Quantity"/> equivalent to the specified <b>value</b></returns>
+        public static Quantity<T> Tebi<T, TUnit>(T value) where TUnit : MetricBaseUnit, new() {
 			return CreateQuantity<T>(PrefixUnit.Tebi<TUnit>(), value);
 		}
 
@@ -123,8 +123,8 @@ namespace Afk.Measure.Quantity {
         /// <typeparam name="T">Type of <b>value</b></typeparam>
         /// <typeparam name="TUnit"><see cref="MetricBaseUnit"/></typeparam>
         /// <param name="value">The amount of quantity</param>
-        /// <returns>A <see cref="BaseQuantity"/> equivalent to the specified <b>value</b></returns>
-        public static BaseQuantity<T> Tera<T, TUnit>(T value) where TUnit : MetricBaseUnit, new() {
+        /// <returns>A <see cref="Quantity"/> equivalent to the specified <b>value</b></returns>
+        public static Quantity<T> Tera<T, TUnit>(T value) where TUnit : MetricBaseUnit, new() {
 			return CreateQuantity<T>(PrefixUnit.Tera<TUnit>(), value);
 		}
 
@@ -134,8 +134,8 @@ namespace Afk.Measure.Quantity {
         /// <typeparam name="T">Type of <b>value</b></typeparam>
         /// <typeparam name="TUnit"><see cref="MetricBaseUnit"/></typeparam>
         /// <param name="value">The amount of quantity</param>
-        /// <returns>A <see cref="BaseQuantity"/> equivalent to the specified <b>value</b></returns>
-        public static BaseQuantity<T> Gibi<T, TUnit>(T value) where TUnit : MetricBaseUnit, new() {
+        /// <returns>A <see cref="Quantity"/> equivalent to the specified <b>value</b></returns>
+        public static Quantity<T> Gibi<T, TUnit>(T value) where TUnit : MetricBaseUnit, new() {
 			return CreateQuantity<T>(PrefixUnit.Gibi<TUnit>(), value);
 		}
 
@@ -145,8 +145,8 @@ namespace Afk.Measure.Quantity {
         /// <typeparam name="T">Type of <b>value</b></typeparam>
         /// <typeparam name="TUnit"><see cref="MetricBaseUnit"/></typeparam>
         /// <param name="value">The amount of quantity</param>
-        /// <returns>A <see cref="BaseQuantity"/> equivalent to the specified <b>value</b></returns>
-        public static BaseQuantity<T> Giga<T, TUnit>(T value) where TUnit : MetricBaseUnit, new() {
+        /// <returns>A <see cref="Quantity"/> equivalent to the specified <b>value</b></returns>
+        public static Quantity<T> Giga<T, TUnit>(T value) where TUnit : MetricBaseUnit, new() {
 			return CreateQuantity<T>(PrefixUnit.Giga<TUnit>(), value);
 		}
 
@@ -156,8 +156,8 @@ namespace Afk.Measure.Quantity {
         /// <typeparam name="T">Type of <b>value</b></typeparam>
         /// <typeparam name="TUnit"><see cref="MetricBaseUnit"/></typeparam>
         /// <param name="value">The amount of quantity</param>
-        /// <returns>A <see cref="BaseQuantity"/> equivalent to the specified <b>value</b></returns>
-        public static BaseQuantity<T> Mebi<T, TUnit>(T value) where TUnit : MetricBaseUnit, new() {
+        /// <returns>A <see cref="Quantity"/> equivalent to the specified <b>value</b></returns>
+        public static Quantity<T> Mebi<T, TUnit>(T value) where TUnit : MetricBaseUnit, new() {
 			return CreateQuantity<T>(PrefixUnit.Mebi<TUnit>(), value);
 		}
 
@@ -167,8 +167,8 @@ namespace Afk.Measure.Quantity {
         /// <typeparam name="T">Type of <b>value</b></typeparam>
         /// <typeparam name="TUnit"><see cref="MetricBaseUnit"/></typeparam>
         /// <param name="value">The amount of quantity</param>
-        /// <returns>A <see cref="BaseQuantity"/> equivalent to the specified <b>value</b></returns>
-        public static BaseQuantity<T> Mega<T, TUnit>(T value) where TUnit : MetricBaseUnit, new() {
+        /// <returns>A <see cref="Quantity"/> equivalent to the specified <b>value</b></returns>
+        public static Quantity<T> Mega<T, TUnit>(T value) where TUnit : MetricBaseUnit, new() {
 			return CreateQuantity<T>(PrefixUnit.Mega<TUnit>(), value);
 		}
 
@@ -178,8 +178,8 @@ namespace Afk.Measure.Quantity {
         /// <typeparam name="T">Type of <b>value</b></typeparam>
         /// <typeparam name="TUnit"><see cref="MetricBaseUnit"/></typeparam>
         /// <param name="value">The amount of quantity</param>
-        /// <returns>A <see cref="BaseQuantity"/> equivalent to the specified <b>value</b></returns>
-        public static BaseQuantity<T> Kibi<T, TUnit>(T value) where TUnit : MetricBaseUnit, new() {
+        /// <returns>A <see cref="Quantity"/> equivalent to the specified <b>value</b></returns>
+        public static Quantity<T> Kibi<T, TUnit>(T value) where TUnit : MetricBaseUnit, new() {
 			return CreateQuantity<T>(PrefixUnit.Kibi<TUnit>(), value);
 		}
 
@@ -189,8 +189,8 @@ namespace Afk.Measure.Quantity {
         /// <param name="value">The amount of quantity</param>
         /// <typeparam name="T">Type of <b>value</b></typeparam>
         /// <typeparam name="TUnit"><see cref="MetricBaseUnit"/></typeparam>
-        /// <returns>A <see cref="BaseQuantity"/> equivalent to the specified <b>value</b></returns>
-        public static BaseQuantity<T> Kilo<T, TUnit>(T value) where TUnit : MetricBaseUnit, new() {
+        /// <returns>A <see cref="Quantity"/> equivalent to the specified <b>value</b></returns>
+        public static Quantity<T> Kilo<T, TUnit>(T value) where TUnit : MetricBaseUnit, new() {
 			return CreateQuantity<T>(PrefixUnit.Kilo<TUnit>(), value);
 		}
 
@@ -200,8 +200,8 @@ namespace Afk.Measure.Quantity {
         /// <typeparam name="T">Type of <b>value</b></typeparam>
         /// <typeparam name="TUnit"><see cref="MetricBaseUnit"/></typeparam>
         /// <param name="value">The amount of quantity</param>
-        /// <returns>A <see cref="BaseQuantity"/> equivalent to the specified <b>value</b></returns>
-        public static BaseQuantity<T> Hecto<T, TUnit>(T value) where TUnit : MetricBaseUnit, new() {
+        /// <returns>A <see cref="Quantity"/> equivalent to the specified <b>value</b></returns>
+        public static Quantity<T> Hecto<T, TUnit>(T value) where TUnit : MetricBaseUnit, new() {
 			return CreateQuantity<T>(PrefixUnit.Hecto<TUnit>(), value);
 		}
 
@@ -211,8 +211,8 @@ namespace Afk.Measure.Quantity {
         /// <typeparam name="T">Type of <b>value</b></typeparam>
         /// <typeparam name="TUnit"><see cref="MetricBaseUnit"/></typeparam>
         /// <param name="value">The amount of quantity</param>
-        /// <returns>A <see cref="BaseQuantity"/> equivalent to the specified <b>value</b></returns>
-        public static BaseQuantity<T> Deka<T, TUnit>(T value) where TUnit : MetricBaseUnit, new() {
+        /// <returns>A <see cref="Quantity"/> equivalent to the specified <b>value</b></returns>
+        public static Quantity<T> Deka<T, TUnit>(T value) where TUnit : MetricBaseUnit, new() {
 			return CreateQuantity<T>(PrefixUnit.Deka<TUnit>(), value);
 		}
 
@@ -222,8 +222,8 @@ namespace Afk.Measure.Quantity {
         /// <typeparam name="T">Type of <b>value</b></typeparam>
         /// <typeparam name="TUnit"><see cref="MetricBaseUnit"/></typeparam>
         /// <param name="value">The amount of quantity</param>
-        /// <returns>A <see cref="BaseQuantity"/> equivalent to the specified <b>value</b></returns>
-        public static BaseQuantity<T> None<T, TUnit>(T value) where TUnit : BaseUnit, new() {
+        /// <returns>A <see cref="Quantity"/> equivalent to the specified <b>value</b></returns>
+        public static Quantity<T> None<T, TUnit>(T value) where TUnit : BaseUnit, new() {
 			return CreateQuantity<T>(new TUnit(), value);
 		}
 
@@ -233,8 +233,8 @@ namespace Afk.Measure.Quantity {
         /// <typeparam name="T">Type of <b>value</b></typeparam>
         /// <typeparam name="TUnit"><see cref="MetricBaseUnit"/></typeparam>
         /// <param name="value">The amount of quantity</param>
-        /// <returns>A <see cref="BaseQuantity"/> equivalent to the specified <b>value</b></returns>
-        public static BaseQuantity<T> Deci<T, TUnit>(T value) where TUnit : MetricBaseUnit, new() {
+        /// <returns>A <see cref="Quantity"/> equivalent to the specified <b>value</b></returns>
+        public static Quantity<T> Deci<T, TUnit>(T value) where TUnit : MetricBaseUnit, new() {
 			return CreateQuantity<T>(PrefixUnit.Deci<TUnit>(), value);
 		}
 
@@ -244,8 +244,8 @@ namespace Afk.Measure.Quantity {
         /// <typeparam name="T">Type of <b>value</b></typeparam>
         /// <typeparam name="TUnit"><see cref="MetricBaseUnit"/></typeparam>
         /// <param name="value">The amount of quantity</param>
-        /// <returns>A <see cref="BaseQuantity"/> equivalent to the specified <b>value</b></returns>
-        public static BaseQuantity<T> Centi<T, TUnit>(T value) where TUnit : MetricBaseUnit, new() {
+        /// <returns>A <see cref="Quantity"/> equivalent to the specified <b>value</b></returns>
+        public static Quantity<T> Centi<T, TUnit>(T value) where TUnit : MetricBaseUnit, new() {
 			return CreateQuantity<T>(PrefixUnit.Centi<TUnit>(), value);
 		}
 
@@ -255,8 +255,8 @@ namespace Afk.Measure.Quantity {
         /// <typeparam name="T">Type of <b>value</b></typeparam>
         /// <typeparam name="TUnit"><see cref="MetricBaseUnit"/></typeparam>
         /// <param name="value">The amount of quantity</param>
-        /// <returns>A <see cref="BaseQuantity"/> equivalent to the specified <b>value</b></returns>
-        public static BaseQuantity<T> Milli<T, TUnit>(T value) where TUnit : MetricBaseUnit, new() {
+        /// <returns>A <see cref="Quantity"/> equivalent to the specified <b>value</b></returns>
+        public static Quantity<T> Milli<T, TUnit>(T value) where TUnit : MetricBaseUnit, new() {
 			return CreateQuantity<T>(PrefixUnit.Milli<TUnit>(), value);
 		}
 
@@ -266,8 +266,8 @@ namespace Afk.Measure.Quantity {
         /// <typeparam name="T">Type of <b>value</b></typeparam>
         /// <typeparam name="TUnit"><see cref="MetricBaseUnit"/></typeparam>
         /// <param name="value">The amount of quantity</param>
-        /// <returns>A <see cref="BaseQuantity"/> equivalent to the specified <b>value</b></returns>
-        public static BaseQuantity<T> Micro<T, TUnit>(T value) where TUnit : MetricBaseUnit, new() {
+        /// <returns>A <see cref="Quantity"/> equivalent to the specified <b>value</b></returns>
+        public static Quantity<T> Micro<T, TUnit>(T value) where TUnit : MetricBaseUnit, new() {
 			return CreateQuantity<T>(PrefixUnit.Micro<TUnit>(), value);
 		}
 
@@ -277,8 +277,8 @@ namespace Afk.Measure.Quantity {
         /// <typeparam name="T">Type of <b>value</b></typeparam>
         /// <typeparam name="TUnit"><see cref="MetricBaseUnit"/></typeparam>
         /// <param name="value">The amount of quantity</param>
-        /// <returns>A <see cref="BaseQuantity"/> equivalent to the specified <b>value</b></returns>
-        public static BaseQuantity<T> Nano<T, TUnit>(T value) where TUnit : MetricBaseUnit, new() {
+        /// <returns>A <see cref="Quantity"/> equivalent to the specified <b>value</b></returns>
+        public static Quantity<T> Nano<T, TUnit>(T value) where TUnit : MetricBaseUnit, new() {
 			return CreateQuantity<T>(PrefixUnit.Nano<TUnit>(), value);
 		}
 
@@ -288,8 +288,8 @@ namespace Afk.Measure.Quantity {
         /// <typeparam name="T">Type of <b>value</b></typeparam>
         /// <typeparam name="TUnit"><see cref="MetricBaseUnit"/></typeparam>
         /// <param name="value">The amount of quantity</param>
-        /// <returns>A <see cref="BaseQuantity"/> equivalent to the specified <b>value</b></returns>
-        public static BaseQuantity<T> Pico<T, TUnit>(T value) where TUnit : MetricBaseUnit, new() {
+        /// <returns>A <see cref="Quantity"/> equivalent to the specified <b>value</b></returns>
+        public static Quantity<T> Pico<T, TUnit>(T value) where TUnit : MetricBaseUnit, new() {
 			return CreateQuantity<T>(PrefixUnit.Pico<TUnit>(), value);
 		}
 
@@ -299,8 +299,8 @@ namespace Afk.Measure.Quantity {
         /// <typeparam name="T">Type of <b>value</b></typeparam>
         /// <typeparam name="TUnit"><see cref="MetricBaseUnit"/></typeparam>
         /// <param name="value">The amount of quantity</param>
-        /// <returns>A <see cref="BaseQuantity"/> equivalent to the specified <b>value</b></returns>
-        public static BaseQuantity<T> Femto<T, TUnit>(T value) where TUnit : MetricBaseUnit, new() {
+        /// <returns>A <see cref="Quantity"/> equivalent to the specified <b>value</b></returns>
+        public static Quantity<T> Femto<T, TUnit>(T value) where TUnit : MetricBaseUnit, new() {
 			return CreateQuantity<T>(PrefixUnit.Femto<TUnit>(), value);
 		}
 
@@ -310,8 +310,8 @@ namespace Afk.Measure.Quantity {
         /// <typeparam name="T">Type of <b>value</b></typeparam>
         /// <typeparam name="TUnit"><see cref="MetricBaseUnit"/></typeparam>
         /// <param name="value">The amount of quantity</param>
-        /// <returns>A <see cref="BaseQuantity"/> equivalent to the specified <b>value</b></returns>
-        public static BaseQuantity<T> Atto<T, TUnit>(T value) where TUnit : MetricBaseUnit, new() {
+        /// <returns>A <see cref="Quantity"/> equivalent to the specified <b>value</b></returns>
+        public static Quantity<T> Atto<T, TUnit>(T value) where TUnit : MetricBaseUnit, new() {
 			return CreateQuantity<T>(PrefixUnit.Atto<TUnit>(), value);
 		}
 
@@ -321,8 +321,8 @@ namespace Afk.Measure.Quantity {
         /// <typeparam name="T">Type of <b>value</b></typeparam>
         /// <typeparam name="TUnit"><see cref="MetricBaseUnit"/></typeparam>
         /// <param name="value">The amount of quantity</param>
-        /// <returns>A <see cref="BaseQuantity"/> equivalent to the specified <b>value</b></returns>
-        public static BaseQuantity<T> Zepto<T, TUnit>(T value) where TUnit : MetricBaseUnit, new() {
+        /// <returns>A <see cref="Quantity"/> equivalent to the specified <b>value</b></returns>
+        public static Quantity<T> Zepto<T, TUnit>(T value) where TUnit : MetricBaseUnit, new() {
 			return CreateQuantity<T>(PrefixUnit.Zepto<TUnit>(), value);
 		}
 
@@ -332,8 +332,8 @@ namespace Afk.Measure.Quantity {
         /// <typeparam name="T">Type of <b>value</b></typeparam>
         /// <typeparam name="TUnit"><see cref="MetricBaseUnit"/></typeparam>
         /// <param name="value">The amount of quantity</param>
-        /// <returns>A <see cref="BaseQuantity"/> equivalent to the specified <b>value</b></returns>
-        public static BaseQuantity<T> Yocto<T, TUnit>(T value) where TUnit : MetricBaseUnit, new() {
+        /// <returns>A <see cref="Quantity"/> equivalent to the specified <b>value</b></returns>
+        public static Quantity<T> Yocto<T, TUnit>(T value) where TUnit : MetricBaseUnit, new() {
 			return CreateQuantity<T>(PrefixUnit.Yocto<TUnit>(), value);
 		}
         #endregion
@@ -344,8 +344,8 @@ namespace Afk.Measure.Quantity {
         /// </summary>
         /// <typeparam name="TUnit"><see cref="MetricBaseUnit"/></typeparam>
         /// <param name="value">The amount of quantity</param>
-        /// <returns>A <see cref="BaseQuantity"/> equivalent to the specified <b>value</b></returns>
-        public static BaseQuantity<double> Yotta<TUnit>(double value) where TUnit : MetricBaseUnit, new() {
+        /// <returns>A <see cref="Quantity"/> equivalent to the specified <b>value</b></returns>
+        public static Quantity<double> Yotta<TUnit>(double value) where TUnit : MetricBaseUnit, new() {
 			return CreateQuantity<double>(PrefixUnit.Yotta<TUnit>(), value);
 		}
 
@@ -354,8 +354,8 @@ namespace Afk.Measure.Quantity {
         /// </summary>
         /// <typeparam name="TUnit"><see cref="MetricBaseUnit"/></typeparam>
         /// <param name="value">The amount of quantity</param>
-        /// <returns>A <see cref="BaseQuantity"/> equivalent to the specified <b>value</b></returns>
-        public static BaseQuantity<double> Zetta<TUnit>(double value) where TUnit : MetricBaseUnit, new() {
+        /// <returns>A <see cref="Quantity"/> equivalent to the specified <b>value</b></returns>
+        public static Quantity<double> Zetta<TUnit>(double value) where TUnit : MetricBaseUnit, new() {
 			return CreateQuantity<double>(PrefixUnit.Zetta<TUnit>(), value);
 		}
 
@@ -364,8 +364,8 @@ namespace Afk.Measure.Quantity {
         /// </summary>
         /// <typeparam name="TUnit"><see cref="MetricBaseUnit"/></typeparam>
         /// <param name="value">The amount of quantity</param>
-        /// <returns>A <see cref="BaseQuantity"/> equivalent to the specified <b>value</b></returns>
-        public static BaseQuantity<double> Exbi<TUnit>(double value) where TUnit : MetricBaseUnit, new() {
+        /// <returns>A <see cref="Quantity"/> equivalent to the specified <b>value</b></returns>
+        public static Quantity<double> Exbi<TUnit>(double value) where TUnit : MetricBaseUnit, new() {
 			return CreateQuantity<double>(PrefixUnit.Exbi<TUnit>(), value);
 		}
 
@@ -374,8 +374,8 @@ namespace Afk.Measure.Quantity {
         /// </summary>
         /// <typeparam name="TUnit"><see cref="MetricBaseUnit"/></typeparam>
         /// <param name="value">The amount of quantity</param>
-        /// <returns>A <see cref="BaseQuantity"/> equivalent to the specified <b>value</b></returns>
-        public static BaseQuantity<double> Exa<TUnit>(double value) where TUnit : MetricBaseUnit, new() {
+        /// <returns>A <see cref="Quantity"/> equivalent to the specified <b>value</b></returns>
+        public static Quantity<double> Exa<TUnit>(double value) where TUnit : MetricBaseUnit, new() {
 			return CreateQuantity<double>(PrefixUnit.Exa<TUnit>(), value);
 		}
 
@@ -384,8 +384,8 @@ namespace Afk.Measure.Quantity {
         /// </summary>
         /// <typeparam name="TUnit"><see cref="MetricBaseUnit"/></typeparam>
         /// <param name="value">The amount of quantity</param>
-        /// <returns>A <see cref="BaseQuantity"/> equivalent to the specified <b>value</b></returns>
-        public static BaseQuantity<double> Pebi<TUnit>(double value) where TUnit : MetricBaseUnit, new() {
+        /// <returns>A <see cref="Quantity"/> equivalent to the specified <b>value</b></returns>
+        public static Quantity<double> Pebi<TUnit>(double value) where TUnit : MetricBaseUnit, new() {
 			return CreateQuantity<double>(PrefixUnit.Pebi<TUnit>(), value);
 		}
 
@@ -394,8 +394,8 @@ namespace Afk.Measure.Quantity {
         /// </summary>
         /// <typeparam name="TUnit"><see cref="MetricBaseUnit"/></typeparam>
         /// <param name="value">The amount of quantity</param>
-        /// <returns>A <see cref="BaseQuantity"/> equivalent to the specified <b>value</b></returns>
-        public static BaseQuantity<double> Peta<TUnit>(double value) where TUnit : MetricBaseUnit, new() {
+        /// <returns>A <see cref="Quantity"/> equivalent to the specified <b>value</b></returns>
+        public static Quantity<double> Peta<TUnit>(double value) where TUnit : MetricBaseUnit, new() {
 			return CreateQuantity<double>(PrefixUnit.Peta<TUnit>(), value);
 		}
 
@@ -404,8 +404,8 @@ namespace Afk.Measure.Quantity {
         /// </summary>
         /// <typeparam name="TUnit"><see cref="MetricBaseUnit"/></typeparam>
         /// <param name="value">The amount of quantity</param>
-        /// <returns>A <see cref="BaseQuantity"/> equivalent to the specified <b>value</b></returns>
-        public static BaseQuantity<double> Tebi<TUnit>(double value) where TUnit : MetricBaseUnit, new() {
+        /// <returns>A <see cref="Quantity"/> equivalent to the specified <b>value</b></returns>
+        public static Quantity<double> Tebi<TUnit>(double value) where TUnit : MetricBaseUnit, new() {
 			return CreateQuantity<double>(PrefixUnit.Tebi<TUnit>(), value);
 		}
 
@@ -414,8 +414,8 @@ namespace Afk.Measure.Quantity {
         /// </summary>
         /// <typeparam name="TUnit"><see cref="MetricBaseUnit"/></typeparam>
         /// <param name="value">The amount of quantity</param>
-        /// <returns>A <see cref="BaseQuantity"/> equivalent to the specified <b>value</b></returns>
-        public static BaseQuantity<double> Tera<TUnit>(double value) where TUnit : MetricBaseUnit, new() {
+        /// <returns>A <see cref="Quantity"/> equivalent to the specified <b>value</b></returns>
+        public static Quantity<double> Tera<TUnit>(double value) where TUnit : MetricBaseUnit, new() {
 			return CreateQuantity<double>(PrefixUnit.Tera<TUnit>(), value);
 		}
 
@@ -424,8 +424,8 @@ namespace Afk.Measure.Quantity {
         /// </summary>
         /// <typeparam name="TUnit"><see cref="MetricBaseUnit"/></typeparam>
         /// <param name="value">The amount of quantity</param>
-        /// <returns>A <see cref="BaseQuantity"/> equivalent to the specified <b>value</b></returns>
-        public static BaseQuantity<double> Gibi<TUnit>(double value) where TUnit : MetricBaseUnit, new() {
+        /// <returns>A <see cref="Quantity"/> equivalent to the specified <b>value</b></returns>
+        public static Quantity<double> Gibi<TUnit>(double value) where TUnit : MetricBaseUnit, new() {
 			return CreateQuantity<double>(PrefixUnit.Gibi<TUnit>(), value);
 		}
 
@@ -434,8 +434,8 @@ namespace Afk.Measure.Quantity {
         /// </summary>
         /// <typeparam name="TUnit"><see cref="MetricBaseUnit"/></typeparam>
         /// <param name="value">The amount of quantity</param>
-        /// <returns>A <see cref="BaseQuantity"/> equivalent to the specified <b>value</b></returns>
-        public static BaseQuantity<double> Giga<TUnit>(double value) where TUnit : MetricBaseUnit, new() {
+        /// <returns>A <see cref="Quantity"/> equivalent to the specified <b>value</b></returns>
+        public static Quantity<double> Giga<TUnit>(double value) where TUnit : MetricBaseUnit, new() {
 			return CreateQuantity<double>(PrefixUnit.Giga<TUnit>(), value);
 		}
 
@@ -444,8 +444,8 @@ namespace Afk.Measure.Quantity {
         /// </summary>
         /// <typeparam name="TUnit"><see cref="MetricBaseUnit"/></typeparam>
         /// <param name="value">The amount of quantity</param>
-        /// <returns>A <see cref="BaseQuantity"/> equivalent to the specified <b>value</b></returns>
-        public static BaseQuantity<double> Mebi<TUnit>(double value) where TUnit : MetricBaseUnit, new() {
+        /// <returns>A <see cref="Quantity"/> equivalent to the specified <b>value</b></returns>
+        public static Quantity<double> Mebi<TUnit>(double value) where TUnit : MetricBaseUnit, new() {
 			return CreateQuantity<double>(PrefixUnit.Mebi<TUnit>(), value);
 		}
 
@@ -454,8 +454,8 @@ namespace Afk.Measure.Quantity {
         /// </summary>
         /// <typeparam name="TUnit"><see cref="MetricBaseUnit"/></typeparam>
         /// <param name="value">The amount of quantity</param>
-        /// <returns>A <see cref="BaseQuantity"/> equivalent to the specified <b>value</b></returns>
-        public static BaseQuantity<double> Mega<TUnit>(double value) where TUnit : MetricBaseUnit, new() {
+        /// <returns>A <see cref="Quantity"/> equivalent to the specified <b>value</b></returns>
+        public static Quantity<double> Mega<TUnit>(double value) where TUnit : MetricBaseUnit, new() {
 			return CreateQuantity<double>(PrefixUnit.Mega<TUnit>(), value);
 		}
 
@@ -464,8 +464,8 @@ namespace Afk.Measure.Quantity {
         /// </summary>
         /// <typeparam name="TUnit"><see cref="MetricBaseUnit"/></typeparam>
         /// <param name="value">The amount of quantity</param>
-        /// <returns>A <see cref="BaseQuantity"/> equivalent to the specified <b>value</b></returns>
-        public static BaseQuantity<double> Kibi<TUnit>(double value) where TUnit : MetricBaseUnit, new() {
+        /// <returns>A <see cref="Quantity"/> equivalent to the specified <b>value</b></returns>
+        public static Quantity<double> Kibi<TUnit>(double value) where TUnit : MetricBaseUnit, new() {
 			return CreateQuantity<double>(PrefixUnit.Kibi<TUnit>(), value);
 		}
 
@@ -474,8 +474,8 @@ namespace Afk.Measure.Quantity {
         /// </summary>
         /// <typeparam name="TUnit"><see cref="MetricBaseUnit"/></typeparam>
         /// <param name="value">The amount of quantity</param>
-        /// <returns>A <see cref="BaseQuantity"/> equivalent to the specified <b>value</b></returns>
-        public static BaseQuantity<double> Kilo<TUnit>(double value) where TUnit : MetricBaseUnit, new() {
+        /// <returns>A <see cref="Quantity"/> equivalent to the specified <b>value</b></returns>
+        public static Quantity<double> Kilo<TUnit>(double value) where TUnit : MetricBaseUnit, new() {
 			return CreateQuantity<double>(PrefixUnit.Kilo<TUnit>(), value);
 		}
 
@@ -484,8 +484,8 @@ namespace Afk.Measure.Quantity {
         /// </summary>
         /// <typeparam name="TUnit"><see cref="MetricBaseUnit"/></typeparam>
         /// <param name="value">The amount of quantity</param>
-        /// <returns>A <see cref="BaseQuantity"/> equivalent to the specified <b>value</b></returns>
-        public static BaseQuantity<double> Hecto<TUnit>(double value) where TUnit : MetricBaseUnit, new() {
+        /// <returns>A <see cref="Quantity"/> equivalent to the specified <b>value</b></returns>
+        public static Quantity<double> Hecto<TUnit>(double value) where TUnit : MetricBaseUnit, new() {
 			return CreateQuantity<double>(PrefixUnit.Hecto<TUnit>(), value);
 		}
 
@@ -494,8 +494,8 @@ namespace Afk.Measure.Quantity {
         /// </summary>
         /// <typeparam name="TUnit"><see cref="MetricBaseUnit"/></typeparam>
         /// <param name="value">The amount of quantity</param>
-        /// <returns>A <see cref="BaseQuantity"/> equivalent to the specified <b>value</b></returns>
-        public static BaseQuantity<double> Deka<TUnit>(double value) where TUnit : MetricBaseUnit, new() {
+        /// <returns>A <see cref="Quantity"/> equivalent to the specified <b>value</b></returns>
+        public static Quantity<double> Deka<TUnit>(double value) where TUnit : MetricBaseUnit, new() {
 			return CreateQuantity<double>(PrefixUnit.Deka<TUnit>(), value);
 		}
 
@@ -504,8 +504,8 @@ namespace Afk.Measure.Quantity {
         /// </summary>
         /// <typeparam name="TUnit"><see cref="MetricBaseUnit"/></typeparam>
         /// <param name="value">The amount of quantity</param>
-        /// <returns>A <see cref="BaseQuantity"/> equivalent to the specified <b>value</b></returns>
-        public static BaseQuantity<double> None<TUnit>(double value) where TUnit : BaseUnit, new() {
+        /// <returns>A <see cref="Quantity"/> equivalent to the specified <b>value</b></returns>
+        public static Quantity<double> None<TUnit>(double value) where TUnit : BaseUnit, new() {
 			return CreateQuantity<double>(new TUnit(), value);
 		}
 
@@ -514,8 +514,8 @@ namespace Afk.Measure.Quantity {
         /// </summary>
         /// <typeparam name="TUnit"><see cref="MetricBaseUnit"/></typeparam>
         /// <param name="value">The amount of quantity</param>
-        /// <returns>A <see cref="BaseQuantity"/> equivalent to the specified <b>value</b></returns>
-        public static BaseQuantity<double> Deci<TUnit>(double value) where TUnit : MetricBaseUnit, new() {
+        /// <returns>A <see cref="Quantity"/> equivalent to the specified <b>value</b></returns>
+        public static Quantity<double> Deci<TUnit>(double value) where TUnit : MetricBaseUnit, new() {
 			return CreateQuantity<double>(PrefixUnit.Deci<TUnit>(), value);
 		}
 
@@ -524,8 +524,8 @@ namespace Afk.Measure.Quantity {
         /// </summary>
         /// <typeparam name="TUnit"><see cref="MetricBaseUnit"/></typeparam>
         /// <param name="value">The amount of quantity</param>
-        /// <returns>A <see cref="BaseQuantity"/> equivalent to the specified <b>value</b></returns>
-        public static BaseQuantity<double> Centi<TUnit>(double value) where TUnit : MetricBaseUnit, new() {
+        /// <returns>A <see cref="Quantity"/> equivalent to the specified <b>value</b></returns>
+        public static Quantity<double> Centi<TUnit>(double value) where TUnit : MetricBaseUnit, new() {
 			return CreateQuantity<double>(PrefixUnit.Centi<TUnit>(), value);
 		}
 
@@ -534,8 +534,8 @@ namespace Afk.Measure.Quantity {
         /// </summary>
         /// <typeparam name="TUnit"><see cref="MetricBaseUnit"/></typeparam>
         /// <param name="value">The amount of quantity</param>
-        /// <returns>A <see cref="BaseQuantity"/> equivalent to the specified <b>value</b></returns>
-        public static BaseQuantity<double> Milli<TUnit>(double value) where TUnit : MetricBaseUnit, new() {
+        /// <returns>A <see cref="Quantity"/> equivalent to the specified <b>value</b></returns>
+        public static Quantity<double> Milli<TUnit>(double value) where TUnit : MetricBaseUnit, new() {
 			return CreateQuantity<double>(PrefixUnit.Milli<TUnit>(), value);
 		}
 
@@ -544,8 +544,8 @@ namespace Afk.Measure.Quantity {
         /// </summary>
         /// <typeparam name="TUnit"><see cref="MetricBaseUnit"/></typeparam>
         /// <param name="value">The amount of quantity</param>
-        /// <returns>A <see cref="BaseQuantity"/> equivalent to the specified <b>value</b></returns>
-        public static BaseQuantity<double> Micro<TUnit>(double value) where TUnit : MetricBaseUnit, new() {
+        /// <returns>A <see cref="Quantity"/> equivalent to the specified <b>value</b></returns>
+        public static Quantity<double> Micro<TUnit>(double value) where TUnit : MetricBaseUnit, new() {
 			return CreateQuantity<double>(PrefixUnit.Micro<TUnit>(), value);
 		}
 
@@ -554,8 +554,8 @@ namespace Afk.Measure.Quantity {
         /// </summary>
         /// <typeparam name="TUnit"><see cref="MetricBaseUnit"/></typeparam>
         /// <param name="value">The amount of quantity</param>
-        /// <returns>A <see cref="BaseQuantity"/> equivalent to the specified <b>value</b></returns>
-        public static BaseQuantity<double> Nano<TUnit>(double value) where TUnit : MetricBaseUnit, new() {
+        /// <returns>A <see cref="Quantity"/> equivalent to the specified <b>value</b></returns>
+        public static Quantity<double> Nano<TUnit>(double value) where TUnit : MetricBaseUnit, new() {
 			return CreateQuantity<double>(PrefixUnit.Nano<TUnit>(), value);
 		}
 
@@ -564,8 +564,8 @@ namespace Afk.Measure.Quantity {
         /// </summary>
         /// <typeparam name="TUnit"><see cref="MetricBaseUnit"/></typeparam>
         /// <param name="value">The amount of quantity</param>
-        /// <returns>A <see cref="BaseQuantity"/> equivalent to the specified <b>value</b></returns>
-        public static BaseQuantity<double> Pico<TUnit>(double value) where TUnit : MetricBaseUnit, new() {
+        /// <returns>A <see cref="Quantity"/> equivalent to the specified <b>value</b></returns>
+        public static Quantity<double> Pico<TUnit>(double value) where TUnit : MetricBaseUnit, new() {
 			return CreateQuantity<double>(PrefixUnit.Pico<TUnit>(), value);
 		}
 
@@ -574,8 +574,8 @@ namespace Afk.Measure.Quantity {
         /// </summary>
         /// <typeparam name="TUnit"><see cref="MetricBaseUnit"/></typeparam>
         /// <param name="value">The amount of quantity</param>
-        /// <returns>A <see cref="BaseQuantity"/> equivalent to the specified <b>value</b></returns>
-        public static BaseQuantity<double> Femto<TUnit>(double value) where TUnit : MetricBaseUnit, new() {
+        /// <returns>A <see cref="Quantity"/> equivalent to the specified <b>value</b></returns>
+        public static Quantity<double> Femto<TUnit>(double value) where TUnit : MetricBaseUnit, new() {
 			return CreateQuantity<double>(PrefixUnit.Femto<TUnit>(), value);
 		}
 
@@ -584,8 +584,8 @@ namespace Afk.Measure.Quantity {
         /// </summary>
         /// <typeparam name="TUnit"><see cref="MetricBaseUnit"/></typeparam>
         /// <param name="value">The amount of quantity</param>
-        /// <returns>A <see cref="BaseQuantity"/> equivalent to the specified <b>value</b></returns>
-        public static BaseQuantity<double> Atto<TUnit>(double value) where TUnit : MetricBaseUnit, new() {
+        /// <returns>A <see cref="Quantity"/> equivalent to the specified <b>value</b></returns>
+        public static Quantity<double> Atto<TUnit>(double value) where TUnit : MetricBaseUnit, new() {
 			return CreateQuantity<double>(PrefixUnit.Atto<TUnit>(), value);
 		}
 
@@ -594,8 +594,8 @@ namespace Afk.Measure.Quantity {
         /// </summary>
         /// <typeparam name="TUnit"><see cref="MetricBaseUnit"/></typeparam>
         /// <param name="value">The amount of quantity</param>
-        /// <returns>A <see cref="BaseQuantity"/> equivalent to the specified <b>value</b></returns>
-        public static BaseQuantity<double> Zepto<TUnit>(double value) where TUnit : MetricBaseUnit, new() {
+        /// <returns>A <see cref="Quantity"/> equivalent to the specified <b>value</b></returns>
+        public static Quantity<double> Zepto<TUnit>(double value) where TUnit : MetricBaseUnit, new() {
 			return CreateQuantity<double>(PrefixUnit.Zepto<TUnit>(), value);
 		}
 
@@ -604,8 +604,8 @@ namespace Afk.Measure.Quantity {
         /// </summary>
         /// <typeparam name="TUnit"><see cref="MetricBaseUnit"/></typeparam>
         /// <param name="value">The amount of quantity</param>
-        /// <returns>A <see cref="BaseQuantity"/> equivalent to the specified <b>value</b></returns>
-        public static BaseQuantity<double> Yocto<TUnit>(double value) where TUnit : MetricBaseUnit, new() {
+        /// <returns>A <see cref="Quantity"/> equivalent to the specified <b>value</b></returns>
+        public static Quantity<double> Yocto<TUnit>(double value) where TUnit : MetricBaseUnit, new() {
 			return CreateQuantity<double>(PrefixUnit.Yocto<TUnit>(), value);
 		}
 		#endregion

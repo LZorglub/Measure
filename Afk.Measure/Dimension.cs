@@ -287,13 +287,13 @@ namespace Afk.Measure {
 
 					// Search all quantity in current assembly, not Quantity class
 					IEnumerable<Type> types = Assembly.GetExecutingAssembly().GetTypes().
-						Where(e => IsSubclassOfRawGeneric(typeof(Measure.Quantity.BaseQuantity<>), e) && e != typeof(Quantity<>));
+						Where(e => IsSubclassOfRawGeneric(typeof(Measure.Quantity.Quantity<>), e) && e != typeof(Quantity<>));
 					foreach (Type tp in types) {
 						if (!tp.IsAbstract) {
 							// Create a quantity reference to obtain the unit and dimension
 							if (tp.IsGenericType) {
 								try {
-									BaseQuantity<object> qty = (BaseQuantity<object>)Activator.CreateInstance(tp.MakeGenericType(typeof(object)));
+									Quantity<object> qty = (Quantity<object>)Activator.CreateInstance(tp.MakeGenericType(typeof(object)));
 
 									if (qty.Unit != null) {
 										dimensionToQuantity.Add(qty.Unit.Dimension, tp);
@@ -319,15 +319,15 @@ namespace Afk.Measure {
         /// </summary>
         /// <typeparam name="T"></typeparam>
         /// <param name="dimension"><see cref="Dimension"/> of quantity</param>
-        /// <returns>A <see cref="BaseQuantity"/> equivalent to the <b>dimension</b></returns>
-        public static BaseQuantity<T> QuantityFrom<T>(Dimension dimension) {
+        /// <returns>A <see cref="Quantity"/> equivalent to the <b>dimension</b></returns>
+        public static Quantity<T> QuantityFrom<T>(Dimension dimension) {
 			Type tp = QuantityTypeFrom(dimension);
 
 			if (tp == null) return null;
 
 			tp = tp.MakeGenericType(typeof(T));
 			object qty = Activator.CreateInstance(tp);
-			return (BaseQuantity<T>)qty;
+			return (Quantity<T>)qty;
 		}
     }
 }

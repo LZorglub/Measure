@@ -8,7 +8,7 @@ namespace Afk.Measure.Quantity.Derived {
     /// Represents a quantity acceleration (m.s-2)
     /// </summary>
     /// <typeparam name="T"></typeparam>
-	public class Acceleration<T> : BaseQuantity<T> {
+	public class Acceleration<T> : Quantity<T> {
         /// <summary>
         /// Initiliaze a new instance of <see cref="Acceleration"/>
         /// </summary>
