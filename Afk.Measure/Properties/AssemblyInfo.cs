@@ -6,7 +6,7 @@ using System.Runtime.InteropServices;
 // l'ensemble d'attributs suivant. Changez les valeurs de ces attributs pour modifier les informations
 // associées à un assembly.
 [assembly: AssemblyTitle("Afk.Measure")]
-[assembly: AssemblyDescription("")]
+[assembly: AssemblyDescription("This library provides units management in different measure system (International System, CGS, Imperial system and US).")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
 [assembly: AssemblyProduct("Afk.Measure")]
