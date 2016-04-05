@@ -44,9 +44,9 @@ namespace Afk.Measure.Units {
 
 			#region Path of product
 			// Try to found an unit in the path
-			ProductUnitPath pathA = GetContext(unitA);
-			if (pathA != null) {
-				newPath.Path.AddRange(pathA.Path.Except(newPath.Path));
+			ProductUnitPath contextA = GetContext(unitA);
+			if (contextA != null) {
+				newPath.Path.AddRange(contextA.Path.Except(newPath.Path));
 				newPath.Path.Add(unitA.GetUICode());
 			}
 			ProductUnitPath contextB = GetContext(unitB);

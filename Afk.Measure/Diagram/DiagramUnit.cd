@@ -12,6 +12,9 @@
   <Comment CommentText="Product unit represents product of unit which can not have prefix">
     <Position X="1.542" Y="5.51" Height="0.75" Width="1.7" />
   </Comment>
+  <Comment CommentText="- BaseUnit can not have a SI prefix&#xD;&#xA;- MetricBaseUnit are BaseUnit with availability to have prefix">
+    <Position X="3.198" Y="2.021" Height="1.135" Width="2.346" />
+  </Comment>
   <Class Name="Afk.Measure.Units.BaseUnit">
     <Position X="1.5" Y="2" Width="1.5" />
     <NestedTypes>
@@ -64,7 +67,7 @@
       <Compartment Name="Nested Types" Collapsed="false" />
     </Compartments>
     <TypeIdentifier>
-      <HashCode>MoAiogACACAYFQAGIAJAAQMAgIAASpDPlpEhAQEACBA=</HashCode>
+      <HashCode>MoAiogACACAYFQAGIAZAAQMAgIAASpDPlpEhAQEACBA=</HashCode>
       <FileName>Units\Unit.cs</FileName>
     </TypeIdentifier>
     <Lollipop Position="0.2" />

@@ -499,6 +499,17 @@ namespace Afk.Measure.Quantity {
 		}
 
         /// <summary>
+        /// Convert a quantity in the specified <see cref="Unit"/>
+        /// </summary>
+        /// <param name="unit"><see cref="Unit"/></param>
+        /// <returns><see cref="BaseQuantity"/> in specified unit</returns>
+        public BaseQuantity<T> ConvertTo(string unit)
+        {
+            if (string.IsNullOrEmpty(unit)) throw new ArgumentException(nameof(unit));
+            return ConvertTo(Unit.Parse(unit));
+        }
+
+        /// <summary>
         /// Conversion explicit d'une quantité en son type T
         /// </summary>
         /// <param name="value"><see cref="BaseQuantity"/> à convertir</param>

@@ -162,8 +162,14 @@ namespace Afk.Measure.Units {
 		public object Clone() {
 			return this.MemberwiseClone();
 		}
-		#endregion
+        #endregion
 
+        /// <summary>
+        /// Gets the <see cref="BaseQuantity"/> specified by value and unit
+        /// </summary>
+        /// <param name="left">Left operand</param>
+        /// <param name="right">Right operand</param>
+        /// <returns><see cref="BaseQuantity"/> equivalent to the product of <b>left</b> and <b>right</b></returns>
         public static Afk.Measure.Quantity.BaseQuantity<double> operator *(double value, Unit unit)
         {
             var qty = Dimension.QuantityFrom<double>(unit.Dimension);
@@ -178,6 +184,28 @@ namespace Afk.Measure.Units {
             return qty;
         }
 
-	}
+        /// <summary>
+        /// Gets the <see cref="BaseQuantity"/> specified by value and unit
+        /// </summary>
+        /// <param name="left">Left operand</param>
+        /// <param name="right">Right operand</param>
+        /// <returns><see cref="BaseQuantity"/> equivalent to the division of <b>left</b> and <b>right</b></returns>
+        public static Afk.Measure.Quantity.BaseQuantity<double> operator /(double value, Unit unit)
+        {
+            Unit div = unit.Inverse();
+
+            var qty = Dimension.QuantityFrom<double>(div.Dimension);
+            if (qty != null)
+            {
+                qty.Value = value;
+                qty.Unit = unit;
+            }
+            else
+            {
+                qty = new Afk.Measure.Quantity.Quantity<double>(value, div);
+            }
+            return qty;
+        }
+    }
 }
  

@@ -32,12 +32,17 @@ namespace ConsoleTest {
                     Console.WriteLine("{0} Dollar to Yen : {1}", dollar.Value, dollar.ConvertTo((Unit)"¥").Value);
                 }
 
-                // Units
-				Unit[] units = Unit.WellKnownUnits;
+                var temperature = 5 * SI.KELVIN;
+                var speed = 5 * (SIPrefixe.Kilo * SI.METER);
+                var speed2 = 5 * (Unit)"km.s-1";
 
-                foreach (var item in
-                units.GroupBy(e => e.LocalizableSymbol).Where(grp => grp.Count() > 1).Select(e => e.Key))
-                    Console.WriteLine(item);
+                // Watthour
+                var wh1 = 10 * (Unit)"Wh";
+                var watt1 = wh1 / (3600 * SI.SECOND);
+                var wh2 = watt1 * (7200 * SI.SECOND);
+
+                // Units
+                Unit[] units = Unit.WellKnownUnits;
 
                 UKVolume();
                 Console.ReadLine();
@@ -134,6 +139,7 @@ namespace ConsoleTest {
         {
             var litre = BaseQuantity.None<Litre>(1);
             Console.WriteLine(litre.ConvertTo(Unit.Parse("m3")));
+            Console.WriteLine(litre.ConvertTo("m3"));
 
             var pint = BaseQuantity.None<Afk.Measure.Units.US.Pint>(1);
             Console.WriteLine(pint.ConvertTo(Unit.Parse("ml")));
