@@ -154,10 +154,10 @@
     <Compile Include="Units\US\Volume.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Units\Imperial\BritishImperial.txt" />
-    <Content Include="Units\Metric\CGS\ReadMe.txt" />
-    <Content Include="Units\System\CGS.txt" />
-    <Content Include="Units\US\US.txt" />
+    <None Include="Units\Imperial\BritishImperial.txt" />
+    <None Include="Units\Metric\CGS\ReadMe.txt" />
+    <None Include="Units\System\CGS.txt" />
+    <None Include="Units\US\US.txt" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Diagram\DiagramUnit.cd" />

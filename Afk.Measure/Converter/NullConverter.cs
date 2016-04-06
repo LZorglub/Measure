@@ -7,7 +7,7 @@ namespace Afk.Measure.Converter {
 	/// <summary>
 	/// Represents the null converter.
 	/// </summary>
-	/// <remarks>The null converter is unable to perform convertion.</remarks>
+	/// <remarks>The null converter is unable to perform conversion.</remarks>
 	internal sealed class NullConverter : UnitConverter {
 
 		/// <summary>

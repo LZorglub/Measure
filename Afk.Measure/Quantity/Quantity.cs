@@ -545,7 +545,7 @@ namespace Afk.Measure.Quantity {
             return qty;
         }
 
-        #region Explicit convertion
+        #region Explicit conversion : This set of conversion are explicit otherwise we will have an error with implicit conversion in inherited class
         /// <summary>
         /// Conversion explicit d'une quantité en son type T
         /// </summary>
@@ -561,6 +561,19 @@ namespace Afk.Measure.Quantity {
 
 			return value.Value;
 		}
+
+        /// <summary>
+        /// Explicit conversion from <see cref="Quantity<T>"/> to <see cref="Quantity<int>"/>
+        /// </summary>
+        /// <param name="value"><see cref="Quantity<T>"/> to convert</param>
+        /// <returns><see cref="Quantity<int>"/></returns>
+        public static explicit operator Quantity<int>(Quantity<T> value)
+        {
+            Quantity<int> qty = new Quantity<int>();
+            qty._value = Convert.ToInt32(value.Value);
+            qty._unit = value.Unit;
+            return qty;
+        }
 
         /// <summary>
         /// Explicit conversion from <see cref="Quantity<T>"/> to <see cref="Quantity<double>"/>

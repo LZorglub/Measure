@@ -54,7 +54,7 @@ namespace Afk.Measure.Operation {
 		}
 
 		/// <summary>
-		/// Compile convertion operation 
+		/// Compile conversion operation 
 		/// </summary>
 		/// <typeparam name="U">Type to convert</typeparam>
 		/// <typeparam name="W">Result type</typeparam>

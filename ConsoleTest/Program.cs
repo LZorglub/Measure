@@ -19,8 +19,23 @@ using Afk.Measure.Units.Currency;
 namespace ConsoleTest {
 	class Program {
 
+        static void Test()
+        {
+            double d = 15d;
+            int a = 8;
+
+            Unit u = (Unit)"m";
+            Quantity<double> qty = 15 * u;
+            Quantity<int> qtyInt = (Quantity<int>)(15 * u);
+            Length<int> lg = 15;
+
+            Quantity<double> result = qty * lg;
+        }
+
 		static void Main(string[] args) {
 			try {
+
+                Test();
 
                 Quantity<double> dd = 20; // Quantity unitless
                 Acceleration<double> acc = 15; // Acceleration m.s-2

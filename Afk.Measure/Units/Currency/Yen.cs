@@ -18,7 +18,7 @@ namespace Afk.Measure.Units.Currency
             : base(new Dimension(0, 0, 0, 0, 0, 0, 0, 1))
         {
             _symbol = "¥";
-            // The conversion is based on exchange rate, we dont provide any default convertion
+            // The conversion is based on exchange rate, we dont provide any default conversion
             _baseConverter = UnitConverter.NULL;
         }
 
