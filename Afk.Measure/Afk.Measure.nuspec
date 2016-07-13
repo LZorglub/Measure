@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<package >
+  <metadata>
+    <id>$id$</id>
+    <version>$version$</version>
+    <title>Unit Measure</title>
+    <authors>$author$</authors>
+    <owners>$author$</owners>
+    <licenseUrl>https://github.com/LZorglub/Measure/blob/master/LICENSE</licenseUrl>
+    <projectUrl>https://github.com/LZorglub/Measure</projectUrl>
+    <iconUrl>https://raw.githubusercontent.com/LZorglub/Measure/master/Measure64x64.png</iconUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>$description$</description>
+    <releaseNotes>
+	- 1.0.1 : Remove txt files deployment on nuget
+	- 1.0.2 : Loads units from custom assembly / Quantity.ConvertTo&lt;Unit&gt;()
+	- 1.0.3 : Fix nuget icon url
+	</releaseNotes>
+    <copyright>Copyright 2016</copyright>
+    <tags>unit quantity measure metric system physics SI CGS Imperial</tags>
+  </metadata>
+</package>
