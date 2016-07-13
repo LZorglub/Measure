@@ -9,7 +9,7 @@
         /// </summary>
         public Var()
 			: base(new Volt(), Afk.Measure.Units.System.SI.AMPERE) {
-			_exponent = 1;
+            this.Exponent = 1;
 			_symbol = "var";
 		}
 	}

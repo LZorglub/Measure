@@ -15,9 +15,7 @@ namespace Afk.Measure.Units {
 		/// </summary>
 		protected Dimension _dimension;
 
-		protected int _exponent;
 		protected string _symbol;
-		protected bool _isInverted;
 		protected Converter.UnitConverter _baseConverter;
 		internal ExpandedUnit _expandedUnit;
 
@@ -27,8 +25,8 @@ namespace Afk.Measure.Units {
 		/// </summary>
 		public virtual string Symbol {
 			get {
-				if (_exponent != 1)
-					return string.Format("{0}{1}", _symbol , _exponent);
+				if (Exponent != 1)
+					return string.Format("{0}{1}", _symbol , Exponent);
 
 				return _symbol; 
 			}
@@ -41,6 +39,7 @@ namespace Afk.Measure.Units {
         {
             get { return Symbol; }
         }
+
 		/// <summary>
 		/// Gets the unit symbol without exponent
 		/// </summary>
@@ -49,17 +48,10 @@ namespace Afk.Measure.Units {
 		}
 
 		/// <summary>
-		/// Returns a value indicating whether the unit is inverted or not
-		/// </summary>
-		internal bool IsInverted {
-			get { return _isInverted; }
-		}
-
-		/// <summary>
 		/// Gets the unit exponent
 		/// </summary>
 		public int Exponent {
-			get { return _exponent; }
+            get; protected set;
 		}
 
 		/// <summary>
@@ -80,11 +72,10 @@ namespace Afk.Measure.Units {
 		/// </summary>
 		public Unit() {
 			_dimension = new Dimension();
-			_isInverted = false;
 
-			_exponent = 1;
+			Exponent = 1;
 			_baseConverter = Converter.UnitConverter.IDENTITY;
-			_expandedUnit = new ExpandedUnit(new Unit[] { this }, new int[] { _exponent });
+			_expandedUnit = new ExpandedUnit(new Unit[] { this }, new int[] { Exponent });
 		}
 
 		/// <summary>
@@ -110,10 +101,9 @@ namespace Afk.Measure.Units {
 		/// <returns><see cref="Unit"/> inverted</returns>
 		public virtual Unit Inverse() {
 			Unit i = (Unit)this.Clone();
-			i._exponent = -i.Exponent;
+			i.Exponent = -i.Exponent;
 			i._dimension = i._dimension.Inverse();
 			i._baseConverter = i._baseConverter.Inverse();
-			i._isInverted = !i._isInverted;
 			i._expandedUnit = i._expandedUnit.Inverse();
 			return i;
 		}
@@ -128,7 +118,7 @@ namespace Afk.Measure.Units {
 			Unit i = (pow < 0) ? this.Inverse() : (Unit)this.Clone();
 
 			int value = Math.Abs(pow);
-			i._exponent = i.Exponent * value;
+			i.Exponent = i.Exponent * value;
 			i._dimension = i._dimension * value;
 			i._baseConverter = (i._baseConverter.IsLinear) ? i._baseConverter.Power(value) : Afk.Measure.Converter.UnitConverter.NULL;
 			i._expandedUnit = i._expandedUnit.Power(value);

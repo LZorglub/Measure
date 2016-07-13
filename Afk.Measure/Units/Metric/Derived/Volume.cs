@@ -27,7 +27,7 @@
         /// </summary>
         public Litre()
 			: base(new Dimension(3, 0, 0, 0, 0, 0, 0)) {
-			_exponent = 1;
+            this.Exponent = 1;
 			_symbol = "l";
 			_baseConverter = new Afk.Measure.Converter.RationalConverter(1, 1000);
 		}

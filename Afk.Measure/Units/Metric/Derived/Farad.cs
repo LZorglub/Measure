@@ -9,7 +9,7 @@
         /// </summary>
         public Farad()
 			: base(new Coulomb(), (MetricBaseUnit)new Volt().Inverse()) {
-			_exponent = 1;
+            this.Exponent = 1;
 			_symbol = "F";
 		}
 	}

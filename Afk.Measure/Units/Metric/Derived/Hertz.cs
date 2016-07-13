@@ -11,7 +11,7 @@
 		public Hertz()
 			: base((Measure.Units.MetricBaseUnit)Afk.Measure.Units.System.SI.SECOND.Inverse()) {
 			_symbol = "Hz";
-			_exponent = 1;
+            this.Exponent = 1;
 		}
 	}
 }

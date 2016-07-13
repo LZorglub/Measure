@@ -48,7 +48,7 @@ namespace Afk.Measure.Units {
 			_baseUnit = baseUnit;
 
 			this._baseConverter = baseUnit.BaseConverter;
-			this._exponent = baseUnit.Exponent;
+            this.Exponent = baseUnit.Exponent;
 			this._symbol = baseUnit.BaseSymbol; 
 		}
 

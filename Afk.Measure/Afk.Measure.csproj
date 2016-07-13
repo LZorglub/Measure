@@ -148,6 +148,7 @@
     <Compile Include="Units\System\SI.cs" />
     <Compile Include="Units\Unit.cs" />
     <Compile Include="Units\ProductUnitPath.cs" />
+    <Compile Include="Units\UnitAssembly.cs" />
     <Compile Include="Units\UnitException.cs" />
     <Compile Include="Units\Unit_From.cs" />
     <Compile Include="Units\Unit_Pfx.cs" />

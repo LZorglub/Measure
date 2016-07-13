@@ -9,7 +9,7 @@
         /// </summary>
         public Tesla()
 			: base(new ProductMetricBaseUnit(new Volt(), Afk.Measure.Units.System.SI.SECOND), (MetricBaseUnit)new Area().Inverse()) {
-			_exponent = 1;
+            this.Exponent = 1;
 			_symbol = "T";
 		}
 	}

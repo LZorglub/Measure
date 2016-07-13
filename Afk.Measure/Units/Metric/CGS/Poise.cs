@@ -12,7 +12,7 @@
 			: base(Measure.Units.System.CGS.GRAM,
 			(MetricBaseUnit)new ProductMetricBaseUnit(Measure.Units.System.CGS.CENTIMETRE, Measure.Units.System.SI.SECOND).Inverse()) {
 			_symbol = "P";
-			_exponent = 1;
+            this.Exponent = 1;
 		}
 	}
 }

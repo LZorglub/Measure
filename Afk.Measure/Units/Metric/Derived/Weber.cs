@@ -9,7 +9,7 @@
         /// </summary>
         public Weber()
 			: base(new Volt(), (Measure.Units.MetricBaseUnit)Afk.Measure.Units.System.SI.SECOND) {
-			_exponent = 1;
+            this.Exponent = 1;
 			_symbol = "Wb";
 		}
 	}

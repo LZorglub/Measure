@@ -19,7 +19,7 @@ namespace Afk.Measure.Units.US
             : base(new Dimension(3, 0, 0, 0, 0, 0, 0))
         {
             _symbol = "pt";
-            _exponent = 1;
+            this.Exponent = 1;
             _baseConverter = new Afk.Measure.Converter.RationalConverter(1, 1000000).Concat(new Afk.Measure.Converter.MultiplyConverter(473.176473));
         }
 

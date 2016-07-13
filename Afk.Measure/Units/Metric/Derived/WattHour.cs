@@ -12,7 +12,7 @@
         /// Initialize a new instance of <see cref="WattHour"/>
         /// </summary>
         public WattHour() :  base (new Watt(), new Hour()) {
-			_exponent = 1;
+            this.Exponent = 1;
 			_symbol = "Wh";
 		}
 	}

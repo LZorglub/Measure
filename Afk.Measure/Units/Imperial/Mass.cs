@@ -52,7 +52,7 @@
         public Pound()
 			: base(new Dimension(0, 0, 0, 1, 0, 0, 0)) {
 			_symbol = "lb";
-			_exponent = 1;
+			this.Exponent = 1;
 			_baseConverter = new Afk.Measure.Converter.RationalConverter(1, 1000).Concat(new Afk.Measure.Converter.MultiplyConverter(453.59237));
 		}
 	}

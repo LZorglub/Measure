@@ -6,6 +6,7 @@ using System.Reflection;
 using System.Text.RegularExpressions;
 using Afk.Measure.Units.Metric.SI;
 using Afk.Measure.Units.Metric;
+using static Afk.Measure.Units.UnitAssembly;
 
 namespace Afk.Measure.Units {
 	/// <summary>
@@ -14,20 +15,19 @@ namespace Afk.Measure.Units {
 	public partial class Unit {
 		// This file contains all unit static method
 
-		private static List<Unit> _wellKnownUnits;
-
 		private static object _synchronizedObject = new object();
 		private static Regex regUnit = new Regex(@"^(?<Unit>([a-zA-Z]{0,2}°)?[a-zA-Z$¥ ]*)(\^?(?<Exponent>[-+]?\d+))?$", RegexOptions.Compiled);
+        private static Dictionary<string, UnitAssembly> unitAssembly;
 
-		internal struct HashUnit {
-			public int Id;
-			public Type UnitType;
-		}
-
-		/// <summary>
-		/// Obtain for specific dimension a list of <see cref="Unit"/>
-		/// </summary>
-		private static Dictionary<Dimension, List<HashUnit>> _dimensionToUnits;
+        /// <summary>
+        /// Initialize a new instance of <see cref="Unit"/>
+        /// </summary>
+        static Unit()
+        {
+            UnitAssembly current = new UnitAssembly(Assembly.GetExecutingAssembly());
+            unitAssembly = new Dictionary<string, UnitAssembly>();
+            unitAssembly.Add(current.AssemblyFullName, current);
+        }
 
 		/// <summary>
 		/// Gets the list of <see cref="Unit"/> know by the assembly
@@ -35,9 +35,7 @@ namespace Afk.Measure.Units {
 		public static Unit[] WellKnownUnits {
 			get {
 				lock (_synchronizedObject) {
-					if (_wellKnownUnits == null)
-						LoadUnits();
-					return _wellKnownUnits.ToArray();
+                    return unitAssembly.SelectMany(e => e.Value.WellKnownUnits).ToArray();
 				}
 			}
 		}
@@ -47,47 +45,27 @@ namespace Afk.Measure.Units {
 		/// </summary>
 		/// <param name="dimension"><see cref="Dimension"/> of units</param>
 		/// <returns>List of <b>HashUnit</b> which contains the type of <see cref="Unit"/> know in the specified <see cref="Dimension"/></returns>
-		internal static List<HashUnit> GetUnitsListFromDimension(Dimension dimension) {
+		internal static IEnumerable<HashUnit> GetUnitsListFromDimension(Dimension dimension) {
 			lock (_synchronizedObject) {
-				if (_dimensionToUnits == null)
-					LoadUnits();
-				if (_dimensionToUnits.ContainsKey(dimension)) {
-					return _dimensionToUnits[dimension];
-				}
-				else
-					return null;
-			}
+                return unitAssembly.Select(e => e.Value.GetUnitsFrom(dimension)).Where(e => e != null).SelectMany(e => e);
+            }
 		}
 
-		/// <summary>
-		/// Load <see cref="Unit"/> from current assembly.
-		/// </summary>
-		private static void LoadUnits() {
-			IEnumerable<Type> types = Assembly.GetExecutingAssembly().GetTypes().
-				Where(e => !e.IsAbstract && e.IsSubclassOf(typeof(Unit)) && e != typeof(ProductMetricBaseUnit) && e != typeof(ProductUnit) && e != typeof(PrefixUnit));
-
-			_wellKnownUnits = new List<Unit>();
-			_dimensionToUnits = new Dictionary<Dimension, List<HashUnit>>();
-
-			// Select new instance of Unit with a right symbol
-			IEnumerable<Unit> unites = types.Select(e => (Unit)Activator.CreateInstance(e)).Where(e => !string.IsNullOrEmpty(e.Symbol));
-
-			// Only unit with exponent 1 are selected.
-			_wellKnownUnits.AddRange(unites.Where(e => e.Exponent == 1));
-
-			// Dictionary of units by dimension contain only dimension different from dimensionless
-			foreach (Unit u in unites) {
-				if (!u.Dimension.Equals(Dimension.None)) {
-					HashUnit hu = new HashUnit();
-					hu.Id = u.GetUICode();
-					hu.UnitType = u.GetType();
-
-					if (!_dimensionToUnits.ContainsKey(u.Dimension))
-						_dimensionToUnits.Add(u.Dimension, new List<HashUnit>());
-					_dimensionToUnits[u.Dimension].Add(hu);
-				}
-			}
-		}
+        /// <summary>
+        /// Loads <see cref="Unit"/> contains in the assembly
+        /// </summary>
+        /// <param name="assembly"></param>
+        public static void LoadAssembly(Assembly assembly)
+        {
+            lock (_synchronizedObject)
+            {
+                if (!unitAssembly.ContainsKey(assembly.FullName))
+                {
+                    UnitAssembly current = new UnitAssembly(assembly);
+                    unitAssembly.Add(current.AssemblyFullName, current);
+                }
+            }
+        }
 
 		/// <summary>
 		/// Converts the string representation of a unit to its <see cref="Unit"/> equivalent.
@@ -108,8 +86,9 @@ namespace Afk.Measure.Units {
 		/// <exception cref="UnitException">The <b>symbol</b> can not be parse in <see cref="Unit"/></exception>
 		public static Unit Parse(string symbol, bool ignoreCase) {
 			Unit result = null;
+            Unit[] knownUnits = WellKnownUnits;
 
-			symbol = symbol.Trim();
+            symbol = symbol.Trim();
 
 			try {
 				string[] div = symbol.Split(new char[] { '/' }, 2);
@@ -155,7 +134,7 @@ namespace Afk.Measure.Units {
 								p = Measure.Units.Metric.Prefixes.SIPrefixe.None;
 							}
 							else {
-								Unit knownUnit = WellKnownUnits.FirstOrDefault(e => string.Compare(e.LocalizableSymbol, baseUnit, ignoreCase) == 0);
+								Unit knownUnit = knownUnits.FirstOrDefault(e => string.Compare(e.LocalizableSymbol, baseUnit, ignoreCase) == 0);
 								if (knownUnit != null) {
 									if (exponent < 0) knownUnit = knownUnit.Inverse();
 

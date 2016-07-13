@@ -9,7 +9,7 @@
         /// </summary>
         public Coulomb()
 			: base((Measure.Units.MetricBaseUnit)Afk.Measure.Units.System.SI.SECOND, (Measure.Units.MetricBaseUnit)Afk.Measure.Units.System.SI.AMPERE) {
-			_exponent = 1;
+            this.Exponent = 1;
 			_symbol = "C";
 		}
 	}

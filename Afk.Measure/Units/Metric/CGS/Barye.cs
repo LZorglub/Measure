@@ -11,7 +11,7 @@
 		public Barye()
 			: base(new Poise(), (MetricBaseUnit)Measure.Units.System.SI.SECOND.Inverse()) {
 			_symbol = "Ba";
-			_exponent = 1;
-		}
+            this.Exponent = 1;
+        }
 	}
 }

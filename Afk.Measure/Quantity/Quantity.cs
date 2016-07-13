@@ -525,6 +525,16 @@ namespace Afk.Measure.Quantity {
 		}
 
         /// <summary>
+        /// Convert a quantity in the specified <see cref="TUnit"/>
+        /// </summary>
+        /// <typeparam name="TUnit">Type of unit</typeparam>
+        /// <returns><see cref="Quantity"/> in specified unit</returns>
+        public Quantity<T> ConvertTo<TUnit>() where TUnit : Unit, new()
+        {
+            return ConvertTo(new TUnit());
+        }
+
+        /// <summary>
         /// Convert a quantity in the specified <see cref="Unit"/>
         /// </summary>
         /// <param name="unit"><see cref="Unit"/></param>

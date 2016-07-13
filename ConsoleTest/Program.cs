@@ -15,6 +15,7 @@ using Afk.Measure.Quantity.Derived;
 using System.Globalization;
 using Afk.Measure;
 using Afk.Measure.Units.Currency;
+using System.Reflection;
 
 namespace ConsoleTest {
 	class Program {
@@ -34,6 +35,10 @@ namespace ConsoleTest {
 
 		static void Main(string[] args) {
 			try {
+
+                LoadAssembly(); 
+
+                CustomUnit();
 
                 Test();
 
@@ -178,6 +183,23 @@ namespace ConsoleTest {
 
             var pint = Quantity.None<Afk.Measure.Units.US.Pint>(1);
             Console.WriteLine(pint.ConvertTo(Unit.Parse("ml")));
+        }
+
+        static void LoadAssembly()
+        {
+            Unit[] units = Unit.WellKnownUnits;
+            Console.WriteLine(units.FirstOrDefault(e => e.Symbol == "cal")?.Symbol);
+            Unit.LoadAssembly(Assembly.GetExecutingAssembly());
+            units = Unit.WellKnownUnits;
+            Console.WriteLine(units.FirstOrDefault(e => e.Symbol == "cal")?.Symbol);
+        }
+
+        static void CustomUnit()
+        {
+            Calorie cal = new Calorie();
+            var qtyCal = 1 * cal;
+
+            Console.WriteLine(qtyCal.ConvertTo<Joule>());
         }
 	}
 }

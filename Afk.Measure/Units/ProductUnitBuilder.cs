@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using Afk.Measure.Units.Metric;
+using static Afk.Measure.Units.UnitAssembly;
 
 namespace Afk.Measure.Units {
 
@@ -57,10 +58,10 @@ namespace Afk.Measure.Units {
 
 			if (newPath.Path.Count > 0) {
 				// Retrieve all unit in the dimension
-				List<Unit.HashUnit> hUnit = Unit.GetUnitsListFromDimension(expandedUnit.Dimension);
+				IEnumerable<HashUnit> hUnit = Unit.GetUnitsListFromDimension(expandedUnit.Dimension);
 
 				if (hUnit != null) {
-					foreach (Unit.HashUnit hU in hUnit) {
+					foreach (HashUnit hU in hUnit) {
 						// If a unit can be found we select this unit
 						if (newPath.Path.Contains(hU.Id)) {
 							BaseUnit u = (BaseUnit)Activator.CreateInstance(hU.UnitType);

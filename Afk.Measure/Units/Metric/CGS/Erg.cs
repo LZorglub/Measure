@@ -11,7 +11,7 @@
 		public Erg()
 			: base(new Dyne(), Measure.Units.System.CGS.CENTIMETRE) {
 			_symbol = "erg";
-			_exponent = 1;
+            this.Exponent = 1;
 		}
 	}
 }

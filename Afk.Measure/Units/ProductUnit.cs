@@ -57,7 +57,7 @@ namespace Afk.Measure.Units {
 			this._baseConverter = expandedUnits.BaseConverter;
 			this._symbol = expandedUnits.Symbol;
 
-			this._exponent = expandedUnits.Exponent;
+            this.Exponent = expandedUnits.Exponent;
 			this._expandedUnit = expandedUnits;
 		}
 

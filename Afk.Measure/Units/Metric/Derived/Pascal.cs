@@ -9,7 +9,7 @@
         /// </summary>
         public Pascal()
 			: base(new Newton(), (MetricBaseUnit)new Area().Inverse()) {
-			_exponent = 1;
+            this.Exponent = 1;
 			_symbol = "Pa";
 		}
 	}

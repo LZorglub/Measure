@@ -9,7 +9,7 @@
         /// </summary>
         public Joule()
 			: base(new Newton(), Afk.Measure.Units.System.SI.METER) {
-			_exponent = 1;
+            this.Exponent = 1;
 			_symbol = "J";
 		}
 	}

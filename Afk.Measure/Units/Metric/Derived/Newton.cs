@@ -9,7 +9,7 @@
         /// </summary>
         public Newton()
 			: base(new Acceleration(), Afk.Measure.Units.System.SI.GRAM) {
-			_exponent = 1;
+            this.Exponent = 1;
 			_symbol = "N";
 		}
 	}

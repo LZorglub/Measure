@@ -13,7 +13,7 @@
         /// </summary>
         public Watt()
 			: base(new Joule(), (Measure.Units.MetricBaseUnit)Afk.Measure.Units.System.SI.SECOND.Inverse()) {
-			_exponent = 1;
+            this.Exponent = 1;
 			_symbol = "W";
 		}
 	}

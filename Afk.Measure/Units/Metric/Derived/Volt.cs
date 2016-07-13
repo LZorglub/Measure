@@ -9,7 +9,7 @@
         /// </summary>
         public Volt()
 			: base(new Watt(), (Measure.Units.MetricBaseUnit)Afk.Measure.Units.System.SI.AMPERE.Inverse()) {
-			_exponent = 1;
+            this.Exponent = 1;
 			_symbol = "V";
 		}
 	}
