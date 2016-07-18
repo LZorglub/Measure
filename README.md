@@ -3,6 +3,9 @@
 This library provides units management in different measure system (International System, CGS, Imperial system and US). 
 The guidelines of SI can be found [here](http://www.nist.gov/pml/pubs/sp330/index.cfm)
 
+# NUGET
+The easiest way to install is by using [NuGet](https://www.nuget.org/packages/Afk.Measure/).
+
 ## Concept
 The library expose **Unit** and **Quantity<T>**. Units belongs to a dimension (7 physical and 1 currency dimension), the quantity represents one value with associated unit. Operations like addition, substraction, comparaison are allowed only if unit of quantity belongs the same dimension.
 Conversion between quantities are done using the unit base converter. Each unit have a converter to go the unit base (SI unit), conversion from unit to another is built on merge of each unit converter.
