@@ -23,6 +23,13 @@ namespace UnitTestMeasure
         }
 
         [TestMethod]
+        public void TestUnitOneParse()
+        {
+            var unit = Unit.Parse(string.Empty);
+            Assert.AreEqual(unit, BaseUnit.UNITONE);
+        }
+
+        [TestMethod]
         public void TestLocalizableUnit()
         {
             Unit gal = Unit.Parse("gal US");

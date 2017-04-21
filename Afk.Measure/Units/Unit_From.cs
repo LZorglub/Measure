@@ -88,6 +88,8 @@ namespace Afk.Measure.Units {
 			Unit result = null;
             Unit[] knownUnits = WellKnownUnits;
 
+            if (string.IsNullOrEmpty(symbol)) return BaseUnit.UNITONE;
+
             symbol = symbol.Trim();
 
 			try {

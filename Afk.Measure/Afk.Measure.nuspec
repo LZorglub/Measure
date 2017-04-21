@@ -15,6 +15,7 @@
 	- 1.0.1 : Remove txt files deployment on nuget
 	- 1.0.2 : Loads units from custom assembly / Quantity.ConvertTo&lt;Unit&gt;()
 	- 1.0.3 : Fix nuget icon url
+  - 1.0.4 : Parse empty unit symbol
 	</releaseNotes>
     <copyright>Copyright 2016</copyright>
     <tags>unit quantity measure metric system physics SI CGS Imperial</tags>

@@ -1,13 +1,18 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
-VisualStudioVersion = 14.0.23107.0
+VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Afk.Measure", "Afk.Measure\Afk.Measure.csproj", "{B125A1C0-ED1E-4C58-9936-0ECD9E5C6307}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleTest", "ConsoleTest\ConsoleTest.csproj", "{049C0EAE-7461-42C1-AF4A-DAFC11572CC3}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnitTestMeasure", "UnitTestMeasure\UnitTestMeasure.csproj", "{9DBF6293-F6F8-4E05-B568-04B28FC60008}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solutions Items", "Solutions Items", "{D1D85E9A-FFB6-49B6-96E0-C0DFC9477588}"
+	ProjectSection(SolutionItems) = preProject
+		Afk.Measure\Afk.Measure.nuspec = Afk.Measure\Afk.Measure.nuspec
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
