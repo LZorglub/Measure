@@ -24,7 +24,7 @@ namespace Afk.Measure.Units {
         /// </summary>
         static Unit()
         {
-            UnitAssembly current = new UnitAssembly(Assembly.GetExecutingAssembly());
+            UnitAssembly current = new UnitAssembly(MultiPlatform.GetCurrentAssembly());
             unitAssembly = new Dictionary<string, UnitAssembly>();
             unitAssembly.Add(current.AssemblyFullName, current);
         }

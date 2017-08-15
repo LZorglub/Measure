@@ -8,7 +8,7 @@ namespace Afk.Measure.Units {
 	/// <summary>
 	/// Represents an unit
 	/// </summary>
-	public abstract partial class Unit : ICloneable{
+	public abstract partial class Unit {
 
 		/// <summary>
 		/// Dimension define the group of unit

@@ -1,18 +1,11 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 14
-VisualStudioVersion = 14.0.25420.1
+# Visual Studio 15
+VisualStudioVersion = 15.0.26430.16
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Afk.Measure", "Afk.Measure\Afk.Measure.csproj", "{B125A1C0-ED1E-4C58-9936-0ECD9E5C6307}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleTest", "ConsoleTest\ConsoleTest.csproj", "{049C0EAE-7461-42C1-AF4A-DAFC11572CC3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Afk.Measure", "Afk.Measure\Afk.Measure.csproj", "{38E305F8-DA49-4176-918B-3B194E0A6110}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnitTestMeasure", "UnitTestMeasure\UnitTestMeasure.csproj", "{9DBF6293-F6F8-4E05-B568-04B28FC60008}"
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solutions Items", "Solutions Items", "{D1D85E9A-FFB6-49B6-96E0-C0DFC9477588}"
-	ProjectSection(SolutionItems) = preProject
-		Afk.Measure\Afk.Measure.nuspec = Afk.Measure\Afk.Measure.nuspec
-	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -20,14 +13,10 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{B125A1C0-ED1E-4C58-9936-0ECD9E5C6307}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{B125A1C0-ED1E-4C58-9936-0ECD9E5C6307}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{B125A1C0-ED1E-4C58-9936-0ECD9E5C6307}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{B125A1C0-ED1E-4C58-9936-0ECD9E5C6307}.Release|Any CPU.Build.0 = Release|Any CPU
-		{049C0EAE-7461-42C1-AF4A-DAFC11572CC3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{049C0EAE-7461-42C1-AF4A-DAFC11572CC3}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{049C0EAE-7461-42C1-AF4A-DAFC11572CC3}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{049C0EAE-7461-42C1-AF4A-DAFC11572CC3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{38E305F8-DA49-4176-918B-3B194E0A6110}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{38E305F8-DA49-4176-918B-3B194E0A6110}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{38E305F8-DA49-4176-918B-3B194E0A6110}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{38E305F8-DA49-4176-918B-3B194E0A6110}.Release|Any CPU.Build.0 = Release|Any CPU
 		{9DBF6293-F6F8-4E05-B568-04B28FC60008}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{9DBF6293-F6F8-4E05-B568-04B28FC60008}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9DBF6293-F6F8-4E05-B568-04B28FC60008}.Release|Any CPU.ActiveCfg = Release|Any CPU

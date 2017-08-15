@@ -60,18 +60,28 @@ namespace Afk.Measure {
 		/// <param name="toCheck">Implemented type to verified</param>
 		/// <returns>True if generic class is the right specify type</returns>
 		private static bool IsSubclassOfRawGeneric(Type generic, Type toCheck) {
-			while (toCheck != null && toCheck != typeof(object)) {
+#if NETSTANDARD
+            while (toCheck != null && toCheck.GetType() != typeof(object))
+            {
+                var cur = toCheck.GetTypeInfo().IsGenericType ? toCheck.GetGenericTypeDefinition() : toCheck;
+                if (generic == cur) { return true; }
+                toCheck = toCheck.GetTypeInfo().BaseType;
+            }
+            return false;
+#else
+            while (toCheck != null && toCheck != typeof(object)) {
 				var cur = toCheck.IsGenericType ? toCheck.GetGenericTypeDefinition() : toCheck;
 				if (generic == cur) { return true; }
 				toCheck = toCheck.BaseType;
 			}
 			return false;
-		}
+#endif
+        }
 
-		/// <summary>
-		/// Initialize static members of <see cref="Dimension"/>
-		/// </summary>
-		static Dimension() {
+        /// <summary>
+        /// Initialize static members of <see cref="Dimension"/>
+        /// </summary>
+        static Dimension() {
 			None = new Dimension();
 			_synchronizedObject = new object();
 		}
@@ -285,28 +295,50 @@ namespace Afk.Measure {
 				if (dimensionToQuantity == null) {
 					dimensionToQuantity = new Dictionary<Dimension, Type>();
 
-					// Search all quantity in current assembly, not Quantity class
-					IEnumerable<Type> types = Assembly.GetExecutingAssembly().GetTypes().
-						Where(e => IsSubclassOfRawGeneric(typeof(Measure.Quantity.Quantity<>), e) && e != typeof(Quantity<>));
-					foreach (Type tp in types) {
-						if (!tp.IsAbstract) {
-							// Create a quantity reference to obtain the unit and dimension
-							if (tp.IsGenericType) {
-								try {
-									Quantity<object> qty = (Quantity<object>)Activator.CreateInstance(tp.MakeGenericType(typeof(object)));
+                    // Search all quantity in current assembly, not Quantity class
+#if NETSTANDARD
+                    IEnumerable<TypeInfo> types = MultiPlatform.GetCurrentAssembly().DefinedTypes.
+                        Where(e => !e.IsAbstract && e.IsGenericType && IsSubclassOfRawGeneric(typeof(Measure.Quantity.Quantity<>), e.GetType()) && e != typeof(Quantity<>).GetTypeInfo());
+                    foreach (TypeInfo tp in types)
+                    {
+                        // Create a quantity reference to obtain the unit and dimension
+                        try
+                        {
+                            Quantity<object> qty = (Quantity<object>)Activator.CreateInstance(tp.MakeGenericType(typeof(object)));
 
-									if (qty.Unit != null) {
-										dimensionToQuantity.Add(qty.Unit.Dimension, tp);
-									}
-								}
-								catch {
-									// Don't disturbe if generic class has more than one type parameter
-								}
-							}
-						}
-					}
-				}
-			}
+                            if (qty.Unit != null)
+                            {
+                                dimensionToQuantity.Add(qty.Unit.Dimension, tp.GetType());
+                            }
+                        }
+                        catch
+                        {
+                            // Don't disturbe if generic class has more than one type parameter
+                        }
+                    }
+#else
+                    IEnumerable<Type> types = MultiPlatform.GetCurrentAssembly().GetTypes().
+                        Where(e => !e.IsAbstract && e.IsGenericType && IsSubclassOfRawGeneric(typeof(Measure.Quantity.Quantity<>), e) && e != typeof(Quantity<>));
+                    foreach (Type tp in types)
+                    {
+                        // Create a quantity reference to obtain the unit and dimension
+                        try
+                        {
+                            Quantity<object> qty = (Quantity<object>)Activator.CreateInstance(tp.MakeGenericType(typeof(object)));
+
+                            if (qty.Unit != null)
+                            {
+                                dimensionToQuantity.Add(qty.Unit.Dimension, tp);
+                            }
+                        }
+                        catch
+                        {
+                            // Don't disturbe if generic class has more than one type parameter
+                        }
+                    }
+#endif
+                }
+            }
 
 			if (dimensionToQuantity.ContainsKey(dimension))
 				return dimensionToQuantity[dimension];

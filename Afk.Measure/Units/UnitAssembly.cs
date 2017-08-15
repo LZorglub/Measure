@@ -40,11 +40,19 @@ namespace Afk.Measure.Units
         {
             if (assembly == null) throw new ArgumentNullException(nameof(assembly));
 
+#if NETSTANDARD
+            IEnumerable<TypeInfo> types = assembly.DefinedTypes.
+                Where(e => !e.IsAbstract && e.IsSubclassOf(typeof(Unit)) && e != typeof(ProductMetricBaseUnit).GetTypeInfo() && e != typeof(ProductUnit).GetTypeInfo() && e != typeof(PrefixUnit).GetTypeInfo());
+
+            // Select new instance of Unit with a right symbol
+            IEnumerable<Unit> unites = types.Select(e => (Unit)Activator.CreateInstance(e.GetType())).Where(e => !string.IsNullOrEmpty(e.Symbol));
+#else
             IEnumerable<Type> types = assembly.GetTypes().
                 Where(e => !e.IsAbstract && e.IsSubclassOf(typeof(Unit)) && e != typeof(ProductMetricBaseUnit) && e != typeof(ProductUnit) && e != typeof(PrefixUnit));
 
             // Select new instance of Unit with a right symbol
             IEnumerable<Unit> unites = types.Select(e => (Unit)Activator.CreateInstance(e)).Where(e => !string.IsNullOrEmpty(e.Symbol));
+#endif
 
             _wellKnownUnits = new List<Unit>();
             _dimensionToUnits = new Dictionary<Dimension, List<HashUnit>>();

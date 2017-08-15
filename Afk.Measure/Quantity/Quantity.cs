@@ -13,7 +13,7 @@ namespace Afk.Measure.Quantity {
 	/// </summary>
 	/// <typeparam name="T"></typeparam>
 	/// <remarks>A quantity is composed of a unit part and a value part. A quantity has no dimension, unit give the dimension.</remarks>
-	public class Quantity<T> : ICloneable {
+	public class Quantity<T> {
 		protected T _value;
 		protected Unit _unit;
 

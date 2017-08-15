@@ -1,188 +1,43 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
   <PropertyGroup>
-    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
-    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProductVersion>9.0.30729</ProductVersion>
-    <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{B125A1C0-ED1E-4C58-9936-0ECD9E5C6307}</ProjectGuid>
-    <OutputType>Library</OutputType>
-    <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Afk.Measure</RootNamespace>
-    <AssemblyName>Afk.Measure</AssemblyName>
-    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
-    <FileAlignment>512</FileAlignment>
-    <FileUpgradeFlags>
-    </FileUpgradeFlags>
-    <UpgradeBackupLocation>
-    </UpgradeBackupLocation>
-    <OldToolsVersion>3.5</OldToolsVersion>
-    <PublishUrl>publier\</PublishUrl>
-    <Install>true</Install>
-    <InstallFrom>Disk</InstallFrom>
-    <UpdateEnabled>false</UpdateEnabled>
-    <UpdateMode>Foreground</UpdateMode>
-    <UpdateInterval>7</UpdateInterval>
-    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
-    <UpdatePeriodically>false</UpdatePeriodically>
-    <UpdateRequired>false</UpdateRequired>
-    <MapFileExtensions>true</MapFileExtensions>
-    <ApplicationRevision>0</ApplicationRevision>
-    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
-    <IsWebBootstrapper>false</IsWebBootstrapper>
-    <UseApplicationTrust>false</UseApplicationTrust>
-    <BootstrapperEnabled>true</BootstrapperEnabled>
+    <TargetFrameworks>netstandard1.4;net40;net45;net46</TargetFrameworks>
   </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <DebugSymbols>true</DebugSymbols>
-    <DebugType>full</DebugType>
-    <Optimize>false</Optimize>
-    <OutputPath>bin\Debug\</OutputPath>
-    <DefineConstants>DEBUG;TRACE</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
+
+  <PropertyGroup Condition="'$(TargetFramework)'=='netstandard1.4'">
+    <DefineConstants>NETSTANDARD</DefineConstants>
   </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <DebugType>pdbonly</DebugType>
-    <Optimize>true</Optimize>
-    <OutputPath>bin\Release\</OutputPath>
-    <DefineConstants>TRACE</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
+
+  <PropertyGroup>
+    <Version>2.0.0.0</Version>
+    <FileVersion>2.0.0.0</FileVersion>
+    <Authors>Luc Nempont</Authors>
+    <Description>This C# library provides units management in different measure system (International System, CGS, Imperial system and US).</Description>
+    <Copyright>Copyright (c) 2011</Copyright>
   </PropertyGroup>
-  <ItemGroup>
+  
+  <ItemGroup Condition="'$(TargetFramework)'=='net40' OR '$(TargetFramework)'=='net45' OR '$(TargetFramework)'=='net46'">
     <Reference Include="System" />
-    <Reference Include="System.Core">
-      <RequiredTargetFramework>3.5</RequiredTargetFramework>
-    </Reference>
-    <Reference Include="System.Xml.Linq">
-      <RequiredTargetFramework>3.5</RequiredTargetFramework>
-    </Reference>
-    <Reference Include="System.Data.DataSetExtensions">
-      <RequiredTargetFramework>3.5</RequiredTargetFramework>
-    </Reference>
+    <Reference Include="System.Core" />
+    <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Data" />
-    <Reference Include="System.Xml" />
   </ItemGroup>
-  <ItemGroup>
-    <Compile Include="Converter\AddConverter.cs" />
-    <Compile Include="Converter\CompositeConverter.cs" />
-    <Compile Include="Converter\Identity.cs" />
-    <Compile Include="Converter\MultiplyConverter.cs" />
-    <Compile Include="Converter\NullConverter.cs" />
-    <Compile Include="Converter\RationalConverter.cs" />
-    <Compile Include="Converter\UnitConverter.cs" />
-    <Compile Include="CurrencyContext.cs" />
-    <Compile Include="Dimension.cs" />
-    <Compile Include="DimensionException.cs" />
-    <Compile Include="Operation\Number.cs" />
-    <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Quantity\Derived\Acceleration.cs" />
-    <Compile Include="Quantity\Base\AmountOfSubstance.cs" />
-    <Compile Include="Quantity\Base\ElectricCurrent.cs" />
-    <Compile Include="Quantity\Base\Length.cs" />
-    <Compile Include="Quantity\Base\LuminousIntensity.cs" />
-    <Compile Include="Quantity\Base\Mass.cs" />
-    <Compile Include="Quantity\Base\Temperature.cs" />
-    <Compile Include="Quantity\Base\Time.cs" />
-    <Compile Include="Quantity\Base\Currency.cs" />
-    <Compile Include="Quantity\Derived\Energy.cs" />
-    <Compile Include="Quantity\Derived\Force.cs" />
-    <Compile Include="Quantity\Derived\Power.cs" />
-    <Compile Include="Quantity\Quantity.cs" />
-    <Compile Include="Quantity\Quantity_From.cs" />
-    <Compile Include="Quantity\Derived\Speed.cs" />
-    <Compile Include="Quantity\Derived\Volume.cs" />
-    <Compile Include="Units\BaseUnit.cs" />
-    <Compile Include="Units\Currency\Dollar.cs" />
-    <Compile Include="Units\Currency\Euro.cs" />
-    <Compile Include="Units\Currency\Yen.cs" />
-    <Compile Include="Units\ExpandedUnit.cs" />
-    <Compile Include="Units\Imperial\Length.cs" />
-    <Compile Include="Units\Imperial\Mass.cs" />
-    <Compile Include="Units\Imperial\Volume.cs" />
-    <Compile Include="Units\Metric\CGS\Barye.cs" />
-    <Compile Include="Units\Metric\CGS\Centimetre.cs" />
-    <Compile Include="Units\Metric\CGS\CentimetrePerSecond.cs" />
-    <Compile Include="Units\Metric\CGS\Dyne.cs" />
-    <Compile Include="Units\Metric\CGS\Erg.cs" />
-    <Compile Include="Units\Metric\CGS\Gram.cs" />
-    <Compile Include="Units\Metric\CGS\Kayser.cs" />
-    <Compile Include="Units\Metric\CGS\Poise.cs" />
-    <Compile Include="Units\Metric\Derived\Acceleration.cs" />
-    <Compile Include="Units\Metric\Derived\Area.cs" />
-    <Compile Include="Units\Metric\Derived\Celsius.cs" />
-    <Compile Include="Units\Metric\Derived\Coulomb.cs" />
-    <Compile Include="Units\Metric\Derived\Density.cs" />
-    <Compile Include="Units\Metric\Derived\Fahrenheit .cs" />
-    <Compile Include="Units\Metric\Derived\Farad.cs" />
-    <Compile Include="Units\Metric\Derived\Hertz.cs" />
-    <Compile Include="Units\Metric\Derived\Joule.cs" />
-    <Compile Include="Units\Metric\Derived\Newton.cs" />
-    <Compile Include="Units\Metric\Derived\Ohm.cs" />
-    <Compile Include="Units\Metric\Derived\Pascal.cs" />
-    <Compile Include="Units\Metric\Derived\Tesla.cs" />
-    <Compile Include="Units\Metric\Derived\Time.cs" />
-    <Compile Include="Units\Metric\Derived\Var.cs" />
-    <Compile Include="Units\Metric\Derived\Velocity.cs" />
-    <Compile Include="Units\Metric\Derived\Volt.cs" />
-    <Compile Include="Units\Metric\Derived\Volume.cs" />
-    <Compile Include="Units\Metric\Derived\Watt.cs" />
-    <Compile Include="Units\Metric\Derived\WattHour.cs" />
-    <Compile Include="Units\Metric\Derived\Weber.cs" />
-    <Compile Include="Units\MetricBaseUnit.cs" />
-    <Compile Include="Units\PrefixUnit.cs" />
-    <Compile Include="Units\Metric\Prefixes\ExponentPrefixes.cs" />
-    <Compile Include="Units\Metric\Prefixes\SIPrefixe.cs" />
-    <Compile Include="Units\ProductMetricBaseUnit.cs" />
-    <Compile Include="Units\Metric\SI\Ampere.cs" />
-    <Compile Include="Units\Metric\SI\Candela.cs" />
-    <Compile Include="Units\Metric\SI\Gram.cs" />
-    <Compile Include="Units\Metric\SI\Kelvin.cs" />
-    <Compile Include="Units\Metric\SI\Meter.cs" />
-    <Compile Include="Units\Metric\SI\Mole.cs" />
-    <Compile Include="Units\Metric\SI\Second.cs" />
-    <Compile Include="Units\ProductUnit.cs" />
-    <Compile Include="Units\ProductUnitBuilder.cs" />
-    <Compile Include="Units\System\CGS.cs" />
-    <Compile Include="Units\System\SI.cs" />
-    <Compile Include="Units\Unit.cs" />
-    <Compile Include="Units\ProductUnitPath.cs" />
-    <Compile Include="Units\UnitAssembly.cs" />
-    <Compile Include="Units\UnitException.cs" />
-    <Compile Include="Units\Unit_From.cs" />
-    <Compile Include="Units\Unit_Pfx.cs" />
-    <Compile Include="Units\US\Volume.cs" />
+
+  <ItemGroup Condition="'$(TargetFramework)'=='net45' OR '$(TargetFramework)'=='net46'">
+    <Reference Include="System.ComponentModel.DataAnnotations" />
   </ItemGroup>
-  <ItemGroup>
-    <None Include="Units\Imperial\BritishImperial.txt" />
-    <None Include="Units\Metric\CGS\ReadMe.txt" />
-    <None Include="Units\System\CGS.txt" />
-    <None Include="Units\US\US.txt" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Diagram\DiagramUnit.cd" />
-    <None Include="Units\ClassDiagram1.cd" />
-  </ItemGroup>
-  <ItemGroup />
-  <ItemGroup>
-    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
-      <Visible>False</Visible>
-      <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
-      <Install>false</Install>
-    </BootstrapperPackage>
-    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
-      <Visible>False</Visible>
-      <ProductName>.NET Framework 3.5 SP1</ProductName>
-      <Install>true</Install>
-    </BootstrapperPackage>
-  </ItemGroup>
-  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
-  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
-       Other similar extension points exist, see Microsoft.Common.targets.
-  <Target Name="BeforeBuild">
-  </Target>
-  <Target Name="AfterBuild">
-  </Target>
-  -->
+
+  <PropertyGroup>
+    <PackageId>Afk.Measure</PackageId>
+    <PackageVersion>2.0.0.0</PackageVersion>
+    <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
+    <PackageTags>unit quantity measure metric system physics SI CGS Imperial</PackageTags>
+    <PackageLicenseUrl>https://github.com/LZorglub/Measure/blob/master/LICENSE</PackageLicenseUrl>
+    <PackageProjectUrl>https://github.com/LZorglub/Measure</PackageProjectUrl>
+    <PackageIconUrl>https://raw.githubusercontent.com/LZorglub/Measure/master/Measure64x64.png</PackageIconUrl>
+    <Authors>Luc</Authors>
+    <Title>Unit Measure</Title>
+    <Copyright>Copyright 2016</Copyright>
+  </PropertyGroup>
+  
 </Project>
