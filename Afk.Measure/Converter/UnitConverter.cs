@@ -39,7 +39,6 @@ namespace Afk.Measure.Converter {
 		/// Get the reverse <see cref="UnitConverter"/> of current instance
 		/// </summary>
 		/// <returns>Reverse <see cref="UnitConverter"/> of current instance</returns>
-		/// </remarks>
 		public abstract UnitConverter Inverse();
 
 		/// <summary>

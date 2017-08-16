@@ -13,14 +13,14 @@ namespace Afk.Measure.Quantity.Base {
 	public class Time<T, V> : Quantity<T> where V : Measure.Units.Metric.SI.Second, new() {
 
         /// <summary>
-        /// Initialize a new instance of <see cref="Time"/>
+        /// Initialize a new instance of <see cref="Time{T,V}"/>
         /// </summary>
 		public Time() {
 			this._unit = new V();
 		}
 
         /// <summary>
-        /// Initialize a new instance of <see cref="Time"/>
+        /// Initialize a new instance of <see cref="Time{T,V}"/>
         /// </summary>
         /// <param name="value"></param>
 		public Time(T value) : this() {
@@ -28,7 +28,7 @@ namespace Afk.Measure.Quantity.Base {
 		}
 
         /// <summary>
-        /// Implicit conversion from T to <see cref="Time<T, V>"/>
+        /// Implicit conversion from T to <see cref="Time{T,V}"/>
         /// </summary>
         /// <param name="value"></param>
 		public static implicit operator Time<T, V>(T value) {
@@ -37,10 +37,10 @@ namespace Afk.Measure.Quantity.Base {
 
         #region Implicit conversion
         /// <summary>
-        /// Implicit conversion from <see cref="Time<T, V>"/> to <see cref="Time<double, V>"/>
+        /// Implicit conversion from <see cref="Time{T,V}"/> to <see cref="Time{T, V}"/> of <see cref="double"/>
         /// </summary>
-        /// <param name="value"><see cref="Time<T, V>"/> to convert</param>
-        /// <returns><see cref="Time<double, V>"/></returns>
+        /// <param name="value"><see cref="Time{T,V}"/> to convert</param>
+        /// <returns><see cref="Time{T, V}"/> of <see cref="double"/></returns>
         public static implicit operator Time<double, V>(Time<T, V> value)
         {
             Time<double, V> qty = new Time<double, V>();
@@ -50,10 +50,10 @@ namespace Afk.Measure.Quantity.Base {
         }
 
         /// <summary>
-        /// Implicit conversion from <see cref="Time<T, V>"/> to <see cref="Time<decimal, V>"/>
+        /// Implicit conversion from <see cref="Time{T,V}"/> to <see cref="Time{T, V}"/> of <see cref="decimal"/>
         /// </summary>
-        /// <param name="value"><see cref="Time<T, V>"/> to convert</param>
-        /// <returns><see cref="Time<double, V>"/></returns>
+        /// <param name="value"><see cref="Time{T,V}"/> to convert</param>
+        /// <returns><see cref="Time{T, V}"/> of <see cref="decimal"/></returns>
         public static implicit operator Time<decimal, V>(Time<T, V> value)
         {
             Time<decimal, V> qty = new Time<decimal, V>();
@@ -63,10 +63,10 @@ namespace Afk.Measure.Quantity.Base {
         }
 
         /// <summary>
-        /// Implicit conversion from <see cref="Time<T, V>"/> to <see cref="Time<long, V>"/>
+        /// Implicit conversion from <see cref="Time{T,V}"/> to <see cref="Time{T, V}"/> of <see cref="long"/>
         /// </summary>
-        /// <param name="value"><see cref="Time<T, V>"/> to convert</param>
-        /// <returns><see cref="Time<double, V>"/></returns>
+        /// <param name="value"><see cref="Time{T,V}"/> to convert</param>
+        /// <returns><see cref="Time{T, V}"/> of <see cref="long"/></returns>
         public static implicit operator Time<long, V>(Time<T, V> value)
         {
             Time<long, V> qty = new Time<long, V>();
@@ -76,10 +76,10 @@ namespace Afk.Measure.Quantity.Base {
         }
 
         /// <summary>
-        /// Implicit conversion from <see cref="Time<T, V>"/> to <see cref="Time<float, V>"/>
+        /// Implicit conversion from <see cref="Time{T,V}"/> to <see cref="Time{T, V}"/> of <see cref="float"/>
         /// </summary>
-        /// <param name="value"><see cref="Time<T, V>"/> to convert</param>
-        /// <returns><see cref="Time<float, V>"/></returns>
+        /// <param name="value"><see cref="Time{T,V}"/> to convert</param>
+        /// <returns><see cref="Time{T, V}"/> of <see cref="float"/></returns>
         public static implicit operator Time<float, V>(Time<T, V> value)
         {
             Time<float, V> qty = new Time<float, V>();
@@ -99,7 +99,7 @@ namespace Afk.Measure.Quantity.Base {
     public class Time<T> : Time<T, Measure.Units.Metric.SI.Second> {
 
         /// <summary>
-        /// Implicit conversion from T to <see cref="Time<T>"/>
+        /// Implicit conversion from T to <see cref="Time{T}"/>
         /// </summary>
         /// <param name="value"></param>
 		public static implicit operator Time<T>(T value) {
@@ -110,10 +110,10 @@ namespace Afk.Measure.Quantity.Base {
 
         #region Implicit conversion
         /// <summary>
-        /// Implicit conversion from <see cref="Time<T>"/> to <see cref="Time<double>"/>
+        /// Implicit conversion from <see cref="Time{T}"/> to <see cref="Time{T}"/> of <see cref="double"/>
         /// </summary>
-        /// <param name="value"><see cref="Time<T>"/> to convert</param>
-        /// <returns><see cref="Time<double>"/></returns>
+        /// <param name="value"><see cref="Time{T}"/> to convert</param>
+        /// <returns><see cref="Time{T}"/> of <see cref="double"/></returns>
         public static implicit operator Time<double>(Time<T> value)
         {
             Time<double> qty = new Time<double>();
@@ -123,10 +123,10 @@ namespace Afk.Measure.Quantity.Base {
         }
 
         /// <summary>
-        /// Implicit conversion from <see cref="Time<T>"/> to <see cref="Time<decimal>"/>
+        /// Implicit conversion from <see cref="Time{T}"/> to <see cref="Time{T}"/> of <see cref="decimal"/>
         /// </summary>
-        /// <param name="value"><see cref="Time<T>"/> to convert</param>
-        /// <returns><see cref="Time<decimal>"/></returns>
+        /// <param name="value"><see cref="Time{T}"/> to convert</param>
+        /// <returns><see cref="Time{T}"/> of <see cref="decimal"/></returns>
         public static implicit operator Time<decimal>(Time<T> value)
         {
             Time<decimal> qty = new Time<decimal>();
@@ -136,10 +136,10 @@ namespace Afk.Measure.Quantity.Base {
         }
 
         /// <summary>
-        /// Implicit conversion from <see cref="Time<T>"/> to <see cref="Time<long>"/>
+        /// Implicit conversion from <see cref="Time{T}"/> to <see cref="Time{T}"/> of <see cref="long"/>
         /// </summary>
-        /// <param name="value"><see cref="Time<T>"/> to convert</param>
-        /// <returns><see cref="Time<long>"/></returns>
+        /// <param name="value"><see cref="Time{T}"/> to convert</param>
+        /// <returns><see cref="Time{T}"/> of <see cref="long"/></returns>
         public static implicit operator Time<long>(Time<T> value)
         {
             Time<long> qty = new Time<long>();
@@ -149,10 +149,10 @@ namespace Afk.Measure.Quantity.Base {
         }
 
         /// <summary>
-        /// Implicit conversion from <see cref="Time<T>"/> to <see cref="Time<float>"/>
+        /// Implicit conversion from <see cref="Time{T}"/> to <see cref="Time{T}"/> of <see cref="float"/>
         /// </summary>
-        /// <param name="value"><see cref="Time<T>"/> to convert</param>
-        /// <returns><see cref="Time<float>"/></returns>
+        /// <param name="value"><see cref="Time{T}"/> to convert</param>
+        /// <returns><see cref="Time{T}"/> of <see cref="float"/></returns>
         public static implicit operator Time<float>(Time<T> value)
         {
             Time<float> qty = new Time<float>();

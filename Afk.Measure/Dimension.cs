@@ -12,13 +12,37 @@ namespace Afk.Measure {
 	/// Specifies the dimension of units
 	/// </summary>
 	public enum eDimension {
+        /// <summary>
+        /// Length
+        /// </summary>
 		Length = 0,
+        /// <summary>
+        /// Time
+        /// </summary>
 		Time = 1,
+        /// <summary>
+        /// Temperature
+        /// </summary>
 		Temperature = 2,
+        /// <summary>
+        /// Mass
+        /// </summary>
 		Mass = 3,
+        /// <summary>
+        /// Current
+        /// </summary>
 		Current = 4,
+        /// <summary>
+        /// Substance
+        /// </summary>
 		Substance = 5,
+        /// <summary>
+        /// Luminosity
+        /// </summary>
 		Luminosity = 6,
+        /// <summary>
+        /// Currency
+        /// </summary>
 		Currency = 7,
 	}
 

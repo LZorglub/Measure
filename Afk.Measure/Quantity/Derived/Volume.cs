@@ -10,14 +10,14 @@ namespace Afk.Measure.Quantity.Derived {
     /// <typeparam name="T"></typeparam>
 	public class Volume<T> : Quantity<T> {
         /// <summary>
-        /// Initialize a new instance of <see cref="Volume"/>
+        /// Initialize a new instance of <see cref="Volume{T}"/>
         /// </summary>
 		public Volume() {
 			this._unit = new Afk.Measure.Units.Metric.Derived.Volume();
 		}
 
         /// <summary>
-        /// Initialize a new instance of <see cref="Volume"/>
+        /// Initialize a new instance of <see cref="Volume{T}"/>
         /// </summary>
         /// <param name="value"></param>
 		public Volume(T value) : this() {
@@ -25,7 +25,7 @@ namespace Afk.Measure.Quantity.Derived {
 		}
 
         /// <summary>
-        /// Implicit conversion from T to <see cref="Volume<T>"/>
+        /// Implicit conversion from T to <see cref="Volume{T}"/>
         /// </summary>
         /// <param name="value"></param>
 		public static implicit operator Volume<T>(T value) {
@@ -34,10 +34,10 @@ namespace Afk.Measure.Quantity.Derived {
 
         #region Implicit conversion
         /// <summary>
-        /// Implicit conversion from <see cref="Volume<T>"/> to <see cref="Volume<double>"/>
+        /// Implicit conversion from <see cref="Volume{T}"/> to <see cref="Volume{T}"/> of <see cref="double"/>
         /// </summary>
-        /// <param name="value"><see cref="Volume<T>"/> to convert</param>
-        /// <returns><see cref="Volume<double>"/></returns>
+        /// <param name="value"><see cref="Volume{T}"/> to convert</param>
+        /// <returns><see cref="Volume{T}"/> of <see cref="double"/></returns>
         public static implicit operator Volume<double>(Volume<T> value)
         {
             Volume<double> qty = new Volume<double>();
@@ -47,10 +47,10 @@ namespace Afk.Measure.Quantity.Derived {
         }
 
         /// <summary>
-        /// Implicit conversion from <see cref="Volume<T>"/> to <see cref="Volume<decimal>"/>
+        /// Implicit conversion from <see cref="Volume{T}"/> to <see cref="Volume{T}"/> of <see cref="decimal"/>
         /// </summary>
-        /// <param name="value"><see cref="Volume<T>"/> to convert</param>
-        /// <returns><see cref="Volume<decimal>"/></returns>
+        /// <param name="value"><see cref="Volume{T}"/> to convert</param>
+        /// <returns><see cref="Volume{T}"/> of <see cref="decimal"/></returns>
         public static implicit operator Volume<decimal>(Volume<T> value)
         {
             Volume<decimal> qty = new Volume<decimal>();
@@ -60,10 +60,10 @@ namespace Afk.Measure.Quantity.Derived {
         }
 
         /// <summary>
-        /// Implicit conversion from <see cref="Volume<T>"/> to <see cref="Volume<long>"/>
+        /// Implicit conversion from <see cref="Volume{T}"/> to <see cref="Volume{T}"/> of <see cref="long"/>
         /// </summary>
-        /// <param name="value"><see cref="Volume<T>"/> to convert</param>
-        /// <returns><see cref="Volume<long>"/></returns>
+        /// <param name="value"><see cref="Volume{T}"/> to convert</param>
+        /// <returns><see cref="Volume{T}"/> of <see cref="long"/></returns>
         public static implicit operator Volume<long>(Volume<T> value)
         {
             Volume<long> qty = new Volume<long>();
@@ -73,10 +73,10 @@ namespace Afk.Measure.Quantity.Derived {
         }
 
         /// <summary>
-        /// Implicit conversion from <see cref="Volume<T>"/> to <see cref="Volume<float>"/>
+        /// Implicit conversion from <see cref="Volume{T}"/> to <see cref="Volume{T}"/> of <see cref="float"/>
         /// </summary>
-        /// <param name="value"><see cref="Volume<T>"/> to convert</param>
-        /// <returns><see cref="Volume<float>"/></returns>
+        /// <param name="value"><see cref="Volume{T}"/> to convert</param>
+        /// <returns><see cref="Volume{T}"/> of <see cref="float"/></returns>
         public static implicit operator Volume<float>(Volume<T> value)
         {
             Volume<float> qty = new Volume<float>();

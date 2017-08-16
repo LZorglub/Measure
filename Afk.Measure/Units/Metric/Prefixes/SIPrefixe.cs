@@ -259,7 +259,7 @@
 		/// <summary>
 		/// Converts the string representation of a prefixe to its <see cref="SIPrefixe"/> equivalent.
 		/// </summary>
-		/// <param name="symbol"><see cref="String"/> containing a prefixe to convert.</param>
+		/// <param name="prefixe"><see cref="string"/> containing a prefixe to convert.</param>
 		/// <returns><see cref="SIPrefixe"/> value equivalent to the string contained in <b>prefixe</b>; otherwise null</returns>
 		public static SIPrefixe Parse(string prefixe) {
 			return Parse(prefixe, false);
@@ -268,7 +268,7 @@
 		/// <summary>
 		/// Converts the string representation of a prefixe to its <see cref="SIPrefixe"/> equivalent.
 		/// </summary>
-		/// <param name="symbol"><see cref="String"/> containing a prefixe to convert.</param>
+		/// <param name="prefixe"><see cref="string"/> containing a prefixe to convert.</param>
 		/// <param name="ignoreCase">Indicator which specify if method if case-sensitive or not.</param>
 		/// <returns><see cref="SIPrefixe"/> value equivalent to the string contained in <b>prefixe</b>; otherwise null</returns>
 		public static SIPrefixe Parse(string prefixe, bool ignoreCase) {

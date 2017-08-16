@@ -37,11 +37,11 @@ namespace Afk.Measure.Units {
 			get { return _prefixConverter; }
 		}
 
-		/// <summary>
-		/// Initialize a new instance of <see cref="MetricUnit"/>
-		/// </summary>
-		/// <param name="baseUnit"><see cref="MetricBaseUnit"/></param>
-		public PrefixUnit(MetricBaseUnit baseUnit)
+        /// <summary>
+        /// Initialize a new instance of <see cref="PrefixUnit"/>
+        /// </summary>
+        /// <param name="baseUnit"><see cref="MetricBaseUnit"/></param>
+        public PrefixUnit(MetricBaseUnit baseUnit)
 			: base(baseUnit.Dimension) {
 			_prefixe = SIPrefixe.None;
 			_prefixConverter = Converter.UnitConverter.IDENTITY;
@@ -52,12 +52,12 @@ namespace Afk.Measure.Units {
 			this._symbol = baseUnit.BaseSymbol; 
 		}
 
-		/// <summary>
-		/// Initialize a new instance of <see cref="MetricUnit"/>
-		/// </summary>
-		/// <param name="prefixe">Prefixe of unit</param>
-		/// <param name="baseUnit"><see cref="MetricBaseUnit"/></param>
-		public PrefixUnit(SIPrefixe prefixe, MetricBaseUnit baseUnit)
+        /// <summary>
+        /// Initialize a new instance of <see cref="PrefixUnit"/>
+        /// </summary>
+        /// <param name="prefixe">Prefixe of unit</param>
+        /// <param name="baseUnit"><see cref="MetricBaseUnit"/></param>
+        public PrefixUnit(SIPrefixe prefixe, MetricBaseUnit baseUnit)
 			: this(baseUnit) {
 			this._prefixe = prefixe;
 
@@ -137,6 +137,11 @@ namespace Afk.Measure.Units {
 			return u;
 		}
 
+        /// <summary>
+        /// Returns a specified unit raised to the specified power.
+        /// </summary>
+        /// <param name="pow">An int-precision floating-point number that specifies a power.</param>
+        /// <returns></returns>
 		public override Unit Power(int pow) {
 			MetricBaseUnit u = (MetricBaseUnit)_baseUnit.Power(pow);
 			return new PrefixUnit(this.Prefixe, u);

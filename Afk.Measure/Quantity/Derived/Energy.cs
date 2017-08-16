@@ -10,14 +10,14 @@ namespace Afk.Measure.Quantity.Derived {
     /// <typeparam name="T"></typeparam>
 	public class Energy<T> : Quantity<T> {
         /// <summary>
-        /// Initialize a new isntance of <see cref="Energy"/>
+        /// Initialize a new isntance of <see cref="Energy{T}"/>
         /// </summary>
 		public Energy() {
 			this._unit = new Afk.Measure.Units.Metric.Derived.Joule();
 		}
 
         /// <summary>
-        /// Initialize a new instance of <see cref="Energy"/>
+        /// Initialize a new instance of <see cref="Energy{T}"/>
         /// </summary>
         /// <param name="value"></param>
 		public Energy(T value) : this() {
@@ -25,7 +25,7 @@ namespace Afk.Measure.Quantity.Derived {
 		}
 
         /// <summary>
-        /// Implicit conversion from T to <see cref="Energy<T>"/>
+        /// Implicit conversion from T to <see cref="Energy{T}"/>
         /// </summary>
         /// <param name="value"></param>
 		public static implicit operator Energy <T>(T value) {
@@ -34,10 +34,10 @@ namespace Afk.Measure.Quantity.Derived {
 
         #region Implicit conversion
         /// <summary>
-        /// Implicit conversion from <see cref="Energy<T>"/> to <see cref="Energy<double>"/>
+        /// Implicit conversion from <see cref="Energy{T}"/> to <see cref="Energy{T}"/> of <see cref="double"/>
         /// </summary>
-        /// <param name="value"><see cref="Energy<T>"/> to convert</param>
-        /// <returns><see cref="Energy<double>"/></returns>
+        /// <param name="value"><see cref="Energy{T}"/> to convert</param>
+        /// <returns><see cref="Energy{T}"/> of <see cref="double"/></returns>
         public static implicit operator Energy<double>(Energy<T> value)
         {
             Energy<double> qty = new Energy<double>();
@@ -47,10 +47,10 @@ namespace Afk.Measure.Quantity.Derived {
         }
 
         /// <summary>
-        /// Implicit conversion from <see cref="Energy<T>"/> to <see cref="Energy<decimal>"/>
+        /// Implicit conversion from <see cref="Energy{T}"/> to <see cref="Energy{T}"/> of <see cref="decimal"/>
         /// </summary>
-        /// <param name="value"><see cref="Energy<T>"/> to convert</param>
-        /// <returns><see cref="Energy<decimal>"/></returns>
+        /// <param name="value"><see cref="Energy{T}"/> to convert</param>
+        /// <returns><see cref="Energy{T}"/> of <see cref="decimal"/></returns>
         public static implicit operator Energy<decimal>(Energy<T> value)
         {
             Energy<decimal> qty = new Energy<decimal>();
@@ -60,10 +60,10 @@ namespace Afk.Measure.Quantity.Derived {
         }
 
         /// <summary>
-        /// Implicit conversion from <see cref="Energy<T>"/> to <see cref="Energy<long>"/>
+        /// Implicit conversion from <see cref="Energy{T}"/> to <see cref="Energy{T}"/> of <see cref="long"/>
         /// </summary>
-        /// <param name="value"><see cref="Energy<T>"/> to convert</param>
-        /// <returns><see cref="Energy<long>"/></returns>
+        /// <param name="value"><see cref="Energy{T}"/> to convert</param>
+        /// <returns><see cref="Energy{T}"/> of <see cref="long"/></returns>
         public static implicit operator Energy<long>(Energy<T> value)
         {
             Energy<long> qty = new Energy<long>();
@@ -73,10 +73,10 @@ namespace Afk.Measure.Quantity.Derived {
         }
 
         /// <summary>
-        /// Implicit conversion from <see cref="Energy<T>"/> to <see cref="Energy<float>"/>
+        /// Implicit conversion from <see cref="Energy{T}"/> to <see cref="Energy{T}"/> of <see cref="float"/>
         /// </summary>
-        /// <param name="value"><see cref="Energy<T>"/> to convert</param>
-        /// <returns><see cref="Energy<float>"/></returns>
+        /// <param name="value"><see cref="Energy{T}"/> to convert</param>
+        /// <returns><see cref="Energy{T}"/> of <see cref="float"/></returns>
         public static implicit operator Energy<float>(Energy<T> value)
         {
             Energy<float> qty = new Energy<float>();

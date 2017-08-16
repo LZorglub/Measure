@@ -10,14 +10,14 @@ namespace Afk.Measure.Quantity.Derived {
     /// <typeparam name="T"></typeparam>
 	public class Force<T> : Quantity<T> {
         /// <summary>
-        /// Initialize a new instance of <see cref="Force"/>
+        /// Initialize a new instance of <see cref="Force{T}"/>
         /// </summary>
 		public Force() {
 			this._unit = new Afk.Measure.Units.Metric.Derived.Newton();
 		}
 
         /// <summary>
-        /// Initialize a new instance of <see cref="Force"/>
+        /// Initialize a new instance of <see cref="Force{T}"/>
         /// </summary>
         /// <param name="value"></param>
 		public Force(T value) : this() {
@@ -25,7 +25,7 @@ namespace Afk.Measure.Quantity.Derived {
 		}
 
         /// <summary>
-        /// Implicit conversion from T to <see cref="Force<T>"/>
+        /// Implicit conversion from T to <see cref="Force{T}"/>
         /// </summary>
         /// <param name="value"></param>
 		public static implicit operator Force<T>(T value) {
@@ -34,10 +34,10 @@ namespace Afk.Measure.Quantity.Derived {
 
         #region Implicit conversion
         /// <summary>
-        /// Implicit conversion from <see cref="Force<T>"/> to <see cref="Force<double>"/>
+        /// Implicit conversion from <see cref="Force{T}"/> to <see cref="Force{T}"/> of <see cref="double"/>
         /// </summary>
-        /// <param name="value"><see cref="Force<T>"/> to convert</param>
-        /// <returns><see cref="Force<double>"/></returns>
+        /// <param name="value"><see cref="Force{T}"/> to convert</param>
+        /// <returns><see cref="Force{T}"/> of <see cref="double"/></returns>
         public static implicit operator Force<double>(Force<T> value)
         {
             Force<double> qty = new Force<double>();
@@ -47,10 +47,10 @@ namespace Afk.Measure.Quantity.Derived {
         }
 
         /// <summary>
-        /// Implicit conversion from <see cref="Force<T>"/> to <see cref="Force<decimal>"/>
+        /// Implicit conversion from <see cref="Force{T}"/> to <see cref="Force{T}"/> of <see cref="decimal"/>
         /// </summary>
-        /// <param name="value"><see cref="Force<T>"/> to convert</param>
-        /// <returns><see cref="Force<decimal>"/></returns>
+        /// <param name="value"><see cref="Force{T}"/> to convert</param>
+        /// <returns><see cref="Force{T}"/> of <see cref="decimal"/></returns>
         public static implicit operator Force<decimal>(Force<T> value)
         {
             Force<decimal> qty = new Force<decimal>();
@@ -60,10 +60,10 @@ namespace Afk.Measure.Quantity.Derived {
         }
 
         /// <summary>
-        /// Implicit conversion from <see cref="Force<T>"/> to <see cref="Force<long>"/>
+        /// Implicit conversion from <see cref="Force{T}"/> to <see cref="Force{T}"/> of <see cref="long"/>
         /// </summary>
-        /// <param name="value"><see cref="Force<T>"/> to convert</param>
-        /// <returns><see cref="Force<long>"/></returns>
+        /// <param name="value"><see cref="Force{T}"/> to convert</param>
+        /// <returns><see cref="Force{T}"/> of <see cref="long"/></returns>
         public static implicit operator Force<long>(Force<T> value)
         {
             Force<long> qty = new Force<long>();
@@ -73,10 +73,10 @@ namespace Afk.Measure.Quantity.Derived {
         }
 
         /// <summary>
-        /// Implicit conversion from <see cref="Force<T>"/> to <see cref="Force<float>"/>
+        /// Implicit conversion from <see cref="Force{T}"/> to <see cref="Force{T}"/> of <see cref="float"/>
         /// </summary>
-        /// <param name="value"><see cref="Force<T>"/> to convert</param>
-        /// <returns><see cref="Force<float>"/></returns>
+        /// <param name="value"><see cref="Force{T}"/> to convert</param>
+        /// <returns><see cref="Force{T}"/> of <see cref="float"/></returns>
         public static implicit operator Force<float>(Force<T> value)
         {
             Force<float> qty = new Force<float>();

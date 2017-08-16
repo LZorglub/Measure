@@ -7,6 +7,9 @@ using System.Text;
 
 namespace Afk.Measure
 {
+    /// <summary>
+    /// Represents the currency converter.
+    /// </summary>
     public class CurrencyConverters
     {
         /// <summary>
@@ -21,6 +24,9 @@ namespace Afk.Measure
         }
     }
 
+    /// <summary>
+    /// Represents a currency context
+    /// </summary>
     public class CurrencyContext : IDisposable
     {
         /// <summary>

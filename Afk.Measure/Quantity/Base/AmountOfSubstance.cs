@@ -12,14 +12,14 @@ namespace Afk.Measure.Quantity.Base {
 	public class AmountOfSubstance<T> : Quantity<T> {
 
         /// <summary>
-        /// Initialize a new instance of <see cref="AmountOfSubstance"/>
+        /// Initialize a new instance of <see cref="AmountOfSubstance{T}"/>
         /// </summary>
 		public AmountOfSubstance() {
 			this._unit = Units.System.SI.MOLE;
 		}
 
         /// <summary>
-        /// Initialize a new instance of <see cref="AmountOfSubstance"/>
+        /// Initialize a new instance of <see cref="AmountOfSubstance{T}"/>
         /// </summary>
         /// <param name="value"></param>
 		public AmountOfSubstance(T value) : this() {
@@ -27,7 +27,7 @@ namespace Afk.Measure.Quantity.Base {
 		}
 
         /// <summary>
-        /// Implicit conversion from T to <see cref="AmountOfSubstance<T>"/>
+        /// Implicit conversion from T to <see cref="AmountOfSubstance{T}"/>
         /// </summary>
         /// <param name="value"></param>
 		public static implicit operator AmountOfSubstance<T>(T value) {
@@ -36,10 +36,10 @@ namespace Afk.Measure.Quantity.Base {
 
         #region Implicit conversion
         /// <summary>
-        /// Implicit conversion from <see cref="AmountOfSubstance<T>"/> to <see cref="AmountOfSubstance<double>"/>
+        /// Implicit conversion from <see cref="AmountOfSubstance{T}"/> to AmountOfSubstance of double type
         /// </summary>
-        /// <param name="value"><see cref="AmountOfSubstance<T>"/> to convert</param>
-        /// <returns><see cref="AmountOfSubstance<double>"/></returns>
+        /// <param name="value"><see cref="AmountOfSubstance{T}"/> to convert</param>
+        /// <returns><see cref="AmountOfSubstance{T}"/> of double type</returns>
         public static implicit operator AmountOfSubstance<double>(AmountOfSubstance<T> value)
         {
             AmountOfSubstance<double> qty = new AmountOfSubstance<double>();
@@ -49,10 +49,10 @@ namespace Afk.Measure.Quantity.Base {
         }
 
         /// <summary>
-        /// Implicit conversion from <see cref="AmountOfSubstance<T>"/> to <see cref="AmountOfSubstance<decimal>"/>
+        /// Implicit conversion from <see cref="AmountOfSubstance{T}"/> to <see cref="AmountOfSubstance{T}"/> of <see cref="decimal"/>
         /// </summary>
-        /// <param name="value"><see cref="AmountOfSubstance<T>"/> to convert</param>
-        /// <returns><see cref="AmountOfSubstance<decimal>"/></returns>
+        /// <param name="value"><see cref="AmountOfSubstance{T}"/> to convert</param>
+        /// <returns><see cref="AmountOfSubstance{T}"/> of <see cref="decimal"/></returns>
         public static implicit operator AmountOfSubstance<decimal>(AmountOfSubstance<T> value)
         {
             AmountOfSubstance<decimal> qty = new AmountOfSubstance<decimal>();
@@ -62,10 +62,10 @@ namespace Afk.Measure.Quantity.Base {
         }
 
         /// <summary>
-        /// Implicit conversion from <see cref="AmountOfSubstance<T>"/> to <see cref="AmountOfSubstance<long>"/>
+        /// Implicit conversion from <see cref="AmountOfSubstance{T}"/> to <see cref="AmountOfSubstance{T}"/> of <see cref="long"/>
         /// </summary>
-        /// <param name="value"><see cref="AmountOfSubstance<T>"/> to convert</param>
-        /// <returns><see cref="AmountOfSubstance<long>"/></returns>
+        /// <param name="value"><see cref="AmountOfSubstance{T}"/> to convert</param>
+        /// <returns><see cref="AmountOfSubstance{T}"/> of <see cref="long"/></returns>
         public static implicit operator AmountOfSubstance<long>(AmountOfSubstance<T> value)
         {
             AmountOfSubstance<long> qty = new AmountOfSubstance<long>();
@@ -75,10 +75,10 @@ namespace Afk.Measure.Quantity.Base {
         }
 
         /// <summary>
-        /// Implicit conversion from <see cref="AmountOfSubstance<T>"/> to <see cref="AmountOfSubstance<float>"/>
+        /// Implicit conversion from <see cref="AmountOfSubstance{T}"/> to AmountOfSubstance of type float
         /// </summary>
-        /// <param name="value"><see cref="AmountOfSubstance<T>"/> to convert</param>
-        /// <returns><see cref="AmountOfSubstance<float>"/></returns>
+        /// <param name="value"><see cref="AmountOfSubstance{T}"/> to convert</param>
+        /// <returns><see cref="AmountOfSubstance{T}"/> of float type</returns>
         public static implicit operator AmountOfSubstance<float>(AmountOfSubstance<T> value)
         {
             AmountOfSubstance<float> qty = new AmountOfSubstance<float>();

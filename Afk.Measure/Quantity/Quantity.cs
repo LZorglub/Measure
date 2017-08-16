@@ -14,18 +14,25 @@ namespace Afk.Measure.Quantity {
 	/// <typeparam name="T"></typeparam>
 	/// <remarks>A quantity is composed of a unit part and a value part. A quantity has no dimension, unit give the dimension.</remarks>
 	public class Quantity<T> {
+        /// <summary>
+        /// Represents the quantity value
+        /// </summary>
 		protected T _value;
+
+        /// <summary>
+        /// Represents the quantity unit
+        /// </summary>
 		protected Unit _unit;
 
         #region ctor
         /// <summary>
-        /// Initialize a new instance of <see cref="Quantity"/>
+        /// Initialize a new instance of <see cref="Quantity{T}"/>
         /// </summary>
         public Quantity() : base() {
         }
 
         /// <summary>
-        /// Initialize a new instance of <see cref="Quantity"/>
+        /// Initialize a new instance of <see cref="Quantity{T}"/>
         /// </summary>
         /// <param name="value"></param>
         /// <param name="unit"></param>
@@ -35,7 +42,7 @@ namespace Afk.Measure.Quantity {
         }
 
         /// <summary>
-        /// Initialize a new instance of <see cref="Quantity"/>
+        /// Initialize a new instance of <see cref="Quantity{T}"/>
         /// </summary>
         /// <param name="value"></param>
         /// <param name="unit"></param>
@@ -55,11 +62,11 @@ namespace Afk.Measure.Quantity {
 
         #region Sum and difference
         /// <summary>
-        /// Gets the sum of two <see cref="Quantity"/>
+        /// Gets the sum of two <see cref="Quantity{T}"/>
         /// </summary>
         /// <param name="left">Left operand</param>
         /// <param name="right">Right operand</param>
-        /// <returns><see cref="Quantity"/> equivalent to the additon of <b>left</b> and <b>right</b></returns>
+        /// <returns><see cref="Quantity{T}"/> equivalent to the additon of <b>left</b> and <b>right</b></returns>
         public static Quantity<T> operator +(Quantity<T> left, Quantity<T> right) {
 			if (left.Unit != null && right.Unit != null && !left.Unit.Dimension.Equals(right.Unit.Dimension)) {
 				throw new DimensionException();
@@ -89,11 +96,11 @@ namespace Afk.Measure.Quantity {
 		}
 
         /// <summary>
-        /// Gets the difference of two <see cref="Quantity"/>
+        /// Gets the difference of two <see cref="Quantity{T}"/>
         /// </summary>
         /// <param name="left">Left operand</param>
         /// <param name="right">Right operand</param>
-        /// <returns><see cref="Quantity"/> equivalent to the difference of <b>left</b> and <b>right</b></returns>
+        /// <returns><see cref="Quantity{T}"/> equivalent to the difference of <b>left</b> and <b>right</b></returns>
         public static Quantity<T> operator -(Quantity<T> left, Quantity<T> right) {
 			if (left.Unit != null && right.Unit != null && !left.Unit.Dimension.Equals(right.Unit.Dimension)) {
 				throw new DimensionException();
@@ -124,21 +131,21 @@ namespace Afk.Measure.Quantity {
         #endregion
 
         /// <summary>
-        /// Gets the product of two <see cref="Quantity"/>
+        /// Gets the product of two <see cref="Quantity{T}"/>
         /// </summary>
-        /// <param name="left">Left operand</param>
-        /// <param name="right">Right operand</param>
-        /// <returns><see cref="Quantity"/> equivalent to the product of <b>left</b> and <b>right</b></returns>
+        /// <param name="first">Left operand</param>
+        /// <param name="second">Right operand</param>
+        /// <returns><see cref="Quantity{T}"/> equivalent to the product of <b>left</b> and <b>right</b></returns>
         public static Quantity<T> operator *(Quantity<T> first, Quantity<T> second) {
 			return DoOp(first, second, false);
 		}
 
         /// <summary>
-        /// Gets the division of two <see cref="Quantity"/>
+        /// Gets the division of two <see cref="Quantity{T}"/>
         /// </summary>
-        /// <param name="left">Left operand</param>
-        /// <param name="right">Right operand</param>
-        /// <returns><see cref="Quantity"/> equivalent to the division of <b>left</b> and <b>right</b></returns>
+        /// <param name="first">Left operand</param>
+        /// <param name="second">Right operand</param>
+        /// <returns><see cref="Quantity{T}"/> equivalent to the division of <b>left</b> and <b>right</b></returns>
         public static Quantity<T> operator /(Quantity<T> first, Quantity<T> second) {
 			return DoOp(first, second, true);
 		}
@@ -149,7 +156,7 @@ namespace Afk.Measure.Quantity {
 		/// </summary>
 		/// <param name="left">Left operand</param>
 		/// <param name="right">Right operand</param>
-		/// <param name="func"><see cref="Func"/> to compare elements</param>
+		/// <param name="func">Function to compare elements</param>
 		/// <returns>true if the compare is true; otherwise false</returns>
 		private static bool Compare(Quantity<T> left, Quantity<T> right, Func<Number<T, T>, Number<T, T>, bool> func) {
 			if (left.Unit != null && right.Unit != null && !left.Unit.Dimension.Equals(right.Unit.Dimension)) {
@@ -171,22 +178,52 @@ namespace Afk.Measure.Quantity {
 			}
 		}
 
+        /// <summary>
+        /// Returns a value that indicates whether a specified Quantity value is less than another specified Quantity value.
+        /// </summary>
+        /// <param name="left">The first value to compare</param>
+        /// <param name="right">The second value to compare</param>
+        /// <returns>true if left is less than right; otherwise, false</returns>
 		public static bool operator <(Quantity<T> left, Quantity<T> right) {
 			return Compare(left, right, (x, y) => x < y);
 		}
 
+        /// <summary>
+        /// Returns a value that indicates whether a specified Quantity value is less or equal than another specified Quantity value.
+        /// </summary>
+        /// <param name="left">The first value to compare</param>
+        /// <param name="right">The second value to compare</param>
+        /// <returns>true if left is less or equal than right; otherwise, false</returns>
 		public static bool operator <=(Quantity<T> left, Quantity<T> right) {
 			return Compare(left, right, (x, y) => x <= y);
 		}
 
+        /// <summary>
+        /// Returns a value that indicates whether a specified Quantity value is greater than another specified Quantity value.
+        /// </summary>
+        /// <param name="left">The first value to compare</param>
+        /// <param name="right">The second value to compare</param>
+        /// <returns>true if left is greater than right; otherwise, false</returns>
 		public static bool operator >(Quantity<T> left, Quantity<T> right) {
 			return Compare(left, right, (x, y) => x > y);
 		}
 
+        /// <summary>
+        /// Returns a value that indicates whether a specified Quantity value is greater or equal than another specified Quantity value.
+        /// </summary>
+        /// <param name="left">The first value to compare</param>
+        /// <param name="right">The second value to compare</param>
+        /// <returns>true if left is greater or equal than right; otherwise, false</returns>
 		public static bool operator >=(Quantity<T> left, Quantity<T> right) {
 			return Compare(left, right, (x, y) => x >= y);
 		}
 
+        /// <summary>
+        /// Returns a value that indicates whether a specified Quantity value is equal than another specified Quantity value.
+        /// </summary>
+        /// <param name="left">The first value to compare</param>
+        /// <param name="right">The second value to compare</param>
+        /// <returns>true if left is equal than right; otherwise, false</returns>
 		public static bool operator ==(Quantity<T> left, Quantity<T> right) {
 			if (Object.ReferenceEquals(left, null) || Object.ReferenceEquals(right, null))
 				return Object.ReferenceEquals(left, null) && Object.ReferenceEquals(right, null);
@@ -210,6 +247,12 @@ namespace Afk.Measure.Quantity {
 			}
 		}
 
+        /// <summary>
+        /// Returns a value that indicates whether a specified Quantity value is not equal than another specified Quantity value.
+        /// </summary>
+        /// <param name="left">The first value to compare</param>
+        /// <param name="right">The second value to compare</param>
+        /// <returns>true if left is not equal than right; otherwise, false</returns>
 		public static bool operator !=(Quantity<T> left, Quantity<T> right) {
 			return !(left == right);
 		}
@@ -218,7 +261,7 @@ namespace Afk.Measure.Quantity {
 		/// <summary>
 		/// Returns a value indicating whether this instance is equal to a specified object
 		/// </summary>
-		/// <param name="value">The object to compare to this instance</param>
+		/// <param name="obj">The object to compare to this instance</param>
 		/// <returns>true if <b>value</b> is an instance of <see cref="Dimension"/> and equals the value of this instance; otherwise, false.</returns>
 		public override bool Equals(object obj) {
 			return base.Equals(obj);
@@ -233,12 +276,12 @@ namespace Afk.Measure.Quantity {
 		}
 
         /// <summary>
-        /// Effectue le produit/quotient de deux <see cref="Quantity"/>
+        /// Effectue le produit/quotient de deux <see cref="Quantity{T}"/>
         /// </summary>
         /// <param name="left">Opérande gauche</param>
         /// <param name="right">Opérande droite</param>
         /// <param name="div"><see cref="Boolean"/> indiquant s'il s'agit d'un quotient</param>
-        /// <returns><see cref="Quantity"/> représentant le produit/quotient des <see cref="Quantity"/> spécifiées.</returns>
+        /// <returns><see cref="Quantity{T}"/> représentant le produit/quotient des <see cref="Quantity{T}"/> spécifiées.</returns>
         private static Quantity<T> DoOp(Quantity<T> left, Quantity<T> right, bool div) {
 			if (left.Unit != null && right.Unit != null) {
 				BaseUnit bu1 = (left.Unit is PrefixUnit) ? ((PrefixUnit)left.Unit).BaseUnit : left.Unit as BaseUnit;
@@ -455,7 +498,7 @@ namespace Afk.Measure.Quantity {
         /// Convert a quantity in the specified <see cref="Unit"/>
         /// </summary>
         /// <param name="unit"><see cref="Unit"/></param>
-        /// <returns><see cref="Quantity"/> in specified unit</returns>
+        /// <returns><see cref="Quantity{T}"/> in specified unit</returns>
         public Quantity<T> ConvertTo(Unit unit) {
 			// Unit must be same dimension
 			if (this.Unit != null && !this.Unit.Dimension.Equals(unit.Dimension)) {
@@ -525,10 +568,10 @@ namespace Afk.Measure.Quantity {
 		}
 
         /// <summary>
-        /// Convert a quantity in the specified <see cref="TUnit"/>
+        /// Convert a quantity in the specified <see cref="Unit"/>
         /// </summary>
         /// <typeparam name="TUnit">Type of unit</typeparam>
-        /// <returns><see cref="Quantity"/> in specified unit</returns>
+        /// <returns><see cref="Quantity{T}"/> in specified unit</returns>
         public Quantity<T> ConvertTo<TUnit>() where TUnit : Unit, new()
         {
             return ConvertTo(new TUnit());
@@ -538,7 +581,7 @@ namespace Afk.Measure.Quantity {
         /// Convert a quantity in the specified <see cref="Unit"/>
         /// </summary>
         /// <param name="unit"><see cref="Unit"/></param>
-        /// <returns><see cref="Quantity"/> in specified unit</returns>
+        /// <returns><see cref="Quantity{T}"/> in specified unit</returns>
         public Quantity<T> ConvertTo(string unit)
         {
             if (string.IsNullOrEmpty(unit)) throw new ArgumentException(nameof(unit));
@@ -546,7 +589,7 @@ namespace Afk.Measure.Quantity {
         }
 
         /// <summary>
-        /// Implicit conversion from <typeparamref name="T"/> to <see cref="Quantity"/>
+        /// Implicit conversion from <typeparamref name="T"/> to <see cref="Quantity{T}"/>
         /// </summary>
         /// <param name="value"></param>
         public static implicit operator Quantity<T>(T value)
@@ -559,7 +602,7 @@ namespace Afk.Measure.Quantity {
         /// <summary>
         /// Conversion explicit d'une quantité en son type T
         /// </summary>
-        /// <param name="value"><see cref="Quantity"/> à convertir</param>
+        /// <param name="value"><see cref="Quantity{T}"/> à convertir</param>
         /// <returns>T représentant la quantité</returns>
         /// <remarks>En fonction du métrique de l'unité, un facteur est appliqué à T.</remarks>
         public static explicit operator T(Quantity<T> value) {
@@ -573,10 +616,10 @@ namespace Afk.Measure.Quantity {
 		}
 
         /// <summary>
-        /// Explicit conversion from <see cref="Quantity<T>"/> to <see cref="Quantity<int>"/>
+        /// Explicit conversion from <see cref="Quantity{T}"/> to <see cref="Quantity{T}"/> of <see cref="int"/>
         /// </summary>
-        /// <param name="value"><see cref="Quantity<T>"/> to convert</param>
-        /// <returns><see cref="Quantity<int>"/></returns>
+        /// <param name="value"><see cref="Quantity{T}"/> to convert</param>
+        /// <returns><see cref="Quantity{T}"/> of <see cref="int"/></returns>
         public static explicit operator Quantity<int>(Quantity<T> value)
         {
             Quantity<int> qty = new Quantity<int>();
@@ -586,10 +629,10 @@ namespace Afk.Measure.Quantity {
         }
 
         /// <summary>
-        /// Explicit conversion from <see cref="Quantity<T>"/> to <see cref="Quantity<double>"/>
+        /// Explicit conversion from <see cref="Quantity{T}"/> to <see cref="Quantity{T}"/> of <see cref="double"/>
         /// </summary>
-        /// <param name="value"><see cref="Quantity<T>"/> to convert</param>
-        /// <returns><see cref="Quantity<double>"/></returns>
+        /// <param name="value"><see cref="Quantity{T}"/> to convert</param>
+        /// <returns><see cref="Quantity{T}"/> of <see cref="double"/></returns>
         public static explicit operator Quantity<double>(Quantity<T> value)
         {
             Quantity<double> qty = new Quantity<double>();
@@ -599,10 +642,10 @@ namespace Afk.Measure.Quantity {
         }
 
         /// <summary>
-        /// Explicit conversion from <see cref="Quantity<T>"/> to <see cref="Quantity<decimal>"/>
+        /// Explicit conversion from <see cref="Quantity{T}"/> to <see cref="Quantity{T}"/> of <see cref="decimal"/>
         /// </summary>
-        /// <param name="value"><see cref="Quantity<T>"/> to convert</param>
-        /// <returns><see cref="Quantity<decimal>"/></returns>
+        /// <param name="value"><see cref="Quantity{T}"/> to convert</param>
+        /// <returns><see cref="Quantity{T}"/> of <see cref="decimal"/></returns>
         public static explicit operator Quantity<decimal>(Quantity<T> value)
         {
             Quantity<decimal> qty = new Quantity<decimal>();
@@ -612,10 +655,10 @@ namespace Afk.Measure.Quantity {
         }
 
         /// <summary>
-        /// Explicit conversion from <see cref="Quantity<T>"/> to <see cref="Quantity<long>"/>
+        /// Explicit conversion from <see cref="Quantity{T}"/> to <see cref="Quantity{T}"/> of <see cref="long"/>
         /// </summary>
-        /// <param name="value"><see cref="Quantity<T>"/> to convert</param>
-        /// <returns><see cref="Quantity<long>"/></returns>
+        /// <param name="value"><see cref="Quantity{T}"/> to convert</param>
+        /// <returns><see cref="Quantity{T}"/> of <see cref="long"/></returns>
 		public static explicit operator Quantity<long>(Quantity<T> value)
         {
             Quantity<long> qty = new Quantity<long>();
@@ -625,10 +668,10 @@ namespace Afk.Measure.Quantity {
         }
 
         /// <summary>
-        /// Explicit conversion from <see cref="Quantity<T>"/> to <see cref="Quantity<float>"/>
+        /// Explicit conversion from <see cref="Quantity{T}"/> to <see cref="Quantity{T}"/> of <see cref="float"/>
         /// </summary>
-        /// <param name="value"><see cref="Quantity<T>"/> to convert</param>
-        /// <returns><see cref="Quantity<float>"/></returns>
+        /// <param name="value"><see cref="Quantity{T}"/> to convert</param>
+        /// <returns><see cref="Quantity{T}"/> of <see cref="float"/></returns>
 		public static explicit operator Quantity<float>(Quantity<T> value)
         {
             Quantity<float> qty = new Quantity<float>();
@@ -639,9 +682,9 @@ namespace Afk.Measure.Quantity {
         #endregion
 
         /// <summary>
-        /// Converts the value of the current <see cref="Quantity"/> object to its equivalent string representation
+        /// Converts the value of the current <see cref="Quantity{T}"/> object to its equivalent string representation
         /// </summary>
-        /// <returns>A string representation of the value of the current <see cref="Quantity"/> object</returns>
+        /// <returns>A string representation of the value of the current <see cref="Quantity{T}"/> object</returns>
         public override string ToString() {
 			return string.Format("{0} {1} {2}", this.GetType().Name, _value, _unit);
 		}

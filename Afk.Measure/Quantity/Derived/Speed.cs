@@ -10,14 +10,14 @@ namespace Afk.Measure.Quantity.Derived {
     /// <typeparam name="T"></typeparam>
 	public class Speed <T> : Quantity<T> {
         /// <summary>
-        /// Initialize a new instance of <see cref="Speed"/>
+        /// Initialize a new instance of <see cref="Speed{T}"/>
         /// </summary>
 		public Speed() {
 			this._unit = new Afk.Measure.Units.Metric.Derived.Velocity();
 		}
 
         /// <summary>
-        /// Initialize a new instance of <see cref="Speed"/>
+        /// Initialize a new instance of <see cref="Speed{T}"/>
         /// </summary>
         /// <param name="value"></param>
 		public Speed(T value) : this() {
@@ -25,7 +25,7 @@ namespace Afk.Measure.Quantity.Derived {
 		}
 
         /// <summary>
-        /// Implicit conversion from T to <see cref="Speed<T>"/>
+        /// Implicit conversion from T to <see cref="Speed{T}"/>
         /// </summary>
         /// <param name="value"></param>
 		public static implicit operator Speed<T>(T value) {
@@ -34,10 +34,10 @@ namespace Afk.Measure.Quantity.Derived {
 
         #region Implicit conversion
         /// <summary>
-        /// Implicit conversion from <see cref="Speed<T>"/> to <see cref="Speed<double>"/>
+        /// Implicit conversion from <see cref="Speed{T}"/> to <see cref="Speed{T}"/> of <see cref="double"/>
         /// </summary>
-        /// <param name="value"><see cref="Speed<T>"/> to convert</param>
-        /// <returns><see cref="Speed<double>"/></returns>
+        /// <param name="value"><see cref="Speed{T}"/> to convert</param>
+        /// <returns><see cref="Speed{T}"/> of <see cref="double"/></returns>
         public static implicit operator Speed<double>(Speed<T> value)
         {
             Speed<double> qty = new Speed<double>();
@@ -47,10 +47,10 @@ namespace Afk.Measure.Quantity.Derived {
         }
 
         /// <summary>
-        /// Implicit conversion from <see cref="Speed<T>"/> to <see cref="Speed<decimal>"/>
+        /// Implicit conversion from <see cref="Speed{T}"/> to <see cref="Speed{T}"/> of <see cref="decimal"/>
         /// </summary>
-        /// <param name="value"><see cref="Speed<T>"/> to convert</param>
-        /// <returns><see cref="Speed<decimal>"/></returns>
+        /// <param name="value"><see cref="Speed{T}"/> to convert</param>
+        /// <returns><see cref="Speed{T}"/> of <see cref="decimal"/></returns>
         public static implicit operator Speed<decimal>(Speed<T> value)
         {
             Speed<decimal> qty = new Speed<decimal>();
@@ -60,10 +60,10 @@ namespace Afk.Measure.Quantity.Derived {
         }
 
         /// <summary>
-        /// Implicit conversion from <see cref="Speed<T>"/> to <see cref="Speed<long>"/>
+        /// Implicit conversion from <see cref="Speed{T}"/> to <see cref="Speed{T}"/> of <see cref="long"/>
         /// </summary>
-        /// <param name="value"><see cref="Speed<T>"/> to convert</param>
-        /// <returns><see cref="Speed<long>"/></returns>
+        /// <param name="value"><see cref="Speed{T}"/> to convert</param>
+        /// <returns><see cref="Speed{T}"/> of <see cref="long"/></returns>
         public static implicit operator Speed<long>(Speed<T> value)
         {
             Speed<long> qty = new Speed<long>();
@@ -73,10 +73,10 @@ namespace Afk.Measure.Quantity.Derived {
         }
 
         /// <summary>
-        /// Implicit conversion from <see cref="Speed<T>"/> to <see cref="Speed<float>"/>
+        /// Implicit conversion from <see cref="Speed{T}"/> to <see cref="Speed{T}"/> of <see cref="float"/>
         /// </summary>
-        /// <param name="value"><see cref="Speed<T>"/> to convert</param>
-        /// <returns><see cref="Speed<float>"/></returns>
+        /// <param name="value"><see cref="Speed{T}"/> to convert</param>
+        /// <returns><see cref="Speed{T}"/> of <see cref="float"/></returns>
         public static implicit operator Speed<float>(Speed<T> value)
         {
             Speed<float> qty = new Speed<float>();

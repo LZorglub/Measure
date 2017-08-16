@@ -10,7 +10,14 @@ namespace Afk.Measure.Units.System {
 	/// <remarks>The centimetre-gram-second system (abbreviated CGS or cgs) is a metric system of physical units based on centimetre as the unit of length, gram as a unit of mass, and second as a unit of time. All CGS mechanical units are unambiguously derived from these three base units, but there are several different ways of extending the CGS system to cover electromagnetism.</remarks>
 	public sealed class CGS {
 
+        /// <summary>
+        /// Gets the gram unit from CGS System
+        /// </summary>
 		public static Measure.Units.MetricBaseUnit GRAM;
+
+        /// <summary>
+        /// Gets the centimetre unit from CGS System
+        /// </summary>
 		public static Measure.Units.MetricBaseUnit CENTIMETRE;
 
 		/// <summary>

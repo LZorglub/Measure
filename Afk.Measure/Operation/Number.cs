@@ -80,11 +80,11 @@ namespace Afk.Measure.Operation {
 			return null;
 		}
 
-		/// <summary>
-		/// Initialize a new instance of <see cref="Number"/>
-		/// </summary>
-		/// <param name="value"><b>Value</b> of current instance</param>
-		internal Number(T value) {
+        /// <summary>
+        /// Initialize a new instance of <see cref="Number{T,V}"/>
+        /// </summary>
+        /// <param name="value"><b>Value</b> of current instance</param>
+        internal Number(T value) {
 			this.value = value;
 		}
 
@@ -96,19 +96,19 @@ namespace Afk.Measure.Operation {
 		}
 
 		/// <summary>
-		/// Implicit cast operator of <b>T</b> in <b>Number<T,V>/></b>
+		/// Implicit cast operator of <b>T</b> in <b>Number{T,V}/></b>
 		/// </summary>
 		/// <param name="value"><b>Value</b> to cast</param>
-		/// <returns>A <see cref="Number"/> representation of the value</returns>
+		/// <returns>A <see cref="Number{T,V}"/> representation of the value</returns>
 		public static implicit operator Number<T, V>(T value) {
 			return new Number<T, V>(value);
 		}
 
 		/// <summary>
-		/// Implicit cast operator of <see cref="Number"/> to <b>T</b> type.
+		/// Implicit cast operator of <see cref="Number{T,V}"/> to <b>T</b> type.
 		/// </summary>
-		/// <param name="value"><see cref="Number"/> to cast</param>
-		/// <returns>A <b>T</b> representation of <see cref="Number"/></returns>
+		/// <param name="value"><see cref="Number{T,V}"/> to cast</param>
+		/// <returns>A <b>T</b> representation of <see cref="Number{T,V}"/></returns>
 		public static implicit operator T(Number<T, V> value) {
 			return value.value;
 		}
@@ -118,9 +118,9 @@ namespace Afk.Measure.Operation {
 		/// </summary>
 		/// <param name="operationT">Delegate for operation of type T</param>
 		/// <param name="operationV">Deletgate of operation of type V</param>
-		/// <param name="a"><see cref="Number"/> in first operand operation</param>
+		/// <param name="a"><see cref="Number{T,V}"/> in first operand operation</param>
 		/// <param name="b"><b>value</b> in second operand operation</param>
-		/// <returns><see cref="Number"/> which represents the result of operation between <b>a</b> and <b>b</b></returns>
+		/// <returns><see cref="Number{T,V}"/> which represents the result of operation between <b>a</b> and <b>b</b></returns>
 		private static Number<T, V> ConvertOp(Func<T, T, T> operationT, Func<V, V, V> operationV, Number<T, V> a, V b) {
 			if (typeof(V) == typeof(double)) {
 				// Try to preserve precision, firt convert T in double, second do operation, last convert double to T
@@ -136,9 +136,9 @@ namespace Afk.Measure.Operation {
 		/// <summary>
 		/// Add a specified <b>Number</b> and a <b>V</b> type.
 		/// </summary>
-		/// <param name="a">A <see cref="Number"/></param>
+		/// <param name="a">A <see cref="Number{T,V}"/></param>
 		/// <param name="b">A <b>V</b> type</param>
-		/// <returns>A <see cref="Number"/> whose value is the sum of the values of a and b.</returns>
+		/// <returns>A <see cref="Number{T,V}"/> whose value is the sum of the values of a and b.</returns>
 		public static Number<T, V> operator +(Number<T, V> a, V b) {
 			if (Add == null) {
 				return ConvertOp(Number<T, T>.Add, Number<V, V>.Add, a, b);
@@ -150,9 +150,9 @@ namespace Afk.Measure.Operation {
 		/// <summary>
 		/// Substracts a specified <b>Number</b> and a <b>V</b> type.
 		/// </summary>
-		/// <param name="a">A <see cref="Number"/></param>
+		/// <param name="a">A <see cref="Number{T,V}"/></param>
 		/// <param name="b">A <b>V</b> type</param>
-		/// <returns>A <see cref="Number"/> whose value is the result of a minus the value of b.</returns>
+		/// <returns>A <see cref="Number{T,V}"/> whose value is the result of a minus the value of b.</returns>
 		public static Number<T, V> operator -(Number<T, V> a, V b) {
 			if (Sub == null) {
 				return ConvertOp(Number<T, T>.Sub, Number<V, V>.Sub, a, b);
@@ -164,9 +164,9 @@ namespace Afk.Measure.Operation {
 		/// <summary>
 		/// Divide a specified <b>Number</b> and a <b>V</b> type.
 		/// </summary>
-		/// <param name="a">A <see cref="Number"/></param>
+		/// <param name="a">A <see cref="Number{T,V}"/></param>
 		/// <param name="b">A <b>V</b> type</param>
-		/// <returns>A <see cref="Number"/> whose value is the division of the values of a and b.</returns>
+		/// <returns>A <see cref="Number{T,V}"/> whose value is the division of the values of a and b.</returns>
 		public static Number<T, V> operator /(Number<T, V> a, V b) {
 			if (Div == null) {
 				return ConvertOp(Number<T, T>.Div, Number<V, V>.Div, a, b);
@@ -178,9 +178,9 @@ namespace Afk.Measure.Operation {
 		/// <summary>
 		/// Multiply a specified <b>Number</b> and a <b>V</b> type.
 		/// </summary>
-		/// <param name="a">A <see cref="Number"/></param>
+		/// <param name="a">A <see cref="Number{T,V}"/></param>
 		/// <param name="b">A <b>V</b> type</param>
-		/// <returns>A <see cref="Number"/> whose value is the multiplication of the values of a and b.</returns>
+		/// <returns>A <see cref="Number{T,V}"/> whose value is the multiplication of the values of a and b.</returns>
 		public static Number<T, V> operator *(Number<T, V> a, V b) {
 			if (Mul == null) {
 				return ConvertOp(Number<T, T>.Mul, Number<V, V>.Mul, a, b);
@@ -190,9 +190,9 @@ namespace Afk.Measure.Operation {
 		}
 
 		/// <summary>
-		/// Indicates wether a specified <see cref="Number"/> is less than a <b>V</b> type
+		/// Indicates wether a specified <see cref="Number{T,V}"/> is less than a <b>V</b> type
 		/// </summary>
-		/// <param name="a">A <see cref="Number"/></param>
+		/// <param name="a">A <see cref="Number{T,V}"/></param>
 		/// <param name="b">A <b>V</b> type.</param>
 		/// <returns>true if the value of <b>a</b> is less than the value of <b>b</b>; otherwise, false.</returns>
 		public static bool operator <(Number<T, V> a, V b) {
@@ -200,9 +200,9 @@ namespace Afk.Measure.Operation {
 		}
 
 		/// <summary>
-		/// Indicates wether a specified <see cref="Number"/> is greater than a <b>V</b> type
+		/// Indicates wether a specified <see cref="Number{T,V}"/> is greater than a <b>V</b> type
 		/// </summary>
-		/// <param name="a">A <see cref="Number"/></param>
+		/// <param name="a">A <see cref="Number{T,V}"/></param>
 		/// <param name="b">A <b>V</b> type.</param>
 		/// <returns>true if the value of <b>a</b> is greater than the value of <b>b</b>; otherwise, false.</returns>
 		public static bool operator >(Number<T, V> a, V b) {
@@ -210,9 +210,9 @@ namespace Afk.Measure.Operation {
 		}
 
 		/// <summary>
-		/// Indicates wether a specified <see cref="Number"/> is less or equal than a <b>V</b> type
+		/// Indicates wether a specified <see cref="Number{T,V}"/> is less or equal than a <b>V</b> type
 		/// </summary>
-		/// <param name="a">A <see cref="Number"/></param>
+		/// <param name="a">A <see cref="Number{T,V}"/></param>
 		/// <param name="b">A <b>V</b> type.</param>
 		/// <returns>true if the value of <b>a</b> is less or equal than the value of <b>b</b>; otherwise, false.</returns>
 		public static bool operator <=(Number<T, V> a, V b) {
@@ -220,9 +220,9 @@ namespace Afk.Measure.Operation {
 		}
 
 		/// <summary>
-		/// Indicates wether a specified <see cref="Number"/> is greater or equal than a <b>V</b> type
+		/// Indicates wether a specified <see cref="Number{T,V}"/> is greater or equal than a <b>V</b> type
 		/// </summary>
-		/// <param name="a">A <see cref="Number"/></param>
+		/// <param name="a">A <see cref="Number{T,V}"/></param>
 		/// <param name="b">A <b>V</b> type.</param>
 		/// <returns>true if the value of <b>a</b> is greater or equal than the value of <b>b</b>; otherwise, false.</returns>
 		public static bool operator >=(Number<T, V> a, V b) {
@@ -230,9 +230,9 @@ namespace Afk.Measure.Operation {
 		}
 
 		/// <summary>
-		/// Indicates wether a specified <see cref="Number"/> is equal to a <b>V</b> type
+		/// Indicates wether a specified <see cref="Number{T,V}"/> is equal to a <b>V</b> type
 		/// </summary>
-		/// <param name="a">A <see cref="Number"/></param>
+		/// <param name="a">A <see cref="Number{T,V}"/></param>
 		/// <param name="b">A <b>V</b> type.</param>
 		/// <returns>true if the value of <b>a</b> is equal to the value of <b>b</b>; otherwise, false.</returns>
 		public static bool operator ==(Number<T, V> a, V b) {
@@ -243,9 +243,9 @@ namespace Afk.Measure.Operation {
 		}
 
 		/// <summary>
-		/// Indicates wether a specified <see cref="Number"/> is not equal to a <b>V</b> type
+		/// Indicates wether a specified <see cref="Number{T,V}"/> is not equal to a <b>V</b> type
 		/// </summary>
-		/// <param name="a">A <see cref="Number"/></param>
+		/// <param name="a">A <see cref="Number{T,V}"/></param>
 		/// <param name="b">A <b>V</b> type.</param>
 		/// <returns>true if the value of <b>a</b> is not equal to the value of <b>b</b>; otherwise, false.</returns>
 		public static bool operator !=(Number<T, V> a, V b) {
@@ -259,7 +259,7 @@ namespace Afk.Measure.Operation {
 		/// Returns a value indicating whether this instance is equal to a specified object
 		/// </summary>
 		/// <param name="value">The object to compare to this instance</param>
-		/// <returns>true if <b>value</b> is an instance of <see cref="Number"/> and equals the value of this instance; otherwise, false.</returns>
+		/// <returns>true if <b>value</b> is an instance of <see cref="Number{T,V}"/> and equals the value of this instance; otherwise, false.</returns>
 		public override bool Equals(object value) {
 			return base.Equals(value);
 		}

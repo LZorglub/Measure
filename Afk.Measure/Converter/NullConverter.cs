@@ -14,7 +14,6 @@ namespace Afk.Measure.Converter {
 		/// Get the reverse <see cref="UnitConverter"/> of current instance
 		/// </summary>
 		/// <returns><see cref="NullConverter"/> himself.</returns>
-		/// </remarks>
 		public override UnitConverter Inverse() {
 			return this;
 		}
@@ -22,8 +21,8 @@ namespace Afk.Measure.Converter {
 		/// <summary>
 		/// Concatenates two instance of <see cref="UnitConverter"/>
 		/// </summary>
-		/// <param name="converter">The <see cref="UnitConverter"/> to concat.</param>
-		/// <returns><see cref="NullConverter"/> himself.</returns>
+		/// <param name="value">The <see cref="UnitConverter"/> to concat.</param>
+		/// <returns><see cref="NullConverter"/> itself.</returns>
 		public override UnitConverter Concat(UnitConverter value) {
 			return this;
 		}

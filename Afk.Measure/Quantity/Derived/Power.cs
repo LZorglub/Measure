@@ -10,14 +10,14 @@ namespace Afk.Measure.Quantity.Derived {
     /// <typeparam name="T"></typeparam>
 	public class Power<T> : Quantity<T> {
         /// <summary>
-        /// Initialize a new instance of <see cref="Power"/>
+        /// Initialize a new instance of <see cref="Power{T}"/>
         /// </summary>
 		public Power() {
 			this._unit = new Afk.Measure.Units.Metric.Derived.Watt();
 		}
 
         /// <summary>
-        /// Initialize a new instance of <see cref="Power"/>
+        /// Initialize a new instance of <see cref="Power{T}"/>
         /// </summary>
         /// <param name="value"></param>
 		public Power(T value) : this() {
@@ -25,7 +25,7 @@ namespace Afk.Measure.Quantity.Derived {
 		}
 
         /// <summary>
-        /// Implicit conversion from T to <see cref="Power<T>"/>
+        /// Implicit conversion from T to <see cref="Power{T}"/>
         /// </summary>
         /// <param name="value"></param>
 		public static implicit operator Power<T>(T value) {
@@ -34,10 +34,10 @@ namespace Afk.Measure.Quantity.Derived {
 
         #region Implicit conversion
         /// <summary>
-        /// Implicit conversion from <see cref="Power<T>"/> to <see cref="Power<double>"/>
+        /// Implicit conversion from <see cref="Power{T}"/> to <see cref="Power{T}"/> of <see cref="double"/>
         /// </summary>
-        /// <param name="value"><see cref="Power<T>"/> to convert</param>
-        /// <returns><see cref="Power<double>"/></returns>
+        /// <param name="value"><see cref="Power{T}"/> to convert</param>
+        /// <returns><see cref="Power{T}"/> of <see cref="double"/></returns>
         public static implicit operator Power<double>(Power<T> value)
         {
             Power<double> qty = new Power<double>();
@@ -47,10 +47,10 @@ namespace Afk.Measure.Quantity.Derived {
         }
 
         /// <summary>
-        /// Implicit conversion from <see cref="Power<T>"/> to <see cref="Power<decimal>"/>
+        /// Implicit conversion from <see cref="Power{T}"/> to <see cref="Power{T}"/> of <see cref="decimal"/>
         /// </summary>
-        /// <param name="value"><see cref="Power<T>"/> to convert</param>
-        /// <returns><see cref="Power<decimal>"/></returns>
+        /// <param name="value"><see cref="Power{T}"/> to convert</param>
+        /// <returns><see cref="Power{T}"/> of <see cref="decimal"/></returns>
         public static implicit operator Power<decimal>(Power<T> value)
         {
             Power<decimal> qty = new Power<decimal>();
@@ -60,10 +60,10 @@ namespace Afk.Measure.Quantity.Derived {
         }
 
         /// <summary>
-        /// Implicit conversion from <see cref="Power<T>"/> to <see cref="Power<long>"/>
+        /// Implicit conversion from <see cref="Power{T}"/> to <see cref="Power{T}"/> of <see cref="long"/>
         /// </summary>
-        /// <param name="value"><see cref="Power<T>"/> to convert</param>
-        /// <returns><see cref="Power<long>"/></returns>
+        /// <param name="value"><see cref="Power{T}"/> to convert</param>
+        /// <returns><see cref="Power{T}"/> of <see cref="long"/></returns>
         public static implicit operator Power<long>(Power<T> value)
         {
             Power<long> qty = new Power<long>();
@@ -73,10 +73,10 @@ namespace Afk.Measure.Quantity.Derived {
         }
 
         /// <summary>
-        /// Implicit conversion from <see cref="Power<T>"/> to <see cref="Power<float>"/>
+        /// Implicit conversion from <see cref="Power{T}"/> to <see cref="Power{T}"/> of <see cref="float"/>
         /// </summary>
-        /// <param name="value"><see cref="Power<T>"/> to convert</param>
-        /// <returns><see cref="Power<float>"/></returns>
+        /// <param name="value"><see cref="Power{T}"/> to convert</param>
+        /// <returns><see cref="Power{T}"/> of <see cref="float"/></returns>
         public static implicit operator Power<float>(Power<T> value)
         {
             Power<float> qty = new Power<float>();

@@ -12,14 +12,14 @@ namespace Afk.Measure.Quantity.Base {
 	public class Length<T> : Quantity<T> {
 
         /// <summary>
-        /// Initiliaze a new instance of <see cref="Length"/>
+        /// Initiliaze a new instance of <see cref="Length{T}"/>
         /// </summary>
 		public Length() {
 			this._unit = Units.System.SI.METER;
 		}
 
         /// <summary>
-        /// Initialize a new instance of <see cref="Length"/>
+        /// Initialize a new instance of <see cref="Length{T}"/>
         /// </summary>
         /// <param name="value"></param>
 		public Length(T value) : this() {
@@ -27,7 +27,7 @@ namespace Afk.Measure.Quantity.Base {
 		}
 
         /// <summary>
-        /// Implicit conversion from T to <see cref="Length<T>"/>
+        /// Implicit conversion from T to <see cref="Length{T}"/>
         /// </summary>
         /// <param name="value"></param>
 		public static implicit operator Length<T>(T value) {
@@ -36,10 +36,10 @@ namespace Afk.Measure.Quantity.Base {
 
         #region Implicit conversion
         /// <summary>
-        /// Implicit conversion from <see cref="Length<T>"/> to <see cref="Length<double>"/>
+        /// Implicit conversion from <see cref="Length{T}"/> to <see cref="Length{T}"/> of <see cref="double"/>
         /// </summary>
-        /// <param name="value"><see cref="Length<T>"/> to convert</param>
-        /// <returns><see cref="Length<double>"/></returns>
+        /// <param name="value"><see cref="Length{T}"/> to convert</param>
+        /// <returns><see cref="Length{T}"/> of <see cref="double"/></returns>
         public static implicit operator Length<double>(Length<T> value)
         {
             Length<double> qty = new Length<double>();
@@ -49,10 +49,10 @@ namespace Afk.Measure.Quantity.Base {
         }
 
         /// <summary>
-        /// Implicit conversion from <see cref="Length<T>"/> to <see cref="Length<decimal>"/>
+        /// Implicit conversion from <see cref="Length{T}"/> to <see cref="Length{T}"/> of <see cref="decimal"/>
         /// </summary>
-        /// <param name="value"><see cref="Length<T>"/> to convert</param>
-        /// <returns><see cref="Length<decimal>"/></returns>
+        /// <param name="value"><see cref="Length{T}"/> to convert</param>
+        /// <returns><see cref="Length{T}"/> of <see cref="decimal"/></returns>
         public static implicit operator Length<decimal>(Length<T> value)
         {
             Length<decimal> qty = new Length<decimal>();
@@ -62,10 +62,10 @@ namespace Afk.Measure.Quantity.Base {
         }
 
         /// <summary>
-        /// Implicit conversion from <see cref="Length<T>"/> to <see cref="Length<long>"/>
+        /// Implicit conversion from <see cref="Length{T}"/> to <see cref="Length{T}"/> of <see cref="long"/>
         /// </summary>
-        /// <param name="value"><see cref="Length<T>"/> to convert</param>
-        /// <returns><see cref="Length<long>"/></returns>
+        /// <param name="value"><see cref="Length{T}"/> to convert</param>
+        /// <returns><see cref="Length{T}"/> of <see cref="long"/></returns>
         public static implicit operator Length<long>(Length<T> value)
         {
             Length<long> qty = new Length<long>();
@@ -75,10 +75,10 @@ namespace Afk.Measure.Quantity.Base {
         }
 
         /// <summary>
-        /// Implicit conversion from <see cref="Length<T>"/> to <see cref="Length<float>"/>
+        /// Implicit conversion from <see cref="Length{T}"/> to <see cref="Length{T}"/> of <see cref="float"/>
         /// </summary>
-        /// <param name="value"><see cref="Length<T>"/> to convert</param>
-        /// <returns><see cref="Length<float>"/></returns>
+        /// <param name="value"><see cref="Length{T}"/> to convert</param>
+        /// <returns><see cref="Length{T}"/> of <see cref="float"/></returns>
         public static implicit operator Length<float>(Length<T> value)
         {
             Length<float> qty = new Length<float>();

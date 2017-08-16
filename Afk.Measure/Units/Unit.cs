@@ -15,7 +15,14 @@ namespace Afk.Measure.Units {
 		/// </summary>
 		protected Dimension _dimension;
 
+        /// <summary>
+        /// Symbol of unit
+        /// </summary>
 		protected string _symbol;
+
+        /// <summary>
+        /// Converter to the base unit
+        /// </summary>
 		protected Converter.UnitConverter _baseConverter;
 		internal ExpandedUnit _expandedUnit;
 
@@ -155,11 +162,11 @@ namespace Afk.Measure.Units {
         #endregion
 
         /// <summary>
-        /// Gets the <see cref="Quantity"/> specified by value and unit
+        /// Gets the <see cref="Afk.Measure.Quantity.Quantity{T}"/> of <see cref="double"/> specified by value and unit
         /// </summary>
-        /// <param name="left">Left operand</param>
-        /// <param name="right">Right operand</param>
-        /// <returns><see cref="Quantity"/> equivalent to the product of <b>left</b> and <b>right</b></returns>
+        /// <param name="value">Left operand</param>
+        /// <param name="unit">Right operand</param>
+        /// <returns><see cref="Afk.Measure.Quantity.Quantity{T}"/> of <see cref="double"/> equivalent to the product of <b>left</b> and <b>right</b></returns>
         public static Afk.Measure.Quantity.Quantity<double> operator *(double value, Unit unit)
         {
             var qty = Dimension.QuantityFrom<double>(unit.Dimension);
@@ -175,11 +182,11 @@ namespace Afk.Measure.Units {
         }
 
         /// <summary>
-        /// Gets the <see cref="Quantity"/> specified by value and unit
+        /// Gets the <see cref="Afk.Measure.Quantity.Quantity{T}"/> of <see cref="double"/> specified by value and unit
         /// </summary>
-        /// <param name="left">Left operand</param>
-        /// <param name="right">Right operand</param>
-        /// <returns><see cref="Quantity"/> equivalent to the division of <b>left</b> and <b>right</b></returns>
+        /// <param name="value">Left operand</param>
+        /// <param name="unit">Right operand</param>
+        /// <returns><see cref="Afk.Measure.Quantity.Quantity{T}"/> of <see cref="double"/> equivalent to the division of <b>left</b> and <b>right</b></returns>
         public static Afk.Measure.Quantity.Quantity<double> operator /(double value, Unit unit)
         {
             Unit div = unit.Inverse();

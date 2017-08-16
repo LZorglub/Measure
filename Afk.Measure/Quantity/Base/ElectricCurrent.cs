@@ -12,14 +12,14 @@ namespace Afk.Measure.Quantity.Base {
 	public class ElectricCurrent<T> : Quantity<T> {
 
         /// <summary>
-        /// Initiliaze a new instance of <see cref="ElectricCurrent"/>
+        /// Initiliaze a new instance of <see cref="ElectricCurrent{T}"/>
         /// </summary>
 		public ElectricCurrent() {
 			this._unit = Units.System.SI.AMPERE;
 		}
 
         /// <summary>
-        /// Initialize a new instance of <see cref="ElectricCurrent"/>
+        /// Initialize a new instance of <see cref="ElectricCurrent{T}"/>
         /// </summary>
         /// <param name="value"></param>
 		public ElectricCurrent(T value) : this() {
@@ -27,7 +27,7 @@ namespace Afk.Measure.Quantity.Base {
 		}
 
         /// <summary>
-        /// Implicit conversion from T to <see cref="ElectricCurrent<T>"/>
+        /// Implicit conversion from T to <see cref="ElectricCurrent{T}"/>
         /// </summary>
         /// <param name="value"></param>
 		public static implicit operator ElectricCurrent<T>(T value) {
@@ -36,10 +36,10 @@ namespace Afk.Measure.Quantity.Base {
 
         #region Implicit conversion
         /// <summary>
-        /// Implicit conversion from <see cref="ElectricCurrent<T>"/> to <see cref="ElectricCurrent<double>"/>
+        /// Implicit conversion from <see cref="ElectricCurrent{T}"/> to <see cref="ElectricCurrent{T}"/> of <see cref="double"/>
         /// </summary>
-        /// <param name="value"><see cref="ElectricCurrent<T>"/> to convert</param>
-        /// <returns><see cref="ElectricCurrent<double>"/></returns>
+        /// <param name="value"><see cref="ElectricCurrent{T}"/> to convert</param>
+        /// <returns><see cref="ElectricCurrent{T}"/> of <see cref="double"/></returns>
         public static implicit operator ElectricCurrent<double>(ElectricCurrent<T> value)
         {
             ElectricCurrent<double> qty = new ElectricCurrent<double>();
@@ -49,10 +49,10 @@ namespace Afk.Measure.Quantity.Base {
         }
 
         /// <summary>
-        /// Implicit conversion from <see cref="ElectricCurrent<T>"/> to <see cref="ElectricCurrent<decimal>"/>
+        /// Implicit conversion from <see cref="ElectricCurrent{T}"/> to <see cref="ElectricCurrent{T}"/> of <see cref="decimal"/>
         /// </summary>
-        /// <param name="value"><see cref="ElectricCurrent<T>"/> to convert</param>
-        /// <returns><see cref="ElectricCurrent<decimal>"/></returns>
+        /// <param name="value"><see cref="ElectricCurrent{T}"/> to convert</param>
+        /// <returns><see cref="ElectricCurrent{T}"/> of <see cref="decimal"/></returns>
         public static implicit operator ElectricCurrent<decimal>(ElectricCurrent<T> value)
         {
             ElectricCurrent<decimal> qty = new ElectricCurrent<decimal>();
@@ -62,10 +62,10 @@ namespace Afk.Measure.Quantity.Base {
         }
 
         /// <summary>
-        /// Implicit conversion from <see cref="ElectricCurrent<T>"/> to <see cref="ElectricCurrent<long>"/>
+        /// Implicit conversion from <see cref="ElectricCurrent{T}"/> to <see cref="ElectricCurrent{T}"/> of <see cref="long"/>
         /// </summary>
-        /// <param name="value"><see cref="ElectricCurrent<T>"/> to convert</param>
-        /// <returns><see cref="ElectricCurrent<long>"/></returns>
+        /// <param name="value"><see cref="ElectricCurrent{T}"/> to convert</param>
+        /// <returns><see cref="ElectricCurrent{T}"/> of <see cref="long"/></returns>
         public static implicit operator ElectricCurrent<long>(ElectricCurrent<T> value)
         {
             ElectricCurrent<long> qty = new ElectricCurrent<long>();
@@ -75,10 +75,10 @@ namespace Afk.Measure.Quantity.Base {
         }
 
         /// <summary>
-        /// Implicit conversion from <see cref="ElectricCurrent<T>"/> to <see cref="ElectricCurrent<float>"/>
+        /// Implicit conversion from <see cref="ElectricCurrent{T}"/> to <see cref="ElectricCurrent{T}"/> of <see cref="float"/>
         /// </summary>
-        /// <param name="value"><see cref="ElectricCurrent<T>"/> to convert</param>
-        /// <returns><see cref="ElectricCurrent<float>"/></returns>
+        /// <param name="value"><see cref="ElectricCurrent{T}"/> to convert</param>
+        /// <returns><see cref="ElectricCurrent{T}"/> of <see cref="float"/></returns>
         public static implicit operator ElectricCurrent<float>(ElectricCurrent<T> value)
         {
             ElectricCurrent<float> qty = new ElectricCurrent<float>();

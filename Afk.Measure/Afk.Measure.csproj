@@ -39,5 +39,37 @@
     <Title>Unit Measure</Title>
     <Copyright>Copyright 2016</Copyright>
   </PropertyGroup>
-  
+
+  <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|netstandard1.4|AnyCPU'">
+    <DocumentationFile>bin\Debug\netstandard1.4\Afk.Measure.xml</DocumentationFile>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|netstandard1.4|AnyCPU'">
+    <DocumentationFile>bin\Release\netstandard1.4\Afk.Measure.xml</DocumentationFile>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net40|AnyCPU'">
+    <DocumentationFile>bin\Debug\net40\Afk.Measure.xml</DocumentationFile>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net40|AnyCPU'">
+    <DocumentationFile>bin\Release\net40\Afk.Measure.xml</DocumentationFile>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net45|AnyCPU'">
+    <DocumentationFile>bin\Debug\net45\Afk.Measure.xml</DocumentationFile>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net45|AnyCPU'">
+    <DocumentationFile>bin\Release\net45\Afk.Measure.xml</DocumentationFile>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net46|AnyCPU'">
+    <DocumentationFile>bin\Debug\net46\Afk.Measure.xml</DocumentationFile>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net46|AnyCPU'">
+    <DocumentationFile>bin\Release\net46\Afk.Measure.xml</DocumentationFile>
+  </PropertyGroup>
+
 </Project>

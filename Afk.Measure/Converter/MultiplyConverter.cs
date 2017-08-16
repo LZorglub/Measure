@@ -32,7 +32,6 @@ namespace Afk.Measure.Converter
         /// Get the reverse <see cref="UnitConverter"/> of current instance
         /// </summary>
         /// <returns>Reverse <see cref="UnitConverter"/> of current instance</returns>
-        /// </remarks>
         public override UnitConverter Inverse()
         {
             return new MultiplyConverter(1d / _factor);

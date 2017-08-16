@@ -12,14 +12,14 @@ namespace Afk.Measure.Quantity.Base {
 	public class Temperature<T> : Quantity<T> {
 
         /// <summary>
-        /// Initialize a new instance of <see cref="Temperature"/>
+        /// Initialize a new instance of <see cref="Temperature{T}"/>
         /// </summary>
 		public Temperature() {
 			this._unit = Units.System.SI.KELVIN;
 		}
 
         /// <summary>
-        /// Initialize a new instance of <see cref="Temperature"/>
+        /// Initialize a new instance of <see cref="Temperature{T}"/>
         /// </summary>
         /// <param name="value"></param>
 		public Temperature(T value) : this() {
@@ -27,7 +27,7 @@ namespace Afk.Measure.Quantity.Base {
 		}
 
         /// <summary>
-        /// Implicit conversion from T to <see cref="Temperature<T>"/>
+        /// Implicit conversion from T to <see cref="Temperature{T}"/>
         /// </summary>
         /// <param name="value"></param>
 		public static implicit operator Temperature<T>(T value) {
@@ -36,10 +36,10 @@ namespace Afk.Measure.Quantity.Base {
 
         #region Implicit conversion
         /// <summary>
-        /// Implicit conversion from <see cref="Temperature<T>"/> to <see cref="Temperature<double>"/>
+        /// Implicit conversion from <see cref="Temperature{T}"/> to <see cref="Temperature{T}"/> of <see cref="double"/>
         /// </summary>
-        /// <param name="value"><see cref="Temperature<T>"/> to convert</param>
-        /// <returns><see cref="Temperature<double>"/></returns>
+        /// <param name="value"><see cref="Temperature{T}"/> to convert</param>
+        /// <returns><see cref="Temperature{T}"/> of <see cref="double"/></returns>
         public static implicit operator Temperature<double>(Temperature<T> value)
         {
             Temperature<double> qty = new Temperature<double>();
@@ -49,10 +49,10 @@ namespace Afk.Measure.Quantity.Base {
         }
 
         /// <summary>
-        /// Implicit conversion from <see cref="Temperature<T>"/> to <see cref="Temperature<decimal>"/>
+        /// Implicit conversion from <see cref="Temperature{T}"/> to <see cref="Temperature{T}"/> of <see cref="decimal"/>
         /// </summary>
-        /// <param name="value"><see cref="Temperature<T>"/> to convert</param>
-        /// <returns><see cref="Temperature<decimal>"/></returns>
+        /// <param name="value"><see cref="Temperature{T}"/> to convert</param>
+        /// <returns><see cref="Temperature{T}"/> of <see cref="decimal"/></returns>
         public static implicit operator Temperature<decimal>(Temperature<T> value)
         {
             Temperature<decimal> qty = new Temperature<decimal>();
@@ -62,10 +62,10 @@ namespace Afk.Measure.Quantity.Base {
         }
 
         /// <summary>
-        /// Implicit conversion from <see cref="Temperature<T>"/> to <see cref="Temperature<long>"/>
+        /// Implicit conversion from <see cref="Temperature{T}"/> to <see cref="Temperature{T}"/> of <see cref="long"/>
         /// </summary>
-        /// <param name="value"><see cref="Temperature<T>"/> to convert</param>
-        /// <returns><see cref="Temperature<long>"/></returns>
+        /// <param name="value"><see cref="Temperature{T}"/> to convert</param>
+        /// <returns><see cref="Temperature{T}"/> of <see cref="long"/></returns>
         public static implicit operator Temperature<long>(Temperature<T> value)
         {
             Temperature<long> qty = new Temperature<long>();
@@ -75,10 +75,10 @@ namespace Afk.Measure.Quantity.Base {
         }
 
         /// <summary>
-        /// Implicit conversion from <see cref="Temperature<T>"/> to <see cref="Temperature<float>"/>
+        /// Implicit conversion from <see cref="Temperature{T}"/> to <see cref="Temperature{T}"/> of <see cref="float"/>
         /// </summary>
-        /// <param name="value"><see cref="Temperature<T>"/> to convert</param>
-        /// <returns><see cref="Temperature<float>"/></returns>
+        /// <param name="value"><see cref="Temperature{T}"/> to convert</param>
+        /// <returns><see cref="Temperature{T}"/> of <see cref="float"/></returns>
         public static implicit operator Temperature<float>(Temperature<T> value)
         {
             Temperature<float> qty = new Temperature<float>();

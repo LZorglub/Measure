@@ -11,14 +11,14 @@ namespace Afk.Measure.Quantity.Base {
 	/// <remarks>The base unit of this quantity is the euro.</remarks>
 	public class Currency<T> : Quantity<T> {
         /// <summary>
-        /// Initiliaze a new instance of <see cref="Currency"/>
+        /// Initiliaze a new instance of <see cref="Currency{T}"/>
         /// </summary>
 		public Currency() {
 			this._unit = new Units.Currency.Euro();
 		}
 
         /// <summary>
-        /// Initialize a new instance of <see cref="Currency"/>
+        /// Initialize a new instance of <see cref="Currency{T}"/>
         /// </summary>
         /// <param name="value"></param>
 		public Currency(T value)
@@ -27,7 +27,7 @@ namespace Afk.Measure.Quantity.Base {
 		}
 
         /// <summary>
-        /// Implicit conversion from T to <see cref="Currency<T>"/>
+        /// Implicit conversion from T to <see cref="Currency{T}"/>
         /// </summary>
         /// <param name="value"></param>
 		public static implicit operator Currency<T>(T value) {
@@ -36,10 +36,10 @@ namespace Afk.Measure.Quantity.Base {
 
         #region Implicit conversion
         /// <summary>
-        /// Implicit conversion from <see cref="Currency<T>"/> to <see cref="Currency<double>"/>
+        /// Implicit conversion from <see cref="Currency{T}"/> to <see cref="Currency{T}"/> of <see cref="double"/>
         /// </summary>
-        /// <param name="value"><see cref="Currency<T>"/> to convert</param>
-        /// <returns><see cref="Currency<double>"/></returns>
+        /// <param name="value"><see cref="Currency{T}"/> to convert</param>
+        /// <returns><see cref="Currency{T}"/> of <see cref="double"/></returns>
         public static implicit operator Currency<double>(Currency<T> value)
         {
             Currency<double> qty = new Currency<double>();
@@ -49,10 +49,10 @@ namespace Afk.Measure.Quantity.Base {
         }
 
         /// <summary>
-        /// Implicit conversion from <see cref="Currency<T>"/> to <see cref="Currency<decimal>"/>
+        /// Implicit conversion from <see cref="Currency{T}"/> to <see cref="Currency{T}"/> of <see cref="decimal"/>
         /// </summary>
-        /// <param name="value"><see cref="Currency<T>"/> to convert</param>
-        /// <returns><see cref="Currency<decimal>"/></returns>
+        /// <param name="value"><see cref="Currency{T}"/> to convert</param>
+        /// <returns><see cref="Currency{T}"/> of <see cref="decimal"/></returns>
         public static implicit operator Currency<decimal>(Currency<T> value)
         {
             Currency<decimal> qty = new Currency<decimal>();
@@ -62,10 +62,10 @@ namespace Afk.Measure.Quantity.Base {
         }
 
         /// <summary>
-        /// Implicit conversion from <see cref="Currency<T>"/> to <see cref="Currency<long>"/>
+        /// Implicit conversion from <see cref="Currency{T}"/> to <see cref="Currency{T}"/> of <see cref="long"/>
         /// </summary>
-        /// <param name="value"><see cref="Currency<T>"/> to convert</param>
-        /// <returns><see cref="Currency<long>"/></returns>
+        /// <param name="value"><see cref="Currency{T}"/> to convert</param>
+        /// <returns><see cref="Currency{T}"/> of <see cref="long"/></returns>
         public static implicit operator Currency<long>(Currency<T> value)
         {
             Currency<long> qty = new Currency<long>();
@@ -75,10 +75,10 @@ namespace Afk.Measure.Quantity.Base {
         }
 
         /// <summary>
-        /// Implicit conversion from <see cref="Currency<T>"/> to <see cref="Currency<float>"/>
+        /// Implicit conversion from <see cref="Currency{T}"/> to <see cref="Currency{T}"/> of <see cref="float"/>
         /// </summary>
-        /// <param name="value"><see cref="Currency<T>"/> to convert</param>
-        /// <returns><see cref="Currency<float>"/></returns>
+        /// <param name="value"><see cref="Currency{T}"/> to convert</param>
+        /// <returns><see cref="Currency{T}"/> of <see cref="float"/></returns>
         public static implicit operator Currency<float>(Currency<T> value)
         {
             Currency<float> qty = new Currency<float>();

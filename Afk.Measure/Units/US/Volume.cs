@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-/// United States customary units : http://en.wikipedia.org/wiki/United_States_customary_units#Units_of_capacity_and_volume
+// United States customary units : http://en.wikipedia.org/wiki/United_States_customary_units#Units_of_capacity_and_volume
 
 namespace Afk.Measure.Units.US
 {

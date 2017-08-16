@@ -12,14 +12,14 @@ namespace Afk.Measure.Quantity.Base {
 	public class Mass<T> : Quantity<T> {
 
         /// <summary>
-        /// Initialize a new instance of <see cref="Mass"/>
+        /// Initialize a new instance of <see cref="Mass{T}"/>
         /// </summary>
 		public Mass() {
 			this._unit = Units.System.SI.GRAM;
 		}
 
         /// <summary>
-        /// Initialize a new instance of <see cref="Mass"/>
+        /// Initialize a new instance of <see cref="Mass{T}"/>
         /// </summary>
         /// <param name="value"></param>
 		public Mass(T value) : this() {
@@ -27,7 +27,7 @@ namespace Afk.Measure.Quantity.Base {
 		}
 
         /// <summary>
-        /// Implicit conversion from T to <see cref="Mass<T>"/>
+        /// Implicit conversion from T to <see cref="Mass{T}"/>
         /// </summary>
         /// <param name="value"></param>
 		public static implicit operator Mass<T>(T value) {
@@ -36,10 +36,10 @@ namespace Afk.Measure.Quantity.Base {
 
         #region Implicit conversion
         /// <summary>
-        /// Implicit conversion from <see cref="Mass<T>"/> to <see cref="Mass<double>"/>
+        /// Implicit conversion from <see cref="Mass{T}"/> to <see cref="Mass{T}"/> of <see cref="double"/>
         /// </summary>
-        /// <param name="value"><see cref="Mass<T>"/> to convert</param>
-        /// <returns><see cref="Mass<double>"/></returns>
+        /// <param name="value"><see cref="Mass{T}"/> to convert</param>
+        /// <returns><see cref="Mass{T}"/> of <see cref="double"/></returns>
         public static implicit operator Mass<double>(Mass<T> value)
         {
             Mass<double> qty = new Mass<double>();
@@ -49,10 +49,10 @@ namespace Afk.Measure.Quantity.Base {
         }
 
         /// <summary>
-        /// Implicit conversion from <see cref="Mass<T>"/> to <see cref="Mass<decimal>"/>
+        /// Implicit conversion from <see cref="Mass{T}"/> to <see cref="Mass{T}"/> of <see cref="decimal"/>
         /// </summary>
-        /// <param name="value"><see cref="Mass<T>"/> to convert</param>
-        /// <returns><see cref="Mass<decimal>"/></returns>
+        /// <param name="value"><see cref="Mass{T}"/> to convert</param>
+        /// <returns><see cref="Mass{T}"/> of <see cref="decimal"/></returns>
         public static implicit operator Mass<decimal>(Mass<T> value)
         {
             Mass<decimal> qty = new Mass<decimal>();
@@ -62,10 +62,10 @@ namespace Afk.Measure.Quantity.Base {
         }
 
         /// <summary>
-        /// Implicit conversion from <see cref="Mass<T>"/> to <see cref="Mass<long>"/>
+        /// Implicit conversion from <see cref="Mass{T}"/> to <see cref="Mass{T}"/> of <see cref="long"/>
         /// </summary>
-        /// <param name="value"><see cref="Mass<T>"/> to convert</param>
-        /// <returns><see cref="Mass<long>"/></returns>
+        /// <param name="value"><see cref="Mass{T}"/> to convert</param>
+        /// <returns><see cref="Mass{T}"/> of <see cref="long"/></returns>
         public static implicit operator Mass<long>(Mass<T> value)
         {
             Mass<long> qty = new Mass<long>();
@@ -75,10 +75,10 @@ namespace Afk.Measure.Quantity.Base {
         }
 
         /// <summary>
-        /// Implicit conversion from <see cref="Mass<T>"/> to <see cref="Mass<float>"/>
+        /// Implicit conversion from <see cref="Mass{T}"/> to <see cref="Mass{T}"/> of <see cref="float"/>
         /// </summary>
-        /// <param name="value"><see cref="Mass<T>"/> to convert</param>
-        /// <returns><see cref="Mass<float>"/></returns>
+        /// <param name="value"><see cref="Mass{T}"/> to convert</param>
+        /// <returns><see cref="Mass{T}"/> of <see cref="float"/></returns>
         public static implicit operator Mass<float>(Mass<T> value)
         {
             Mass<float> qty = new Mass<float>();

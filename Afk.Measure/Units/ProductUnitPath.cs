@@ -10,10 +10,10 @@ namespace Afk.Measure.Units {
 	class ProductUnitPath {
 		private List<int> _unitsPath;
 
-		/// <summary>
-		/// Initialize a new instance of <see cref="UnitPath"/>
-		/// </summary>
-		public ProductUnitPath() {
+        /// <summary>
+        /// Initialize a new instance of <see cref="ProductUnitPath"/>
+        /// </summary>
+        public ProductUnitPath() {
 			_unitsPath = new List<int>();
 		}
 
