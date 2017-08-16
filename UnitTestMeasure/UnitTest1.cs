@@ -10,7 +10,7 @@ namespace UnitTestMeasure
     public class UnitTest1
     {
         [TestMethod]
-        public void TestMethod1()
+        public void Testkg()
         {
             Unit kg;
             if (Unit.TryParse("kg", out kg))
