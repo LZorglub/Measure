@@ -1,8 +1,7 @@
-﻿using System;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Afk.Measure;
+﻿using Afk.Measure.Quantity;
 using Afk.Measure.Units;
 using Afk.Measure.Units.System;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace UnitTestMeasure
 {

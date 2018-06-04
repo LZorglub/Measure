@@ -9,8 +9,8 @@
   </PropertyGroup>
 
   <PropertyGroup>
-    <Version>2.0.1.0</Version>
-    <FileVersion>2.0.1.0</FileVersion>
+    <Version>2.0.2.0</Version>
+    <FileVersion>2.0.2.0</FileVersion>
     <Authors>Luc Nempont</Authors>
     <Description>This C# library provides units management in different measure system (International System, CGS, Imperial system and US).</Description>
     <Copyright>Copyright (c) 2011</Copyright>
@@ -29,7 +29,7 @@
 
   <PropertyGroup>
     <PackageId>Afk.Measure</PackageId>
-    <PackageVersion>2.0.1.0</PackageVersion>
+    <PackageVersion>2.0.2.0</PackageVersion>
     <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
     <PackageTags>unit quantity measure metric system physics SI CGS Imperial</PackageTags>
     <PackageLicenseUrl>https://github.com/LZorglub/Measure/blob/master/LICENSE</PackageLicenseUrl>
@@ -38,6 +38,7 @@
     <Authors>Luc</Authors>
     <Title>Unit Measure</Title>
     <Copyright>Copyright 2016</Copyright>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|netstandard1.4|AnyCPU'">

@@ -45,7 +45,7 @@ namespace Afk.Measure.Units
                 Where(e => !e.IsAbstract && e.IsSubclassOf(typeof(Unit)) && e != typeof(ProductMetricBaseUnit).GetTypeInfo() && e != typeof(ProductUnit).GetTypeInfo() && e != typeof(PrefixUnit).GetTypeInfo());
 
             // Select new instance of Unit with a right symbol
-            IEnumerable<Unit> unites = types.Select(e => (Unit)Activator.CreateInstance(e.GetType())).Where(e => !string.IsNullOrEmpty(e.Symbol));
+            IEnumerable<Unit> unites = types.Select(e => (Unit)Activator.CreateInstance(e.AsType())).Where(e => !string.IsNullOrEmpty(e.Symbol));
 #else
             IEnumerable<Type> types = assembly.GetTypes().
                 Where(e => !e.IsAbstract && e.IsSubclassOf(typeof(Unit)) && e != typeof(ProductMetricBaseUnit) && e != typeof(ProductUnit) && e != typeof(PrefixUnit));
