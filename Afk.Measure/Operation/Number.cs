@@ -1,16 +1,14 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Linq.Expressions;
 
-namespace Afk.Measure.Operation {
-	/// <summary>
-	/// Provide operation on generic type
-	/// </summary>
-	/// <typeparam name="T">Type of first operand</typeparam>
-	/// <typeparam name="V">Type of second operand</typeparam>
-	internal class Number<T, V> {
+namespace Afk.Measure.Operation
+{
+    /// <summary>
+    /// Provide operation on generic type
+    /// </summary>
+    /// <typeparam name="T">Type of first operand</typeparam>
+    /// <typeparam name="V">Type of second operand</typeparam>
+    internal class Number<T, V> {
 		private T value;
 
 		private static readonly Func<T, V, T> Add = CompileDelegate<T>(Expression.Add);
@@ -80,11 +78,11 @@ namespace Afk.Measure.Operation {
 			return null;
 		}
 
-        /// <summary>
-        /// Initialize a new instance of <see cref="Number{T,V}"/>
-        /// </summary>
-        /// <param name="value"><b>Value</b> of current instance</param>
-        internal Number(T value) {
+		/// <summary>
+		/// Initialize a new instance of <see cref="Number{T,V}"/>
+		/// </summary>
+		/// <param name="value"><b>Value</b> of current instance</param>
+		internal Number(T value) {
 			this.value = value;
 		}
 

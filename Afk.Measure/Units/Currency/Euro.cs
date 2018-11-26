@@ -3,7 +3,8 @@
     /// <summary>
     /// Represents the euro unit
     /// </summary>
-    public class Euro : BaseUnit {
+    public class Euro : MetricBaseUnit
+    {
         /// <summary>
         /// Initialize a new instance of <see cref="Euro"/>
         /// </summary>
@@ -13,11 +14,27 @@
 		}
 	}
 
-	#region Old currency
-	/// <summary>
-	/// Franc français
-	/// </summary>
-	public sealed class FrenchFranc : BaseUnit {
+    /// <summary>
+    /// Represents the euro symbol unit
+    /// </summary>
+    public class EuroSymbol : MetricBaseUnit
+    {
+        /// <summary>
+        /// Initialize a new instance of <see cref="EuroSymbol"/>
+        /// </summary>
+		public EuroSymbol()
+            : base(new Dimension(0, 0, 0, 0, 0, 0, 0, 1))
+        {
+            _symbol = "€";
+        }
+    }
+
+    #region Old currency
+    /// <summary>
+    /// Franc français
+    /// </summary>
+    public sealed class FrenchFranc : MetricBaseUnit
+    {
         /// <summary>
         /// Initialize a new instance of <see cref="FrenchFranc"/>
         /// </summary>
@@ -31,7 +48,7 @@
 	/// <summary>
 	/// Mark allemand
 	/// </summary>
-	public sealed class DeutscheMark : BaseUnit {
+	public sealed class DeutscheMark : MetricBaseUnit {
         /// <summary>
         /// Initialize a new instance of <see cref="DeutscheMark"/>
         /// </summary>
@@ -45,7 +62,7 @@
 	/// <summary>
 	/// Schilling autrichien
 	/// </summary>
-	public sealed class AustrichSchilling : BaseUnit {
+	public sealed class AustrichSchilling : MetricBaseUnit {
         /// <summary>
         /// Initialize a new instance of <see cref="AustrichSchilling"/>
         /// </summary>
@@ -59,7 +76,7 @@
 	/// <summary>
 	/// Franc belge
 	/// </summary>
-	public sealed class BelgiumFranc : BaseUnit {
+	public sealed class BelgiumFranc : MetricBaseUnit {
         /// <summary>
         /// Initialize a new instance of <see cref="BelgiumFranc"/>
         /// </summary>
@@ -73,7 +90,7 @@
 	/// <summary>
 	/// Peseta
 	/// </summary>
-	public sealed class Peseta : BaseUnit {
+	public sealed class Peseta : MetricBaseUnit {
         /// <summary>
         /// Initialize a new instance of <see cref="Peseta"/>
         /// </summary>
@@ -87,7 +104,7 @@
 	/// <summary>
 	/// Mark finlandais
 	/// </summary>
-	public sealed class FinlandMark : BaseUnit {
+	public sealed class FinlandMark : MetricBaseUnit {
         /// <summary>
         /// Initialize a new instance of <see cref="FinlandMark"/>
         /// </summary>
@@ -101,7 +118,7 @@
 	/// <summary>
 	/// Livre irlandaise
 	/// </summary>
-	public sealed class IrishPound : BaseUnit {
+	public sealed class IrishPound : MetricBaseUnit {
         /// <summary>
         /// Initialize a new instance of <see cref="IrishPound"/>
         /// </summary>
@@ -115,7 +132,7 @@
 	/// <summary>
 	/// Lire italienne
 	/// </summary>
-	public sealed class ItalyLire : BaseUnit {
+	public sealed class ItalyLire : MetricBaseUnit {
         /// <summary>
         /// Initialize a new instance of <see cref="ItalyLire"/>
         /// </summary>
@@ -129,7 +146,7 @@
 	/// <summary>
 	/// Franc luxembourgeois
 	/// </summary>
-	public sealed class LuxembourgFranc : BaseUnit {
+	public sealed class LuxembourgFranc : MetricBaseUnit {
         /// <summary>
         /// Initialize a new instance of <see cref="LuxembourgFranc"/>
         /// </summary>
@@ -143,7 +160,7 @@
 	/// <summary>
 	/// Florin neerlandais
 	/// </summary>
-	public sealed class Gulden : BaseUnit {
+	public sealed class Gulden : MetricBaseUnit {
         /// <summary>
         /// Initialize a new instance of <see cref="Gulden"/>
         /// </summary>
@@ -157,7 +174,7 @@
 	/// <summary>
 	/// Escudo Portugal
 	/// </summary>
-	public sealed class Escudo : BaseUnit {
+	public sealed class Escudo : MetricBaseUnit {
         /// <summary>
         /// Initialize a new instance of <see cref="Escudo"/>
         /// </summary>
@@ -171,7 +188,7 @@
 	/// <summary>
 	/// Franc andorran
 	/// </summary>
-	public sealed class AndorFranc : BaseUnit {
+	public sealed class AndorFranc : MetricBaseUnit {
         /// <summary>
         /// Initialize a new instance of <see cref="AndorFranc"/>
         /// </summary>
@@ -185,7 +202,7 @@
 	/// <summary>
 	/// Peseta andorrane
 	/// </summary>
-	public sealed class AndorPeseta : BaseUnit {
+	public sealed class AndorPeseta : MetricBaseUnit {
         /// <summary>
         /// Initialize a new instance of <see cref="AndorPeseta"/>
         /// </summary>
@@ -199,7 +216,7 @@
 	/// <summary>
 	/// Franc monegasque
 	/// </summary>
-	public sealed class MonacoFranc : BaseUnit {
+	public sealed class MonacoFranc : MetricBaseUnit {
         /// <summary>
         /// Initialize a new instance of <see cref="MonacoFranc"/>
         /// </summary>
@@ -213,7 +230,7 @@
 	/// <summary>
 	/// Lire de saint-marin
 	/// </summary>
-	public sealed class SaintMarinLire : BaseUnit {
+	public sealed class SaintMarinLire : MetricBaseUnit {
         /// <summary>
         /// Initialize a new instance of <see cref="SaintMarinLire"/>
         /// </summary>
@@ -227,7 +244,7 @@
 	/// <summary>
 	/// Lire vaticane
 	/// </summary>
-	public sealed class VaticanLire : BaseUnit {
+	public sealed class VaticanLire : MetricBaseUnit {
         /// <summary>
         /// Initialize a new instance of <see cref="VaticanLire"/>
         /// </summary>
@@ -241,7 +258,7 @@
 	/// <summary>
 	/// Drachme grecque
 	/// </summary>
-	public sealed class Drachme : BaseUnit {
+	public sealed class Drachme : MetricBaseUnit {
         /// <summary>
         /// Initialize a new instance of <see cref="Drachme"/>
         /// </summary>
@@ -255,7 +272,7 @@
 	/// <summary>
 	/// Tolar slovène
 	/// </summary>
-	public sealed class Tolar : BaseUnit {
+	public sealed class Tolar : MetricBaseUnit {
         /// <summary>
         /// Initialize a new instance of <see cref="Tolar"/>
         /// </summary>
@@ -269,7 +286,7 @@
 	/// <summary>
 	/// Livre chypriote
 	/// </summary>
-	public sealed class CypreLivre  : BaseUnit {
+	public sealed class CypreLivre  : MetricBaseUnit {
         /// <summary>
         /// Initialize a new instance of <see cref="CypreLivre"/>
         /// </summary>
@@ -283,7 +300,7 @@
 	/// <summary>
 	/// Lire maltaise
 	/// </summary>
-	public sealed class MalteLire : BaseUnit {
+	public sealed class MalteLire : MetricBaseUnit {
         /// <summary>
         /// Initialize a new instance of <see cref="MalteLire"/>
         /// </summary>
@@ -297,7 +314,7 @@
 	/// <summary>
 	/// Couronne slovaque
 	/// </summary>
-	public sealed class SlovenskaKoruna : BaseUnit {
+	public sealed class SlovenskaKoruna : MetricBaseUnit {
         /// <summary>
         /// Initialize a new instance of <see cref="SlovenskaKoruna"/>
         /// </summary>
@@ -311,7 +328,7 @@
 	/// <summary>
 	/// Couronne estonienne
 	/// </summary>
-	public sealed class EestiKroon : BaseUnit {
+	public sealed class EestiKroon : MetricBaseUnit {
         /// <summary>
         /// Initialize a new instance of <see cref="EestiKroon"/>
         /// </summary>

@@ -11,7 +11,7 @@ namespace Afk.Measure.Units {
 	/// </summary>
 	/// <remarks>Each complex unit must retain the base unit.
 	/// For sample the Wh which dimension is m2s-2kg1 (same like Joule) must retain that its contain a hour 
-	/// component m2s-3h1kg1. Without that the converter will be wrong.
+	/// component m2s-3h1kg1. Without that, the converter will be wrong.
 	/// </remarks>
 	internal class ExpandedUnit : IEnumerable<KeyValuePair<Unit, int>> {
 		private Unit[] _units;
@@ -173,7 +173,7 @@ namespace Afk.Measure.Units {
 			for (int i = 0; i < unitB._units.Length; i++) {
 				int uiCode = unitB._units[i].GetUICode();
 
-				if (unitA._units.Where(e => e.GetUICode() == uiCode).Count() == 0) {
+				if (!unitA._units.Any(e => e.GetUICode() == uiCode)) {
 					bool append = false;
 					// We keep the order of unit by dimension 
 					// For sample m.s * kg.h = m.s.h.kg

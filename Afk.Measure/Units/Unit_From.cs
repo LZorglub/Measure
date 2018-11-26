@@ -16,7 +16,7 @@ namespace Afk.Measure.Units {
 		// This file contains all unit static method
 
 		private static object _synchronizedObject = new object();
-		private static Regex regUnit = new Regex(@"^(?<Unit>([a-zA-Z]{0,2}°)?[a-zA-Z$¥ ]*)(\^?(?<Exponent>[-+]?\d+))?$", RegexOptions.Compiled);
+		private static Regex regUnit = new Regex(@"^(?<Unit>([a-zA-Z]{0,2}°)?[a-zA-Z$€¥ ]*)(\^?(?<Exponent>[-+]?\d+))?$", RegexOptions.Compiled);
         private static Dictionary<string, UnitAssembly> unitAssembly;
 
         /// <summary>
@@ -88,26 +88,42 @@ namespace Afk.Measure.Units {
 			Unit result = null;
             Unit[] knownUnits = WellKnownUnits;
 
-            if (string.IsNullOrEmpty(symbol)) return BaseUnit.UNITONE;
+            // Add symbol 1 for UNITONE
+            if (string.IsNullOrEmpty(symbol) || symbol == "1") return BaseUnit.UNITONE;
 
             symbol = symbol.Trim();
 
 			try {
 				string[] div = symbol.Split(new char[] { '/' }, 2);
 				if (div.Length == 2) {
-					Unit unitA = Parse(div[0], ignoreCase);
-					BaseUnit unitB = (BaseUnit)Parse(div[1], ignoreCase);
-					if (unitA is PrefixUnit) {
-						unitB = ProductUnitBuilder.GetProductInstance(((PrefixUnit)unitA).BaseUnit, (BaseUnit)unitB.Inverse());
-						if (unitB is Measure.Units.MetricBaseUnit)
-							return new PrefixUnit(((PrefixUnit)unitA).Prefixe, (MetricBaseUnit)unitB);
-						throw new UnitException("Unable to cast " + unitB.Symbol + " to " + ((PrefixUnit)unitA).Prefixe.Symbol + unitB.Symbol);
-					}
-					else
-						return ProductUnitBuilder.GetProductInstance((BaseUnit)unitA, (BaseUnit)unitB.Inverse());
-				}
+                    #region Unit division
+                    Unit unitA = Parse(div[0], ignoreCase);
+                    Unit unitB = Parse(div[1], ignoreCase);
+                    if (unitA is PrefixUnit && unitB is PrefixUnit && ((PrefixUnit)unitA).Prefixe == ((PrefixUnit)unitB).Prefixe)
+                    {
+                        // Same prefix cancel each others => allows km/ks for sample
+                        // Exemple : km/ks = > m.s-1
+                        unitA = ((PrefixUnit)unitA).BaseUnit; unitB = ((PrefixUnit)unitB).BaseUnit;
+                    }
+
+                    if (unitA is PrefixUnit && unitB is BaseUnit) {
+                        unitB = ProductUnitBuilder.GetProductInstance(((PrefixUnit)unitA).BaseUnit, (BaseUnit)unitB.Inverse());
+                        if (unitB is Measure.Units.MetricBaseUnit)
+                            return new PrefixUnit(((PrefixUnit)unitA).Prefixe, (MetricBaseUnit)unitB);
+                        throw new UnitException("Unable to cast " + unitB.Symbol + " to " + ((PrefixUnit)unitA).Prefixe.Symbol + unitB.Symbol);
+                    }/* else if (unitA is BaseUnit && unitB is PrefixUnit)
+                    {
+                        Unit unitC = ProductUnitBuilder.GetProductInstance((BaseUnit)unitA, ((PrefixUnit)unitB.Inverse()).BaseUnit);
+                        if (unitC is Measure.Units.MetricBaseUnit)
+                            return new PrefixUnit(((PrefixUnit)unitB).Prefixe, (MetricBaseUnit)unitC);
+                        throw new UnitException("Unable to cast " + unitC.Symbol + " to " + ((PrefixUnit)unitB).Prefixe.Symbol + unitC.Symbol);
+                    }*/
+                    else
+                        return ProductUnitBuilder.GetProductInstance((BaseUnit)unitA, (BaseUnit)unitB.Inverse());
+                    #endregion
+                }
 				else {
-					Measure.Units.Metric.Prefixes.SIPrefixe p = null;
+                    Measure.Units.Metric.Prefixes.SIPrefixe p = null;
 
 					// L'espace n'est pas considéré comme un séparateur valable, certaines unités sont composées d'espace
 					// fluid ounce = fl oz
@@ -189,20 +205,25 @@ namespace Afk.Measure.Units {
 						}
 					}
 
-					if (p != null)
-						if (result is PrefixUnit && ((PrefixUnit)result).Prefixe == Measure.Units.Metric.Prefixes.SIPrefixe.None) {
-							result = new PrefixUnit(p, ((PrefixUnit)result).BaseUnit);
-						}
-						else if (result is MetricBaseUnit) {
-							if (result is IMetricUnitOffset && (
-								p != Measure.Units.Metric.Prefixes.SIPrefixe.None && ((IMetricUnitOffset)result).Prefixe != Measure.Units.Metric.Prefixes.SIPrefixe.None)
-								) {
-								throw new UnitException("Unable to cast " + result.Symbol + " to " + p.Symbol + result.Symbol);
-							}
-							result = new PrefixUnit(p, (MetricBaseUnit)result);
-						}
-						else
-							throw new UnitException("Unable to cast " + result.Symbol + " to " + p.Symbol + result.Symbol);
+                    if (p != null)
+                    {
+                        if (result is PrefixUnit && ((PrefixUnit)result).Prefixe == Measure.Units.Metric.Prefixes.SIPrefixe.None)
+                        {
+                            result = new PrefixUnit(p, ((PrefixUnit)result).BaseUnit);
+                        }
+                        else if (result is MetricBaseUnit)
+                        {
+                            if (result is IMetricUnitOffset && (
+                                p != Measure.Units.Metric.Prefixes.SIPrefixe.None && ((IMetricUnitOffset)result).Prefixe != Measure.Units.Metric.Prefixes.SIPrefixe.None)
+                                )
+                            {
+                                throw new UnitException("Unable to cast " + result.Symbol + " to " + p.Symbol + result.Symbol);
+                            }
+                            result = new PrefixUnit(p, (MetricBaseUnit)result);
+                        }
+                        else
+                            throw new UnitException("Unable to cast " + result.Symbol + " to " + p.Symbol + result.Symbol);
+                    }
 				}
 			}
 			catch (Exception e) {
