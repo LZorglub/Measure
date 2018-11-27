@@ -8,14 +8,6 @@
     <DefineConstants>NETSTANDARD</DefineConstants>
   </PropertyGroup>
 
-  <PropertyGroup>
-    <Version>2.0.2.0</Version>
-    <FileVersion>2.0.2.0</FileVersion>
-    <Authors>Luc Nempont</Authors>
-    <Description>This C# library provides units management in different measure system (International System, CGS, Imperial system and US).</Description>
-    <Copyright>Copyright (c) 2011</Copyright>
-  </PropertyGroup>
-  
   <ItemGroup Condition="'$(TargetFramework)'=='net40' OR '$(TargetFramework)'=='net45' OR '$(TargetFramework)'=='net46'">
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -28,17 +20,17 @@
   </ItemGroup>
 
   <PropertyGroup>
-    <PackageId>Afk.Measure</PackageId>
-    <PackageVersion>2.0.2.0</PackageVersion>
-    <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
-    <PackageTags>unit quantity measure metric system physics SI CGS Imperial</PackageTags>
-    <PackageLicenseUrl>https://github.com/LZorglub/Measure/blob/master/LICENSE</PackageLicenseUrl>
-    <PackageProjectUrl>https://github.com/LZorglub/Measure</PackageProjectUrl>
-    <PackageIconUrl>https://raw.githubusercontent.com/LZorglub/Measure/master/Measure64x64.png</PackageIconUrl>
-    <Authors>Luc</Authors>
-    <Title>Unit Measure</Title>
-    <Copyright>Copyright 2016</Copyright>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <Authors>Luc Nempont</Authors>
+    <Copyright>Copyright (c) 2011</Copyright>
+    <Description>This C# library provides units management in different measure system (International System, CGS, Imperial system and US).</Description>
+    <Version>2.1.0.0</Version>
+    <RepositoryUrl>https://altsis.pkgs.visualstudio.com/_packaging/Altsis/nuget/v3/index.json</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
+    <PackageIconUrl>https://raw.githubusercontent.com/LZorglub/Measure/master/Measure64x64.png</PackageIconUrl>
+    <PackageProjectUrl>https://github.com/LZorglub/Measure</PackageProjectUrl>
+    <PackageLicenseUrl>https://github.com/LZorglub/Measure/blob/master/LICENSE</PackageLicenseUrl>
+    <PackageTags>unit quantity measure metric system physics SI CGS Imperial</PackageTags>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|netstandard1.4|AnyCPU'">
