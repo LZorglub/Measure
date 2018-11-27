@@ -286,6 +286,11 @@ namespace Afk.Measure.Quantity {
 			if (left.Unit != null && right.Unit != null) {
 				BaseUnit bu1 = (left.Unit is PrefixUnit) ? ((PrefixUnit)left.Unit).BaseUnit : left.Unit as BaseUnit;
 				BaseUnit bu2 = (right.Unit is PrefixUnit) ? ((PrefixUnit)right.Unit).BaseUnit : right.Unit as BaseUnit;
+                bool prefixVanish = (left.Unit is PrefixUnit && right.Unit is PrefixUnit && 
+                    (
+                        (!div && ((PrefixUnit)left.Unit).PrefixConverter.Concat(((PrefixUnit)right.Unit).PrefixConverter) == UnitConverter.IDENTITY) ||
+                        (div && ((PrefixUnit)left.Unit).PrefixConverter.Concat(((PrefixUnit)right.Unit).PrefixConverter.Inverse()) == UnitConverter.IDENTITY) 
+                ));
 				BaseUnit pu = bu1 * ((div) ? (BaseUnit)bu2.Inverse() : bu2);
 
 				Quantity<T> qty = Dimension.QuantityFrom<T>(pu.Dimension);
@@ -301,8 +306,9 @@ namespace Afk.Measure.Quantity {
 
 				// 1er : les dimensions ne s'intersectent pas, on effectue juste l'opération
 				if (!bu1.Dimension.Cross(bu2.Dimension)) {
-					Number<T, T> n1 = new Number<T, T>((left.Unit is PrefixUnit) ? ((PrefixUnit)left.Unit).PrefixConverter.Convert<T>(left.Value) : left.Value);
-					Number<T, T> n2 = new Number<T, T>((right.Unit is PrefixUnit) ? ((PrefixUnit)right.Unit).PrefixConverter.Convert<T>(right.Value) : right.Value);
+                    // Apply only the prefix converter kilo, deca, etc....
+					Number<T, T> n1 = new Number<T, T>((left.Unit is PrefixUnit && !prefixVanish) ? ((PrefixUnit)left.Unit).PrefixConverter.Convert<T>(left.Value) : left.Value);
+					Number<T, T> n2 = new Number<T, T>((right.Unit is PrefixUnit && !prefixVanish) ? ((PrefixUnit)right.Unit).PrefixConverter.Convert<T>(right.Value) : right.Value);
 					qty._value = (div) ? ((n1 / n2).Value) : ((n1 * n2).Value);
 				}
 				else {
@@ -324,8 +330,11 @@ namespace Afk.Measure.Quantity {
 						qty._value = (div) ? ((n1 / n2).Value) : ((n1 * n2).Value);
 					}
 					else {
-						Number<T, T> n1 = new Number<T, T>(left.Unit.BaseConverter.Convert<T>(left.Value));
-						Number<T, T> n2 = new Number<T, T>(right.Unit.BaseConverter.Convert<T>(right.Value));
+                        var leftConverter = (prefixVanish) ? ((PrefixUnit)left.Unit).BaseUnit.BaseConverter : left.Unit.BaseConverter;
+                        var rightConverter = (prefixVanish) ? ((PrefixUnit)right.Unit).BaseUnit.BaseConverter : right.Unit.BaseConverter;
+
+                        Number<T, T> n1 = new Number<T, T>(leftConverter.Convert<T>(left.Value));
+						Number<T, T> n2 = new Number<T, T>(rightConverter.Convert<T>(right.Value));
 						qty._value = (div) ? ((n1 / n2).Value) : ((n1 * n2).Value);
 
 						// Expression dans l'unité résultante
@@ -337,10 +346,11 @@ namespace Afk.Measure.Quantity {
 
 				// Expression dans le metrique du premier opérande
 				if (qty.Unit != null && qty.Unit != BaseUnit.UNITONE) {
-					if (left.Unit is PrefixUnit && qty.Unit is Measure.Units.MetricBaseUnit) {
+					if (left.Unit is PrefixUnit && qty.Unit is Measure.Units.MetricBaseUnit && !prefixVanish) {
 						Measure.Units.Metric.Prefixes.SIPrefixe p = ((PrefixUnit)left.Unit).Prefixe;
 						if (p.Exponent != Measure.Units.Metric.Prefixes.ExponentPrefixes.None ||
 							(qty.Unit is IMetricUnitOffset && ((IMetricUnitOffset)qty.Unit).Prefixe.Exponent != p.Exponent)) {
+                            // Exemple : km2 * m, km * deca s (dam)
 							return qty.ConvertTo(new PrefixUnit(p, (Measure.Units.MetricBaseUnit)qty.Unit));
 						}
 					}
@@ -609,6 +619,7 @@ namespace Afk.Measure.Quantity {
 			if (value == null) return default(T);
 
 			if (value.Unit != null && value.Unit is PrefixUnit) {
+                // Exemple : 1km => 1000
 				return ((PrefixUnit)value.Unit).PrefixConverter.Convert<T>(value.Value);
 			}
 

@@ -12,6 +12,29 @@
             this.Exponent = 1;
 			_symbol = "V";
 		}
-	}
+
+        /// <summary>
+        /// Gets the inverted unit
+        /// </summary>
+        /// <returns></returns>
+        public override Unit Inverse()
+        {
+            var unit = (Volt)base.Inverse();
+            unit._symbol = "V" + ((unit.Exponent != 1) ? unit.Exponent.ToString() : "");
+            return unit;
+        }
+
+        /// <summary>
+        /// Returns unit raised to the specified power.
+        /// </summary>
+        /// <param name="pow"></param>
+        /// <returns></returns>
+        public override Unit Power(int pow)
+        {
+            var unit = (Volt)base.Power(pow);
+            unit._symbol = "V" + ((unit.Exponent != 1) ? unit.Exponent.ToString() : "");
+            return unit;
+        }
+    }
 }
 

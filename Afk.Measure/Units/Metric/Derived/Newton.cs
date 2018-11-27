@@ -12,6 +12,29 @@
             this.Exponent = 1;
 			_symbol = "N";
 		}
-	}
+
+        /// <summary>
+        /// Gets the inverted unit
+        /// </summary>
+        /// <returns></returns>
+        public override Unit Inverse()
+        {
+            var unit = (Newton)base.Inverse();
+            unit._symbol = "N" + ((unit.Exponent != 1) ? unit.Exponent.ToString() : "");
+            return unit;
+        }
+
+        /// <summary>
+        /// Returns unit raised to the specified power.
+        /// </summary>
+        /// <param name="pow"></param>
+        /// <returns></returns>
+        public override Unit Power(int pow)
+        {
+            var unit = (Newton)base.Power(pow);
+            unit._symbol = "N" + ((unit.Exponent != 1) ? unit.Exponent.ToString() : "");
+            return unit;
+        }
+    }
 }
 

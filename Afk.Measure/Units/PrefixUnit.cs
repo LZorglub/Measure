@@ -59,59 +59,98 @@ namespace Afk.Measure.Units {
         /// <param name="baseUnit"><see cref="MetricBaseUnit"/></param>
         public PrefixUnit(SIPrefixe prefixe, MetricBaseUnit baseUnit)
 			: this(baseUnit) {
-			this._prefixe = prefixe;
-
-			// Détermination du converter de préfixe
-			Measure.Converter.UnitConverter converter = Measure.Converter.UnitConverter.IDENTITY;
-
-			// Pour minimiser les problèmes d'arrondis si le préfixe est négatif on utilise
-			// un converter Rational et s'il est positif on utilise un Multiply
-
-			int expp = Convert.ToInt32(prefixe.Exponent);
-			// Si l'unité de base possède déjà un facteur (kg) il faut le prendre en compte
-			if (_baseUnit is IMetricUnitOffset) {
-				Measure.Units.Metric.Prefixes.SIPrefixe pOffset = ((IMetricUnitOffset)_baseUnit).Prefixe;
-				if (pOffset.Base == prefixe.Base) {
-					expp -= Convert.ToInt32(pOffset.Exponent);
-					if (expp < 0) {
-						converter = new Measure.Converter.RationalConverter(1, (long)Math.Pow(prefixe.Base, -expp));
-					}
-					else if (expp > 0) {
-						converter = new Measure.Converter.MultiplyConverter((long)Math.Pow(prefixe.Base, expp));
-					}
-				}
-				else {
-					// Les préfixes ne sont pas de même bases il faut utiliser le facteur (Kig)
-					converter = new Measure.Converter.MultiplyConverter(Math.Pow(prefixe.Base, expp) / Math.Pow(pOffset.Base, Convert.ToInt32(pOffset.Exponent)));
-				}
-			}
-			else {
-				if (expp < 0) {
-					converter = new Measure.Converter.RationalConverter(1, (long)Math.Pow(prefixe.Base, -expp));
-				}
-				else if (expp > 0) {
-					converter = new Measure.Converter.MultiplyConverter((long)Math.Pow(prefixe.Base, expp));
-				}
-			}
-
-			// On calcule le converter à utiliser en fonction de l'exposant de l'unité
-			if (converter != Measure.Converter.UnitConverter.IDENTITY) {
-				if (this.BaseUnit.Exponent < 0) {
-					converter = converter.Inverse();
-				}
-
-				for (int exp = 0; exp < Math.Abs(this.BaseUnit.Exponent); exp++) {
-					this._prefixConverter = this._prefixConverter.Concat(converter);
-				}
-
-				this._baseConverter = this._prefixConverter.Concat(this._baseConverter);
-			}
+            this.Initialize(prefixe, baseUnit, this.BaseUnit.Exponent);
 		}
 
-		/// <summary>
-		/// Gets the symbol of unit
-		/// </summary>
-		public override string Symbol {
+        /// <summary>
+        /// Initialize a new instance of <see cref="PrefixUnit"/>
+        /// </summary>
+        /// <param name="prefixe">Prefixe of unit</param>
+        /// <param name="baseUnit"><see cref="MetricBaseUnit"/></param>
+        /// <param name="exponent">Exponent to apply to prefixe</param>
+        public PrefixUnit(SIPrefixe prefixe, MetricBaseUnit baseUnit, int exponent)
+            : this(baseUnit)
+        {
+            this.Initialize(prefixe, baseUnit, exponent);
+        }
+
+        /// <summary>
+        /// Initialize the <see cref="PrefixUnit"/>
+        /// </summary>
+        /// <param name="prefixe">Prefixe of unit</param>
+        /// <param name="baseUnit"><see cref="MetricBaseUnit"/></param>
+        /// <param name="exponent">Exponent to apply to prefixe</param>
+        private void Initialize(SIPrefixe prefixe, MetricBaseUnit baseUnit, int exponent)
+        {
+            this._prefixe = prefixe;
+
+            // Détermination du converter de préfixe
+            Measure.Converter.UnitConverter converter = Measure.Converter.UnitConverter.IDENTITY;
+
+            // Pour minimiser les problèmes d'arrondis si le préfixe est négatif on utilise
+            // un converter Rational et s'il est positif on utilise un Multiply
+
+            int expp = Convert.ToInt32(prefixe.Exponent);
+            // Si l'unité de base possède déjà un facteur (kg) il faut le prendre en compte
+            if (_baseUnit is IMetricUnitOffset)
+            {
+                Measure.Units.Metric.Prefixes.SIPrefixe pOffset = ((IMetricUnitOffset)_baseUnit).Prefixe;
+                if (pOffset.Base == prefixe.Base)
+                {
+                    expp -= Convert.ToInt32(pOffset.Exponent);
+                    if (expp < 0)
+                    {
+                        converter = new Measure.Converter.RationalConverter(1, (long)Math.Pow(prefixe.Base, -expp));
+                    }
+                    else if (expp > 0)
+                    {
+                        converter = new Measure.Converter.MultiplyConverter((long)Math.Pow(prefixe.Base, expp));
+                    }
+                }
+                else
+                {
+                    // Les préfixes ne sont pas de même bases il faut utiliser le facteur (Kig)
+                    converter = new Measure.Converter.MultiplyConverter(Math.Pow(prefixe.Base, expp) / Math.Pow(pOffset.Base, Convert.ToInt32(pOffset.Exponent)));
+                }
+            }
+            else
+            {
+                if (expp < 0)
+                {
+                    converter = new Measure.Converter.RationalConverter(1, (long)Math.Pow(prefixe.Base, -expp));
+                }
+                else if (expp > 0)
+                {
+                    converter = new Measure.Converter.MultiplyConverter((long)Math.Pow(prefixe.Base, expp));
+                }
+            }
+
+            // On calcule le converter à utiliser en fonction de l'exposant imposé (celui de l'unité ou un autre)
+            // Exemple km2 : le converter calculé juste avant = *1000, différent de identity alors on l'éléve au carré puis
+            // on change le baseConverter en concaténant le converter du préfixe obtenu
+            // Exemple kWh2 : Equivalent à k(m2.s-3.h)2, l'exposant imposé doit être 2 et pas celui de la première unité
+            if (converter != Measure.Converter.UnitConverter.IDENTITY)
+            {
+                if (exponent < 0)
+                {
+                    converter = converter.Inverse();
+                }
+
+                // _prefixConverter == IDENTITY before this loop
+                for (int exp = 0; exp < Math.Abs(exponent); exp++)
+                {
+                    this._prefixConverter = this._prefixConverter.Concat(converter);
+                }
+
+                // Applied the prefix converter to the base converter
+                this._baseConverter = this._prefixConverter.Concat(this._baseConverter);
+            }
+        }
+
+        /// <summary>
+        /// Gets the symbol of unit
+        /// </summary>
+        public override string Symbol {
 			get {
 				// Si l'unité est un produit il ne faut pas prendre en compte son exposant qui est
 				// déjà exprimé dans le MetricSymbol

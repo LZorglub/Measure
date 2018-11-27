@@ -16,6 +16,29 @@
             this.Exponent = 1;
 			_symbol = "W";
 		}
-	}
+
+        /// <summary>
+        /// Gets the inverted unit
+        /// </summary>
+        /// <returns></returns>
+        public override Unit Inverse()
+        {
+            var unit = (Watt)base.Inverse();
+            unit._symbol = "W" + ((unit.Exponent != 1) ? unit.Exponent.ToString() : "");
+            return unit;
+        }
+
+        /// <summary>
+        /// Returns unit raised to the specified power.
+        /// </summary>
+        /// <param name="pow"></param>
+        /// <returns></returns>
+        public override Unit Power(int pow)
+        {
+            var unit = (Watt)base.Power(pow);
+            unit._symbol = "W" + ((unit.Exponent != 1) ? unit.Exponent.ToString() : "");
+            return unit;
+        }
+    }
 }
 

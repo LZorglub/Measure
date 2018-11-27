@@ -99,31 +99,39 @@ namespace Afk.Measure.Units {
                     #region Unit division
                     Unit unitA = Parse(div[0], ignoreCase);
                     Unit unitB = Parse(div[1], ignoreCase);
-                    if (unitA is PrefixUnit && unitB is PrefixUnit && ((PrefixUnit)unitA).Prefixe == ((PrefixUnit)unitB).Prefixe)
+                    if (unitA is PrefixUnit && unitB is PrefixUnit)
                     {
-                        // Same prefix cancel each others => allows km/ks for sample
-                        // Exemple : km/ks = > m.s-1
-                        unitA = ((PrefixUnit)unitA).BaseUnit; unitB = ((PrefixUnit)unitB).BaseUnit;
+                        if (((PrefixUnit)unitA).PrefixConverter.Concat(((PrefixUnit)unitB).PrefixConverter.Inverse()) == Converter.UnitConverter.IDENTITY)
+                        {
+                            // Same prefix cancel each others => allows km2/Ms for sample
+                            unitA = ((PrefixUnit)unitA).BaseUnit; unitB = ((PrefixUnit)unitB).BaseUnit;
+                        }
                     }
 
                     if (unitA is PrefixUnit && unitB is BaseUnit) {
+                        // Sample : km2/s, km2/m2.s (on devrait interdire cette écriture qui porte à confusion, ce n'est pas du ks-1 mais 1000000 * s-1)
                         unitB = ProductUnitBuilder.GetProductInstance(((PrefixUnit)unitA).BaseUnit, (BaseUnit)unitB.Inverse());
                         if (unitB is Measure.Units.MetricBaseUnit)
-                            return new PrefixUnit(((PrefixUnit)unitA).Prefixe, (MetricBaseUnit)unitB);
+                            return new PrefixUnit(((PrefixUnit)unitA).Prefixe, (MetricBaseUnit)unitB, unitA.Exponent);
                         throw new UnitException("Unable to cast " + unitB.Symbol + " to " + ((PrefixUnit)unitA).Prefixe.Symbol + unitB.Symbol);
-                    }/* else if (unitA is BaseUnit && unitB is PrefixUnit)
+                    } else if (unitA is BaseUnit && unitB is PrefixUnit)
                     {
-                        Unit unitC = ProductUnitBuilder.GetProductInstance((BaseUnit)unitA, ((PrefixUnit)unitB.Inverse()).BaseUnit);
+                        // Sample : €/MWh, m2/km.s, m/ks
+                        PrefixUnit pUnitB = (PrefixUnit)unitB;
+                        Unit unitC = ProductUnitBuilder.GetProductInstance((BaseUnit)(pUnitB.BaseUnit.Inverse()), (BaseUnit)unitA);
                         if (unitC is Measure.Units.MetricBaseUnit)
-                            return new PrefixUnit(((PrefixUnit)unitB).Prefixe, (MetricBaseUnit)unitC);
+                            return new PrefixUnit(pUnitB.Prefixe, (MetricBaseUnit)unitC, -pUnitB.Exponent);
                         throw new UnitException("Unable to cast " + unitC.Symbol + " to " + ((PrefixUnit)unitB).Prefixe.Symbol + unitC.Symbol);
-                    }*/
+                    }
                     else
                         return ProductUnitBuilder.GetProductInstance((BaseUnit)unitA, (BaseUnit)unitB.Inverse());
                     #endregion
                 }
 				else {
-                    Measure.Units.Metric.Prefixes.SIPrefixe p = null;
+                    // We dont allow multiple prefix in unit compostion (kWh2.km.mm) => unable to found correct prefix
+
+                    // Keep trace of prefix and exponent applied to prefix
+                    Tuple<Measure.Units.Metric.Prefixes.SIPrefixe, int> prefixInfo = null;
 
 					// L'espace n'est pas considéré comme un séparateur valable, certaines unités sont composées d'espace
 					// fluid ounce = fl oz
@@ -149,53 +157,50 @@ namespace Afk.Measure.Units {
 									}
 								}
 								result = (result == null) ? product : ProductUnitBuilder.GetProductInstance((BaseUnit)result, product);
-								p = Measure.Units.Metric.Prefixes.SIPrefixe.None;
+								prefixInfo = new Tuple<Metric.Prefixes.SIPrefixe, int>(Measure.Units.Metric.Prefixes.SIPrefixe.None , 1);
 							}
 							else {
 								Unit knownUnit = knownUnits.FirstOrDefault(e => string.Compare(e.LocalizableSymbol, baseUnit, ignoreCase) == 0);
 								if (knownUnit != null) {
-									if (exponent < 0) knownUnit = knownUnit.Inverse();
-
-									Unit product = null;
-									for (int k = 0; k < Math.Abs(exponent); k++) {
-										if (product == null)
-											product = knownUnit;
-										else {
-											product = ProductUnitBuilder.GetProductInstance((BaseUnit)product, (BaseUnit)knownUnit);
-										}
-									}
+                                    // knownUnit dont list unit with prefix, so here we dont have to take care about prefix, kWh2 is processed by else condition
+                                    // Exemple : m.s, Wh2
+                                    Unit product = (exponent != 1) ? knownUnit.Power(exponent) : knownUnit;
 									result = (result == null) ? product : ProductUnitBuilder.GetProductInstance((BaseUnit)result, (BaseUnit)product);
 								}
-								else if (p == null) {
-									// On s'occupe d'abord des préfixes sur deux caractères
-									// dam doit être compris deka meter et non deci atto meter
+								else if (prefixInfo == null) {
+									// First we check prefix on two characters dam must be "deka meter" and not "deci atto meter"
 									if (baseUnit.Length > 2) {
-										p = Measure.Units.Metric.Prefixes.SIPrefixe.Parse(baseUnit.Substring(0, 2), ignoreCase);
+                                        // Exemple : dam
+										var prefix = Measure.Units.Metric.Prefixes.SIPrefixe.Parse(baseUnit.Substring(0, 2), ignoreCase);
 
-										if (p != null) {
+										if (prefix != null) {
 											try {
 												var unit = Parse(unites[index].Substring(2), ignoreCase);
 												result = (result == null) ? unit : ProductUnitBuilder.GetProductInstance((BaseUnit)unit, (BaseUnit)result);
+                                                prefixInfo = new Tuple<Metric.Prefixes.SIPrefixe, int>(prefix, exponent);
 											}
 											catch {
-												p = null;
 											}
 										}
 									}
 
-									if (p == null) {
-										p = Measure.Units.Metric.Prefixes.SIPrefixe.Parse(baseUnit.Substring(0, 1), ignoreCase);
+									if (prefixInfo == null) {
+                                        // Exemple : kWh2
+										var prefix = Measure.Units.Metric.Prefixes.SIPrefixe.Parse(baseUnit.Substring(0, 1), ignoreCase);
 
-										if (p != null) {
+										if (prefix != null) {
 											var unit = Parse(unites[index].Substring(1), ignoreCase);
 											result = (result == null) ? unit : ProductUnitBuilder.GetProductInstance((BaseUnit)unit, (BaseUnit)result);
-										}
-									}
+                                            prefixInfo = new Tuple<Metric.Prefixes.SIPrefixe, int>(prefix, exponent);
+                                        }
+                                    }
 
-									if (p == null)
+									if (prefixInfo == null)
 										throw new UnitException("Unable to cast " + unites[index] + " to unit");
 								}
 								else {
+                                    // Disallow multiple prefix
+                                    // Exemple : km.ks
 									throw new UnitException("Unable to cast " + unites[index] + " to unit");
 								}
 							}
@@ -205,24 +210,28 @@ namespace Afk.Measure.Units {
 						}
 					}
 
-                    if (p != null)
+                    if (prefixInfo != null)
                     {
                         if (result is PrefixUnit && ((PrefixUnit)result).Prefixe == Measure.Units.Metric.Prefixes.SIPrefixe.None)
                         {
-                            result = new PrefixUnit(p, ((PrefixUnit)result).BaseUnit);
+                            // Sample : dag. da = Deka, g = kg with none prefix
+                            result = new PrefixUnit(prefixInfo.Item1, ((PrefixUnit)result).BaseUnit);
                         }
                         else if (result is MetricBaseUnit)
                         {
                             if (result is IMetricUnitOffset && (
-                                p != Measure.Units.Metric.Prefixes.SIPrefixe.None && ((IMetricUnitOffset)result).Prefixe != Measure.Units.Metric.Prefixes.SIPrefixe.None)
+                                prefixInfo.Item1 != Measure.Units.Metric.Prefixes.SIPrefixe.None && ((IMetricUnitOffset)result).Prefixe != Measure.Units.Metric.Prefixes.SIPrefixe.None)
                                 )
                             {
-                                throw new UnitException("Unable to cast " + result.Symbol + " to " + p.Symbol + result.Symbol);
+                                // Can not merge two prefixes
+                                throw new UnitException("Unable to cast " + result.Symbol + " to " + prefixInfo.Item1.Symbol + result.Symbol);
                             }
-                            result = new PrefixUnit(p, (MetricBaseUnit)result);
+                            // We have a prefix and an unit with prefix capability (MetricBaseUnit), we can produce a PrefixUnit
+                            // Item2 as right exponent and not (MetricBaseUnit)result Sample : kWh2 (exponent=2) and not km4.s-6.h2.kg2 (4)
+                            result = new PrefixUnit(prefixInfo.Item1, (MetricBaseUnit)result, prefixInfo.Item2); 
                         }
                         else
-                            throw new UnitException("Unable to cast " + result.Symbol + " to " + p.Symbol + result.Symbol);
+                            throw new UnitException("Unable to cast " + result.Symbol + " to " + prefixInfo.Item1.Symbol + result.Symbol);
                     }
 				}
 			}
