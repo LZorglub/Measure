@@ -353,8 +353,17 @@ namespace Afk.Measure.Quantity {
                             // Exemple : km2 * m, km * deca s (dam)
 							return qty.ConvertTo(new PrefixUnit(p, (Measure.Units.MetricBaseUnit)qty.Unit));
 						}
-					}
-				}
+					} else if (left.Unit == BaseUnit.UNITONE && right.Unit is PrefixUnit && qty.Unit is MetricBaseUnit)
+                    {
+                        Measure.Units.Metric.Prefixes.SIPrefixe p = ((PrefixUnit)right.Unit).Prefixe;
+                        if (p.Exponent != Measure.Units.Metric.Prefixes.ExponentPrefixes.None ||
+                            (qty.Unit is IMetricUnitOffset && ((IMetricUnitOffset)qty.Unit).Prefixe.Exponent != p.Exponent))
+                        {
+                            // Exemple : 1 / 5kWh
+                            return qty.ConvertTo(new PrefixUnit(p, (Measure.Units.MetricBaseUnit)qty.Unit));
+                        }
+                    }
+                }
 
 				return qty;
 			}
