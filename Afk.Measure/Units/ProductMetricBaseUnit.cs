@@ -34,17 +34,21 @@ namespace Afk.Measure.Units {
 		/// </summary>
 		/// <param name="expandedUnit">A <see cref="ExpandedUnit"/> which contains all elementary unit.</param>
 		/// <param name="context">Path of the product unit.</param>
-		internal ProductMetricBaseUnit(ExpandedUnit expandedUnit, ProductUnitPath context)
+        /// <param name="overrideSymbol">Allow to override the symbol</param>
+        /// <param name="overrideConverter">Allow to override the unit converter</param>
+		internal ProductMetricBaseUnit(ExpandedUnit expandedUnit, ProductUnitPath context, string overrideSymbol, Converter.UnitConverter overrideConverter = null)
 			: this() {
 			Initialise(expandedUnit);
 			_unitPath = context;
+            if (!string.IsNullOrWhiteSpace(overrideSymbol)) this._symbol = overrideSymbol;
+            if (overrideConverter != null) this._baseConverter = overrideConverter;
 		}
 
-		/// <summary>
-		/// Initialize a new instance of <see cref="ProductMetricBaseUnit"/>
-		/// </summary>
-		/// <param name="unitA">Single <see cref="MetricBaseUnit"/> of product</param>
-		public ProductMetricBaseUnit(MetricBaseUnit unitA)
+        /// <summary>
+        /// Initialize a new instance of <see cref="ProductMetricBaseUnit"/>
+        /// </summary>
+        /// <param name="unitA">Single <see cref="MetricBaseUnit"/> of product</param>
+        public ProductMetricBaseUnit(MetricBaseUnit unitA)
 			: this() {
 			Initialise(unitA.GetExpandedUnits());
 		}

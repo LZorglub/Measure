@@ -16,18 +16,10 @@
       <Compartment Name="Properties" Collapsed="true" />
       <Compartment Name="Methods" Collapsed="true" />
     </Compartments>
-    <NestedTypes>
-      <Struct Name="Afk.Measure.Units.Unit.HashUnit" Collapsed="true">
-        <TypeIdentifier>
-          <NewMemberFileName>Units\Unit_From.cs</NewMemberFileName>
-        </TypeIdentifier>
-      </Struct>
-    </NestedTypes>
     <TypeIdentifier>
-      <HashCode>MoAiogACACAYFQAGIAJAAQMAgIAASpDPlpEhAQEACBA=</HashCode>
+      <HashCode>MIAiogAAACAYFAAGIAZAAUMAgIAASoDflhEhAQEACBA=</HashCode>
       <FileName>Units\Unit.cs</FileName>
     </TypeIdentifier>
-    <Lollipop Position="0.2" />
   </Class>
   <Class Name="Afk.Measure.Units.BaseUnit" Collapsed="true">
     <Position X="1.75" Y="1.5" Width="1.5" />
@@ -61,7 +53,7 @@
   <Class Name="Afk.Measure.Units.PrefixUnit" Collapsed="true">
     <Position X="5.5" Y="1.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>CAAAAAAAAFAAAAAAAAIAAIAAAAAAAAAJABAAAAAAKAA=</HashCode>
+      <HashCode>CAAAAAAAAFAAAQAAAAIAAIAAAAAAAAAJABAAAAAAKAA=</HashCode>
       <FileName>Units\PrefixUnit.cs</FileName>
     </TypeIdentifier>
   </Class>

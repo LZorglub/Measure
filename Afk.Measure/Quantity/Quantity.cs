@@ -276,6 +276,32 @@ namespace Afk.Measure.Quantity {
 		}
 
         /// <summary>
+        /// Gets the result of product operation. We test the linearity of converter to optimize the calculation precision
+        /// </summary>
+        /// <param name="leftValue"></param>
+        /// <param name="leftConverter"></param>
+        /// <param name="rightValue"></param>
+        /// <param name="rightConverter"></param>
+        /// <param name="div"></param>
+        /// <returns></returns>
+        private static T GetValue(T leftValue, UnitConverter leftConverter, T rightValue, UnitConverter rightConverter, bool div)
+        {
+            if (leftConverter.IsLinear && rightConverter.IsLinear)
+            {
+                var converter = leftConverter.Concat((div) ? rightConverter.Inverse() : rightConverter);
+                Number<T, T> n1 = new Number<T, T>(leftValue);
+                Number<T, T> n2 = new Number<T, T>(rightValue);
+                return converter.Convert<T>((div) ? ((n1 / n2).Value) : ((n1 * n2).Value));
+            }
+            else
+            {
+                Number<T, T> n1 = new Number<T, T>(leftConverter.Convert<T>(leftValue));
+                Number<T, T> n2 = new Number<T, T>(rightConverter.Convert<T>(rightValue));
+                return (div) ? ((n1 / n2).Value) : ((n1 * n2).Value);
+            }
+        }
+
+        /// <summary>
         /// Effectue le produit/quotient de deux <see cref="Quantity{T}"/>
         /// </summary>
         /// <param name="left">Opérande gauche</param>
@@ -307,7 +333,7 @@ namespace Afk.Measure.Quantity {
 				// 1er : les dimensions ne s'intersectent pas, on effectue juste l'opération
 				if (!bu1.Dimension.Cross(bu2.Dimension)) {
                     // Apply only the prefix converter kilo, deca, etc....
-					Number<T, T> n1 = new Number<T, T>((left.Unit is PrefixUnit && !prefixVanish) ? ((PrefixUnit)left.Unit).PrefixConverter.Convert<T>(left.Value) : left.Value);
+                    Number<T, T> n1 = new Number<T, T>((left.Unit is PrefixUnit && !prefixVanish) ? ((PrefixUnit)left.Unit).PrefixConverter.Convert<T>(left.Value) : left.Value);
 					Number<T, T> n2 = new Number<T, T>((right.Unit is PrefixUnit && !prefixVanish) ? ((PrefixUnit)right.Unit).PrefixConverter.Convert<T>(right.Value) : right.Value);
 					qty._value = (div) ? ((n1 / n2).Value) : ((n1 * n2).Value);
 				}
@@ -324,21 +350,15 @@ namespace Afk.Measure.Quantity {
 						// répartir, 5m * 2°C = 10 m.°C = 283.15m.K ou 5m * 2°C = 5m * 275.15K = 1375.15m.K
 						// Par contre m.°C * °C peut être calculé sans passer par les conversions de base
 						UnitConverter[] converters = FindBestConverter(left.Unit, right.Unit, qty.Unit);
-
-						Number<T, T> n1 = new Number<T, T>(converters[0].Convert<T>(left.Value));
-						Number<T, T> n2 = new Number<T, T>(converters[1].Convert<T>(right.Value));
-						qty._value = (div) ? ((n1 / n2).Value) : ((n1 * n2).Value);
+                        qty.Value = GetValue(left.Value, converters[0], right.Value, converters[1], div);
 					}
 					else {
                         var leftConverter = (prefixVanish) ? ((PrefixUnit)left.Unit).BaseUnit.BaseConverter : left.Unit.BaseConverter;
                         var rightConverter = (prefixVanish) ? ((PrefixUnit)right.Unit).BaseUnit.BaseConverter : right.Unit.BaseConverter;
+                        qty.Value = GetValue(left.Value, leftConverter, right.Value, rightConverter, div);
 
-                        Number<T, T> n1 = new Number<T, T>(leftConverter.Convert<T>(left.Value));
-						Number<T, T> n2 = new Number<T, T>(rightConverter.Convert<T>(right.Value));
-						qty._value = (div) ? ((n1 / n2).Value) : ((n1 * n2).Value);
-
-						// Expression dans l'unité résultante
-						if (qty.Unit != null && qty.Unit != BaseUnit.UNITONE) {
+                        // Expression dans l'unité résultante
+                        if (qty.Unit != null && qty.Unit != BaseUnit.UNITONE) {
 							qty._value = qty.Unit.BaseConverter.Inverse().Convert<T>(qty._value);
 						}
 					}

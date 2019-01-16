@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using Afk.Measure.Units.Metric;
+using Afk.Measure.Units.Metric.Prefixes;
 using static Afk.Measure.Units.UnitAssembly;
 
 namespace Afk.Measure.Units {
@@ -76,20 +77,47 @@ namespace Afk.Measure.Units {
 			}
 			#endregion
 
+            // Override the symbol if units dimensions dont have intersection
+            string overrideSymbol = null;
+            if (!unitA.Dimension.Cross(unitB.Dimension))
+            {
+                overrideSymbol = $"{unitA.Symbol}{SEPARATORS[0]}{unitB.Symbol}";
+            }
+
 			// Choice of the right product class
 			if (expandedUnit.ElementAt(0).Key is Measure.Units.MetricBaseUnit) {
-				return new ProductMetricBaseUnit(expandedUnit, newPath);
+				return new ProductMetricBaseUnit(expandedUnit, newPath, overrideSymbol);
 			}
 			else
 				return new ProductUnit(expandedUnit, newPath);
 		}
 
-		/// <summary>
-		/// Gets the path of a product unit.
+        /// <summary>
+		/// Get the product of two <see cref="PrefixUnit"/>
 		/// </summary>
-		/// <param name="unit"></param>
-		/// <returns></returns>
-		private static ProductUnitPath GetContext(BaseUnit unit) {
+		/// <param name="unitA">First operand</param>
+		/// <param name="unitB">Second operand</param>
+		/// <returns><see cref="BaseUnit"/> equivalent to the product of <b>unitA</b> and <b>unitB</b></returns>
+		public static Unit GetProductInstance(PrefixUnit unitA, PrefixUnit unitB)
+        {
+            // Authorize product only if the unit dimension are different
+            if (unitA.Dimension.Cross(unitB.Dimension)) throw new InvalidOperationException($"Unable to multiply {unitA.Symbol} by {unitB.Symbol}");
+
+            ExpandedUnit expandedUnit = unitA.GetExpandedUnits() + unitB.GetExpandedUnits();
+
+            // Override the symbol like units dimensions dont have intersection
+            string overrideSymbol = $"{unitA.BaseSymbol}{SEPARATORS[0]}{unitB.Symbol}";
+            // Override the converter : unitA without prefix converter * unitB converter
+            var unitConverter = unitA.BaseUnit.BaseConverter.Concat(unitB.BaseConverter);
+            return new PrefixUnit(new Tuple<SIPrefixe, int>(unitA.Prefixe, unitA.Exponent), new ProductMetricBaseUnit(expandedUnit, new ProductUnitPath(), overrideSymbol, unitConverter));
+        }
+
+        /// <summary>
+        /// Gets the path of a product unit.
+        /// </summary>
+        /// <param name="unit"></param>
+        /// <returns></returns>
+        private static ProductUnitPath GetContext(BaseUnit unit) {
 			if (unit is ProductUnit) {
 				return ((ProductUnit)unit).UnitPath;
 			}

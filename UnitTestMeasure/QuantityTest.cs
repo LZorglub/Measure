@@ -38,6 +38,23 @@ namespace UnitTestMeasure
             Assert.AreEqual(expectedUnit, qty.Unit.Symbol.Replace((char)183, '.'));
         }
 
+        //[DataRow("c€/Wh", "Wh", 15, 152, 2280, "c€")]
+        //[DataRow("c€/kWh", "kWh", 15, 152, 2280, "c€")]
+        [DataRow("c€/kWh", "MWh", 15, 152, 2280000, "c€")]
+        [DataTestMethod]
+        public void TestCentiEuroMWh(string unitA, string unitB, double valueA, double valueB, double expectedValue, string expectedUnit)
+        {
+            Assert.AreEqual(true, Unit.TryParse(unitA, out Unit uA));
+            Assert.AreEqual(true, Unit.TryParse(unitB, out Unit uB));
+
+            Quantity<double> qA = new Quantity<double>(valueA, uA);
+            Quantity<double> qB = new Quantity<double>(valueB, uB);
+
+            var qty = (qA * qB);
+            Assert.AreEqual(expectedValue, Math.Round(qty.Value, 0));
+            Assert.AreEqual(expectedUnit, qty.Unit.Symbol.Replace((char)183, '.'));
+        }
+
         [TestCategory("Quantity")]
         [Description("Inverse")]
         [TestMethod]

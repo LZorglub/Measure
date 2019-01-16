@@ -7,6 +7,7 @@ using System.Text.RegularExpressions;
 using Afk.Measure.Units.Metric.SI;
 using Afk.Measure.Units.Metric;
 using static Afk.Measure.Units.UnitAssembly;
+using Afk.Measure.Units.Metric.Prefixes;
 
 namespace Afk.Measure.Units {
 	/// <summary>
@@ -112,7 +113,7 @@ namespace Afk.Measure.Units {
                         // Sample : km2/s, km2/m2.s (on devrait interdire cette écriture qui porte à confusion, ce n'est pas du ks-1 mais 1000000 * s-1)
                         unitB = ProductUnitBuilder.GetProductInstance(((PrefixUnit)unitA).BaseUnit, (BaseUnit)unitB.Inverse());
                         if (unitB is Measure.Units.MetricBaseUnit)
-                            return new PrefixUnit(((PrefixUnit)unitA).Prefixe, (MetricBaseUnit)unitB, unitA.Exponent);
+                            return new PrefixUnit(new Tuple<SIPrefixe, int>(((PrefixUnit)unitA).Prefixe, unitA.Exponent), (MetricBaseUnit)unitB);
                         throw new UnitException("Unable to cast " + unitB.Symbol + " to " + ((PrefixUnit)unitA).Prefixe.Symbol + unitB.Symbol);
                     } else if (unitA is BaseUnit && unitB is PrefixUnit)
                     {
@@ -120,8 +121,12 @@ namespace Afk.Measure.Units {
                         PrefixUnit pUnitB = (PrefixUnit)unitB;
                         Unit unitC = ProductUnitBuilder.GetProductInstance((BaseUnit)(pUnitB.BaseUnit.Inverse()), (BaseUnit)unitA);
                         if (unitC is Measure.Units.MetricBaseUnit)
-                            return new PrefixUnit(pUnitB.Prefixe, (MetricBaseUnit)unitC, -pUnitB.Exponent);
+                            return new PrefixUnit(new Tuple<SIPrefixe, int>(pUnitB.Prefixe, -pUnitB.Exponent), (MetricBaseUnit)unitC);
                         throw new UnitException("Unable to cast " + unitC.Symbol + " to " + ((PrefixUnit)unitB).Prefixe.Symbol + unitC.Symbol);
+                    }
+                    else if (unitA is PrefixUnit && unitB is PrefixUnit && !unitA.Dimension.Cross(unitB.Dimension))
+                    {
+                        return ProductUnitBuilder.GetProductInstance((PrefixUnit)unitA, (PrefixUnit)unitB.Inverse());
                     }
                     else
                         return ProductUnitBuilder.GetProductInstance((BaseUnit)unitA, (BaseUnit)unitB.Inverse());
@@ -210,6 +215,7 @@ namespace Afk.Measure.Units {
 						}
 					}
 
+                    // PrefixInfo is a tuple with the prefix symbol and the exponent applied to this symbol
                     if (prefixInfo != null)
                     {
                         if (result is PrefixUnit && ((PrefixUnit)result).Prefixe == Measure.Units.Metric.Prefixes.SIPrefixe.None)
@@ -227,8 +233,8 @@ namespace Afk.Measure.Units {
                                 throw new UnitException("Unable to cast " + result.Symbol + " to " + prefixInfo.Item1.Symbol + result.Symbol);
                             }
                             // We have a prefix and an unit with prefix capability (MetricBaseUnit), we can produce a PrefixUnit
-                            // Item2 as right exponent and not (MetricBaseUnit)result Sample : kWh2 (exponent=2) and not km4.s-6.h2.kg2 (4)
-                            result = new PrefixUnit(prefixInfo.Item1, (MetricBaseUnit)result, prefixInfo.Item2); 
+                            // prefixInfo.Item2 as right exponent and not (MetricBaseUnit)result Sample : kWh2 (exponent=2) and not km4.s-6.h2.kg2 (4)
+                            result = new PrefixUnit(prefixInfo, (MetricBaseUnit)result); 
                         }
                         else
                             throw new UnitException("Unable to cast " + result.Symbol + " to " + prefixInfo.Item1.Symbol + result.Symbol);

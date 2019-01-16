@@ -81,6 +81,5 @@ namespace UnitTestMeasure
             gal = Unit.Parse("gal");
             Assert.AreEqual(gal.GetType(), new Afk.Measure.Units.Imperial.Gallon().GetType());
         }
-
     }
 }

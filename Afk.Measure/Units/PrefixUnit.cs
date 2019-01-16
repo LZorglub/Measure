@@ -59,28 +59,26 @@ namespace Afk.Measure.Units {
         /// <param name="baseUnit"><see cref="MetricBaseUnit"/></param>
         public PrefixUnit(SIPrefixe prefixe, MetricBaseUnit baseUnit)
 			: this(baseUnit) {
-            this.Initialize(prefixe, baseUnit, this.BaseUnit.Exponent);
+            this.Initialize(prefixe, this.BaseUnit.Exponent);
 		}
 
         /// <summary>
         /// Initialize a new instance of <see cref="PrefixUnit"/>
         /// </summary>
-        /// <param name="prefixe">Prefixe of unit</param>
+        /// <param name="prefixe">Tuple of prefix unit, compose by the prefix and exponent applied to this prefix</param>
         /// <param name="baseUnit"><see cref="MetricBaseUnit"/></param>
-        /// <param name="exponent">Exponent to apply to prefixe</param>
-        public PrefixUnit(SIPrefixe prefixe, MetricBaseUnit baseUnit, int exponent)
+        public PrefixUnit(Tuple<SIPrefixe, int> prefixe, MetricBaseUnit baseUnit)
             : this(baseUnit)
         {
-            this.Initialize(prefixe, baseUnit, exponent);
+            this.Initialize(prefixe.Item1, prefixe.Item2);
         }
 
         /// <summary>
         /// Initialize the <see cref="PrefixUnit"/>
         /// </summary>
         /// <param name="prefixe">Prefixe of unit</param>
-        /// <param name="baseUnit"><see cref="MetricBaseUnit"/></param>
         /// <param name="exponent">Exponent to apply to prefixe</param>
-        private void Initialize(SIPrefixe prefixe, MetricBaseUnit baseUnit, int exponent)
+        private void Initialize(SIPrefixe prefixe, int exponent)
         {
             this._prefixe = prefixe;
 
