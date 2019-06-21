@@ -66,6 +66,19 @@ namespace UnitTestMeasure
         }
 
         [TestMethod]
+        public void TestVA()
+        {
+            var unit = Unit.Parse("VA");
+            Assert.AreEqual("VA", unit.Symbol);
+
+            unit = unit.Inverse();
+            Assert.AreEqual("VA-1", unit.Symbol);
+
+            unit = unit.Power(2);
+            Assert.AreEqual("VA-2", unit.Symbol);
+        }
+
+        [TestMethod]
         public void TestPrefixVanish()
         {
             var unit = Unit.Parse("km2/Ms");
