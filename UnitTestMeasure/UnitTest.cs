@@ -76,6 +76,9 @@ namespace UnitTestMeasure
 
             unit = unit.Power(2);
             Assert.AreEqual("VA-2", unit.Symbol);
+
+            unit = Unit.Parse("kVA");
+            Assert.AreEqual("kVA", unit.Symbol);
         }
 
         [TestMethod]
