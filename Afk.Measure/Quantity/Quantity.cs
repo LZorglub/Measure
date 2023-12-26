@@ -1,19 +1,18 @@
-﻿using System;
+﻿using Afk.Measure.Converter;
+using Afk.Measure.Operation;
+using Afk.Measure.Units;
+using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using Afk.Measure.Units;
-using Afk.Measure.Operation;
-using Afk.Measure.Converter;
-using Afk.Measure.Units.Metric;
 
-namespace Afk.Measure.Quantity {
-	/// <summary>
-	/// Represents a base quantity.
-	/// </summary>
-	/// <typeparam name="T"></typeparam>
-	/// <remarks>A quantity is composed of a unit part and a value part. A quantity has no dimension, unit give the dimension.</remarks>
-	public class Quantity<T> {
+namespace Afk.Measure.Quantity
+{
+    /// <summary>
+    /// Represents a base quantity.
+    /// </summary>
+    /// <typeparam name="T"></typeparam>
+    /// <remarks>A quantity is composed of a unit part and a value part. A quantity has no dimension, unit give the dimension.</remarks>
+    public class Quantity<T> {
         /// <summary>
         /// Represents the quantity value
         /// </summary>

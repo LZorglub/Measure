@@ -1,24 +1,16 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using Afk.Measure.Units;
+﻿using Afk.Measure;
 using Afk.Measure.Quantity;
-using Afk.Measure.Units.System;
-using Afk.Measure.Units.Metric.SI;
-using Afk.Measure.Units.Metric.Prefixes;
-using Afk.Measure.Units.Metric;
-using Afk.Measure.Units.Metric.Derived;
 using Afk.Measure.Quantity.Base;
-using Afk.Measure.Units.Imperial;
 using Afk.Measure.Quantity.Derived;
-using System.Globalization;
-using Afk.Measure;
-using Afk.Measure.Units.Currency;
+using Afk.Measure.Units;
+using Afk.Measure.Units.Metric.Derived;
+using Afk.Measure.Units.Metric.Prefixes;
+using Afk.Measure.Units.System;
 using System.Reflection;
 
-namespace ConsoleTest {
-	class Program {
+namespace ConsoleTest
+{
+    class Program {
 
         static void Test()
         {
