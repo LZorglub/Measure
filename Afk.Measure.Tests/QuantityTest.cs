@@ -4,6 +4,7 @@ using Afk.Measure.Quantity;
 
 namespace Afk.Measure.Tests
 {
+    [Trait("Category", "Quantity")]
     public class QuantityTest
     {
         [Theory]
@@ -49,7 +50,6 @@ namespace Afk.Measure.Tests
             Assert.Equal(expectedUnit, qty.Unit.Symbol.Replace((char)183, '.'));
         }
 
-        [Trait("Category", "Quantity")]
         [Fact]
         public void TestInverse()
         {
@@ -63,7 +63,6 @@ namespace Afk.Measure.Tests
             Assert.Equal(5000000, q1.Value);
         }
 
-        [Trait("Category","Quantity")]
         [Fact]
         public void TestPrefixPower()
         {
@@ -75,7 +74,6 @@ namespace Afk.Measure.Tests
             Assert.Equal("m2", q2.Unit.Symbol);
         }
 
-        [Trait("Category","Quantity")]
         [Fact]
         public void TestEnergy()
         {
@@ -100,7 +98,6 @@ namespace Afk.Measure.Tests
             Assert.Equal(1000000, q2.Value);
         }
 
-        [Trait("Category","Quantity")]
         [Fact]
         public void TestPrefix()
         {
@@ -114,7 +111,6 @@ namespace Afk.Measure.Tests
             Assert.Equal(BaseUnit.UNITONE, q3.Unit);
         }
 
-        [Trait("Category","Quantity")]
         [Fact]
         public void TestMergeUnit()
         {
@@ -157,7 +153,6 @@ namespace Afk.Measure.Tests
             Assert.Equal(0.4, q3.Value);
         }
 
-        [Trait("Category","Quantity")]
         [Fact]
         public void TestKiloWh()
         {
@@ -179,7 +174,6 @@ namespace Afk.Measure.Tests
             Assert.Equal("€", q3.Unit.Symbol);
         }
 
-        [Trait("Category","Quantity")]
         [Fact]
         public void TestBestConverter()
         {

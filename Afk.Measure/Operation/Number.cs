@@ -89,27 +89,21 @@ namespace Afk.Measure.Operation
 		/// <summary>
 		/// Gets the <b>value</b> of instance
 		/// </summary>
-		public T Value {
-			get { return value; }
-		}
+		public T Value => value;
 
 		/// <summary>
 		/// Implicit cast operator of <b>T</b> in <b>Number{T,V}/></b>
 		/// </summary>
 		/// <param name="value"><b>Value</b> to cast</param>
 		/// <returns>A <see cref="Number{T,V}"/> representation of the value</returns>
-		public static implicit operator Number<T, V>(T value) {
-			return new Number<T, V>(value);
-		}
+		public static implicit operator Number<T, V>(T value) => new Number<T, V>(value);
 
 		/// <summary>
 		/// Implicit cast operator of <see cref="Number{T,V}"/> to <b>T</b> type.
 		/// </summary>
 		/// <param name="value"><see cref="Number{T,V}"/> to cast</param>
 		/// <returns>A <b>T</b> representation of <see cref="Number{T,V}"/></returns>
-		public static implicit operator T(Number<T, V> value) {
-			return value.value;
-		}
+		public static implicit operator T(Number<T, V> value) => value.value;
 
 		/// <summary>
 		/// Convert value to found a valid operation to apply.
@@ -193,9 +187,7 @@ namespace Afk.Measure.Operation
 		/// <param name="a">A <see cref="Number{T,V}"/></param>
 		/// <param name="b">A <b>V</b> type.</param>
 		/// <returns>true if the value of <b>a</b> is less than the value of <b>b</b>; otherwise, false.</returns>
-		public static bool operator <(Number<T, V> a, V b) {
-			return LessThan(a.value, b);
-		}
+		public static bool operator <(Number<T, V> a, V b) => LessThan(a.value, b);
 
 		/// <summary>
 		/// Indicates wether a specified <see cref="Number{T,V}"/> is greater than a <b>V</b> type
@@ -203,9 +195,7 @@ namespace Afk.Measure.Operation
 		/// <param name="a">A <see cref="Number{T,V}"/></param>
 		/// <param name="b">A <b>V</b> type.</param>
 		/// <returns>true if the value of <b>a</b> is greater than the value of <b>b</b>; otherwise, false.</returns>
-		public static bool operator >(Number<T, V> a, V b) {
-			return GreaterThan(a.value, b);
-		}
+		public static bool operator >(Number<T, V> a, V b) => GreaterThan(a.value, b);
 
 		/// <summary>
 		/// Indicates wether a specified <see cref="Number{T,V}"/> is less or equal than a <b>V</b> type
@@ -213,9 +203,7 @@ namespace Afk.Measure.Operation
 		/// <param name="a">A <see cref="Number{T,V}"/></param>
 		/// <param name="b">A <b>V</b> type.</param>
 		/// <returns>true if the value of <b>a</b> is less or equal than the value of <b>b</b>; otherwise, false.</returns>
-		public static bool operator <=(Number<T, V> a, V b) {
-			return LessThanOrEqual(a.value, b);
-		}
+		public static bool operator <=(Number<T, V> a, V b) => LessThanOrEqual(a.value, b);
 
 		/// <summary>
 		/// Indicates wether a specified <see cref="Number{T,V}"/> is greater or equal than a <b>V</b> type
@@ -223,9 +211,7 @@ namespace Afk.Measure.Operation
 		/// <param name="a">A <see cref="Number{T,V}"/></param>
 		/// <param name="b">A <b>V</b> type.</param>
 		/// <returns>true if the value of <b>a</b> is greater or equal than the value of <b>b</b>; otherwise, false.</returns>
-		public static bool operator >=(Number<T, V> a, V b) {
-			return GreaterThanOrEqual(a.value, b);
-		}
+		public static bool operator >=(Number<T, V> a, V b) => GreaterThanOrEqual(a.value, b);
 
 		/// <summary>
 		/// Indicates wether a specified <see cref="Number{T,V}"/> is equal to a <b>V</b> type
@@ -258,17 +244,13 @@ namespace Afk.Measure.Operation
 		/// </summary>
 		/// <param name="value">The object to compare to this instance</param>
 		/// <returns>true if <b>value</b> is an instance of <see cref="Number{T,V}"/> and equals the value of this instance; otherwise, false.</returns>
-		public override bool Equals(object value) {
-			return base.Equals(value);
-		}
+		public override bool Equals(object value) => base.Equals(value);
 
 		/// <summary>
 		/// Returns the hash code for this instance
 		/// </summary>
 		/// <returns>A 32-bit signed integer hash code.</returns>
-		public override int GetHashCode() {
-			return base.GetHashCode();
-		}
+		public override int GetHashCode() =>  base.GetHashCode();
 
 		/*
 		public static bool IsNumeric {
